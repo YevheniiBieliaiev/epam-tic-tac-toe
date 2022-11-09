@@ -1,0 +1,8 @@
+{
+  "name": "@tic-tac-toe/prettier-config",
+  "version": "0.0.1",
+  "description": "Pet-project 'TIC-TAC-TOE'/prettier-config",
+  "main": "index.json",
+  "author": "Yevhenii Bieliaiev <yevheniibieliaiev@gmail.com>",
+  "license": "MIT"
+}
