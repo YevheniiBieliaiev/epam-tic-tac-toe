@@ -175,7 +175,7 @@ export class ProfileServices {
     nickname: string;
   }): Promise<IResponseUpdNickname> {
     const user = await this._authRepository.findUserById({ userId });
-  
+
     if (!user?.id) {
       throw new HttpError({
         status: HttpStatusCode.UNAUTHORIZED,
