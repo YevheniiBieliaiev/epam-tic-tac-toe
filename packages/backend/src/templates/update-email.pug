@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+    head
+      meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+      title TIC TAC TOE
+      style.
+            table {
+              max-width: 600px;
+              width: 100%;
+              margin: 0;
+              padding: 0;
+              color: #150c46;
+            }
+            span {
+              -webkit-text-size-adjust:none;
+              line-height: 18px;
+              display: block;
+              font-family: 'Arial', 'Helvetica', sans-serif;
+              padding: 8px 0;
+            }
+            a {
+              cursor: pointer;
+              line-height: 18px;
+              -webkit-text-size-adjust:none;
+              display: block;
+              font-family: 'Arial', 'Helvetica', sans-serif;
+            }
+            .button {
+              text-decoration: none;
+              font-size: 14px;
+              font-weight: bold;
+              letter-spacing: 1.4px;
+              color: #faf0c7;
+              background: #0c29ce;
+              padding: 10px 0;
+              text-align: center;
+              width: 300px;
+            }
+    body
+      table(border='0', cellpadding='0', cellspacing='0')
+        <thead>
+          tr
+            td
+              span
+                  b Verify your email.
+        </thead>
+
+        <tbody>
+          tr
+            td
+              span Hey there,
+          tr
+            td
+              span Your email address has been updated. To verify this email address belongs to you, enter the code below on the email verification page: #{token}
+          tr
+            td
+              span
+                  a(class='button'
+                    target='_blank'
+                    href=`${appUrl}email-verification`) Get new password
+          tr
+            td
+              span Or follow this link:
+              a(href=`${appUrl}email-verification`)=`${appUrl}email-verification`
+          tr
+            td
+              span If you did not associate your address with a <b>TIC TAC TOE</b> account, please ignore this message and do not click on the link above.
+        </tbody>
+
+        <tfoot>
+          tr
+            td
+              span Contact us
+                  a(href=`mailto: ${emailFrom}`, target='_blank')=emailFrom
+          tr
+            td
+              span This email was sent to #{email}
+        </tfoot>
+      </table>
+</html>

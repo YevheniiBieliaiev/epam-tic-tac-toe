@@ -1,5 +1,6 @@
 import express, { urlencoded, json } from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import { prismaClient } from '@data';
 import { getEnv } from '@helpers';
 import { initRepositories } from '@repositories';
@@ -18,6 +19,7 @@ const routes = initRoutes({ services });
 
 app
   .use(cors())
+  .use(cookieParser())
   .use(loggerHandler)
   .use(json())
   .use(urlencoded({ extended: true }))

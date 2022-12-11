@@ -16,7 +16,30 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id             String         @id @default(uuid()) @db.Uuid
+  email          String         @unique @db.VarChar(256)
+  nickname       String
+  avatar         String?        @db.VarChar(2048)
+  role           Role           @default(USER)
+  salt           String         @db.VarChar(256)
+  passwordHash   String         @db.VarChar(256)
+  tokenEmail     String?        @db.VarChar(6)
+  isActivated    Boolean        @default(false)
+  refreshTokens  RefreshToken[]
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model RefreshToken {
+  id             String         @id @default(uuid()) @db.Uuid
+  user           User           @relation(fields: [userId], references: [id])
+  userId         String         @db.Uuid
+  token          String
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
 }

@@ -1,13 +1,14 @@
 import type { Request, Response, NextFunction } from 'express';
 import { logger } from '@helpers';
-import { HttpStatusCode, HttpError } from '@tic-tac-toe/shared';
+import { HttpError, HttpStatusCode } from '@tic-tac-toe/shared';
+import { ErrorMessages } from '@enums';
 
 export const errorHandler = (
   err: Error,
   req: Request,
   res: Response,
   next: NextFunction,
-): Response<any, Record<string, any>> => {
+): Response<unknown, Record<string, unknown>> => {
   if (!err) {
     next();
   }
@@ -31,5 +32,5 @@ export const errorHandler = (
 
   return res
     .status(HttpStatusCode.INTERNAL_SERVER_ERROR)
-    .json({ error: 'internal...' });
+    .json({ error: ErrorMessages.INTERNAL_SERVER_ERROR });
 };

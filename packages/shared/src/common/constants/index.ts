@@ -1,1 +1,1 @@
-export * from './language';
+export const MAX_AVATAR_SIZE = 10e6;
