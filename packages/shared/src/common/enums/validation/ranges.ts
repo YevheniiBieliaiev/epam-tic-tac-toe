@@ -1,0 +1,6 @@
+export enum ValidationRanges {
+  MIN_NAME_SYMBOLS = 1,
+  MAX_NAME_SYMBOLS = 40,
+  MIN_PASSWORD_SYMBOLS = 8,
+  MAX_PASSWORD_SYMBOLS = 16,
+}

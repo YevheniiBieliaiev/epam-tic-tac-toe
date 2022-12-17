@@ -25,6 +25,12 @@
               display: block;
               font-family: 'Arial', 'Helvetica', sans-serif;
             }
+            .token {
+              font-size: 20px;
+              font-weight: bold;
+              letter-spacing: 1.4px;
+              color: #05021D
+            }
             .button {
               text-decoration: none;
               font-size: 14px;
@@ -51,7 +57,8 @@
               span Hey there,
           tr
             td
-              span Your email address has been registered with TIC TAC TOE. To verify this email address belongs to you, enter the code below on the email verification page: #{token}
+              span Your email address has been registered with TIC TAC TOE. To verify this email address belongs to you, enter the code below on the email verification page:
+              span(class='token') #{token}
           tr
             td
               span

@@ -7,6 +7,7 @@ import { initRepositories } from '@repositories';
 import { initServices } from '@services';
 import { initRoutes } from '@routes';
 import { errorHandler, loggerHandler } from '@middlewares';
+import { envError } from '@validation';
 
 const app = express();
 const port = getEnv('PORT');
@@ -14,8 +15,7 @@ const repositories = initRepositories({ prismaClient });
 const services = initServices({ repositories });
 const routes = initRoutes({ services });
 
-//to check db connection - use http://localhost:${port}/health
-//TODO: check env - joi schema
+//to check db connection (dev mode) - use http://localhost:${port}/health
 
 app
   .use(cors())
@@ -26,4 +26,9 @@ app
   .use(routes)
   .use(errorHandler)
   .on('close', () => prismaClient.$disconnect())
-  .listen(port, () => console.log(`Server is running on port ${port}`));
+  .listen(port, () => {
+    envError
+      ? (console.log(`ENV error: ${envError.details[0].message}`),
+        process.exit(1))
+      : console.log(`Server is running on port ${port}`);
+  });

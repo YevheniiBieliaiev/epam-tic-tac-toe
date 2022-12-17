@@ -10,7 +10,7 @@ import type {
 } from '@interfaces';
 import { type EmailSubjects, ErrorMessages } from '@enums';
 import type { TTemplates } from '@types';
-import { generateToken } from '@helpers';
+import { generateToken, validateAccountData } from '@helpers';
 
 export class AuthServices {
   private _authRepository: AuthRepository;
@@ -43,6 +43,8 @@ export class AuthServices {
     email,
     password,
   }: ICandidate): Promise<IUserCreated> {
+    validateAccountData({ nickname, email, password });
+
     const candidate = await this._authRepository.findUserByNickname({
       nickname,
     });

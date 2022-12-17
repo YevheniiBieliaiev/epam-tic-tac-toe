@@ -1,6 +1,7 @@
 import { Environment } from '@tic-tac-toe/shared';
 
 type ProcessEnvKeys =
+  | 'DATABASE_URL'
   | 'NODE_ENV'
   | 'PORT'
   | 'SOCKETS_PORT'

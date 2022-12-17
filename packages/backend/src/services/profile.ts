@@ -8,7 +8,12 @@ import type {
 } from '@tic-tac-toe/shared';
 import { HttpError, HttpStatusCode } from '@tic-tac-toe/shared';
 import { ErrorMessages, EmailSubjects } from '@enums';
-import { generateToken } from '@helpers';
+import {
+  generateToken,
+  validateEmail,
+  validateNickname,
+  validatePassword,
+} from '@helpers';
 
 export class ProfileServices {
   private _authRepository: AuthRepository;
@@ -66,6 +71,8 @@ export class ProfileServices {
     currentPassword: string;
     newPassword: string;
   }): Promise<void> {
+    validatePassword({ password: newPassword });
+
     const user = await this._authRepository.findUserById({ userId });
     if (!user.id) {
       throw new HttpError({
@@ -101,6 +108,8 @@ export class ProfileServices {
     userId: string;
     email: string;
   }): Promise<IResponseUpdEmail> {
+    validateEmail({ email });
+
     const user = await this._authRepository.findUserById({ userId });
     if (!user?.id) {
       throw new HttpError({
@@ -174,6 +183,8 @@ export class ProfileServices {
     userId: string;
     nickname: string;
   }): Promise<IResponseUpdNickname> {
+    validateNickname({ nickname });
+
     const user = await this._authRepository.findUserById({ userId });
 
     if (!user?.id) {
