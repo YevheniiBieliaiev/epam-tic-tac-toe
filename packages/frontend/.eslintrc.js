@@ -14,6 +14,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'jsx-a11y/anchor-is-valid': 'off',
+    '@typescript-eslint/no-empty-interface': 'off'
   },
   settings: {
     react: {

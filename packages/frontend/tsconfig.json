@@ -3,9 +3,21 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": "./",
-    "paths": {}
+    "baseUrl": "src",
+    "jsxImportSource": "@emotion/react",
+    "paths": {
+      "@helpers": ["helpers"],
+      "@validation": ["validation"],
+      "@hooks": ["hooks"],
+      "@services": ["services"],
+      "@store": ["store"],
+      "@interfaces": ["common/interfaces"],
+      "@enums": ["common/enums"],
+      "@components/*": ["components/*"],
+      "@primitives": ["components/primitives"],
+      "@providers": ["providers"],
+      "@theme": ["theme"]
+    }
   },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "include": ["src"]
 }

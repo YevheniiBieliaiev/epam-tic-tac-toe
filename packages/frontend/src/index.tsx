@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { store } from '@store';
+import { AppThemeProvider } from '@providers';
 import App from './App';
 
 const root = ReactDOM.createRoot(
@@ -7,6 +10,10 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <AppThemeProvider>
+        <App />
+      </AppThemeProvider>
+    </Provider>
   </React.StrictMode>,
 );
