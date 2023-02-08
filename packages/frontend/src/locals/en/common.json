@@ -1,0 +1,15 @@
+{
+  "clientLinks": {
+    "gameRoom": "Game room",
+    "leaderBoard": "Leader board",
+    "terms": "Terms & Conditions",
+    "contactUs": "Contact Us",
+    "sign": "Sign Up / Sign In",
+    "profile": "Profile",
+    "toGame": "To Game"
+  },
+  "copyRight": {
+    "yearAndOwner": "© 2022 EPAM Systems, Inc.",
+    "rights": "All Rights Reserved."
+  }
+}

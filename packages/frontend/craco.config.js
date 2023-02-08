@@ -16,6 +16,10 @@ module.exports = {
       '@store': resolvePath('./src/store'),
       '@interfaces': resolvePath('./src/common/interfaces'),
       '@enums': resolvePath('./src/common/enums'),
+      '@types': resolvePath('./src/common/types'),
+      '@pages': resolvePath('./src/pages'),
+      '@svg-icons': resolvePath('./src/images/svg'),
+      '@locals': resolvePath('./src/locals'),
     },
   },
   babel: {

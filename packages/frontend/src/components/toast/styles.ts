@@ -1,7 +1,7 @@
 import { css, type Theme } from '@emotion/react';
 
 export const toastWrapper = ({ colors }: Theme) => css`
-  background-color: ${colors.dark};
+  background-color: ${colors.links};
 `;
 
 export const toastLevel = ({ colors }: Theme) => css`

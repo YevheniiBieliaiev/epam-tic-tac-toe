@@ -13,10 +13,14 @@
       "@store": ["store"],
       "@interfaces": ["common/interfaces"],
       "@enums": ["common/enums"],
+      "@types": ["common/types"],
       "@components/*": ["components/*"],
       "@primitives": ["components/primitives"],
       "@providers": ["providers"],
-      "@theme": ["theme"]
+      "@theme": ["theme"],
+      "@pages": ["pages"],
+      "@svg-icons": ["images/svg"],
+      "@locals": ["locals"]
     }
   },
   "include": ["src"]

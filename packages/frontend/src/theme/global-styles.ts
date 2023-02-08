@@ -1,6 +1,6 @@
-import { css } from '@emotion/react';
+import { css, type Theme } from '@emotion/react';
 
-export const globalStyles = css`
+export const globalStyles = (theme: Theme) => css`
   html,
   body,
   div,
@@ -130,5 +130,46 @@ export const globalStyles = css`
   *::after,
   *::before {
     box-sizing: border-box;
+  }
+
+  body {
+    position: relative;
+    background-color: ${theme.colors.bkgMain};
+    font-family: ${theme.fontFamily.Nunito};
+    font-weight: ${theme.fontWeights.body2};
+    color: ${theme.colors.mainDark};
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      display: none;
+      transition: all 1s ease-in-out;
+      height: 100%;
+      background: url(${theme.frames.bkgFrame});
+
+      ${theme.minMq('md')} {
+        display: block;
+        width: ${theme.widths.bkgFrameMd};
+      }
+
+      ${theme.minMq('lg')} {
+        width: ${theme.widths.bkgFrameLg};
+      }
+
+      ${theme.minMq('xl')} {
+        width: ${theme.widths.bkgFrameXl};
+      }
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+      transform: scaleX(-1);
+    }
   }
 `;
