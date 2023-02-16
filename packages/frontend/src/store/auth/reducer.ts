@@ -7,6 +7,7 @@ import {
   proveEmail,
   changePaswordEmail,
   changePassword,
+  authTokens,
 } from './actions';
 
 interface AuthState {
@@ -51,7 +52,6 @@ const authSlice = createSlice({
     });
     builder.addCase(userSignin.fulfilled, (state, action) => {
       state.loading = false;
-      state.error = null;
       const { avatar, nickname, accessToken } = action.payload;
       state.avatar = avatar;
       state.nickname = nickname;
@@ -67,6 +67,7 @@ const authSlice = createSlice({
     });
     builder.addCase(userSignout.fulfilled, (state) => {
       state.loading = false;
+      state.accessToken = null;
     });
     builder.addCase(userSignout.rejected, (state) => {
       state.loading = false;
@@ -102,6 +103,18 @@ const authSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(changePassword.rejected, (state) => {
+      state.loading = false;
+    });
+
+    //authTokens
+    builder.addCase(authTokens.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(authTokens.fulfilled, (state, action) => {
+      state.accessToken = action.payload.accessToken;
+      state.loading = false;
+    });
+    builder.addCase(authTokens.rejected, (state) => {
       state.loading = false;
     });
   },

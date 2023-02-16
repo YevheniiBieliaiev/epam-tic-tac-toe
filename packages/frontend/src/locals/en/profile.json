@@ -1,0 +1,18 @@
+{
+  "rating": {
+    "header": "Your rating"
+  },
+  "photo": {
+    "header": "Photo"
+  },
+  "nickname": {
+    "header": "Nickname"
+  },
+  "emailAddress": {
+    "header": "Email address"
+  },
+  "password": {
+    "header": "Password"
+  },
+  "logout": "Logout"
+}

@@ -3,6 +3,7 @@ import { useTitle } from '@hooks';
 import { ScrollButton } from '@primitives';
 import { Header } from '@components/header';
 import { Footer } from '@components/footer';
+import { ToastStack } from '@components/toast';
 import type { MainLayoutProps } from './types';
 import { setTitle } from './utils';
 import * as styles from './styles';
@@ -30,6 +31,7 @@ export const MainLayout = ({
     <>
       {withHeader && <Header />}
       <main css={styles.main}>
+        <ToastStack />
         {children}
         {scrollVisible && <ScrollButton />}
       </main>

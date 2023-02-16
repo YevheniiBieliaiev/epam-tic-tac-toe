@@ -40,7 +40,7 @@ export const Header = () => {
             />
           ) : (
             <InternalLink
-              path={ClientRoutes.SIGN}
+              path={`${ClientRoutes.SIGN}/${ClientRoutes.SIGNIN}`}
               label={enLocal.common.clientLinks.sign}
             />
           )}

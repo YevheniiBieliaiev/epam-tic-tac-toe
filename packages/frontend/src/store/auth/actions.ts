@@ -14,56 +14,90 @@ import {
   confirmEmail,
   resetPasswordEmail,
   resetPassword,
+  updateTokens,
 } from '@services';
+import { addToast } from '@store';
 import { AUTH_TYPES } from './action-types';
 
 export const userSignup = createAsyncThunk(
   AUTH_TYPES.SIGNUP,
-  (data: ICandidate, { rejectWithValue }) =>
+  (data: ICandidate, { rejectWithValue, dispatch }) =>
     signUp(data)
       .then((response) => response)
-      .catch((e: HttpError) => rejectWithValue(e.message)),
+      .catch((e: HttpError) => {
+        dispatch(addToast({ level: 'error', description: e.message }));
+
+        return rejectWithValue(e.message);
+      }),
 );
 
 export const userSignin = createAsyncThunk(
   AUTH_TYPES.SIGNIN,
-  (data: ISignIn, { rejectWithValue }) =>
+  (data: ISignIn, { rejectWithValue, dispatch }) =>
     signIn(data)
       .then((response) => response)
-      .catch((e: HttpError) => rejectWithValue(e.message)),
+      .catch((e: HttpError) => {
+        dispatch(addToast({ level: 'error', description: e.message }));
+
+        return rejectWithValue(e.message);
+      }),
 );
 
 export const userSignout = createAsyncThunk(
   AUTH_TYPES.SIGNOUT,
-  (_data, { rejectWithValue }) =>
+  (_data, { rejectWithValue, dispatch }) =>
     signOut()
-      .then((response) => response)
-      .catch((e: HttpError) => rejectWithValue(e.message)),
+      .then()
+      .catch((e: HttpError) => {
+        dispatch(addToast({ level: 'error', description: e.message }));
+
+        return rejectWithValue(e.message);
+      }),
 );
 
 export const proveEmail = createAsyncThunk(
   AUTH_TYPES.PROVE_EMAIL,
-  (data: IConfirmEmail, { rejectWithValue }) =>
+  (data: IConfirmEmail, { rejectWithValue, dispatch }) =>
     confirmEmail(data)
       .then((response) => response)
-      .catch((e: HttpError) => rejectWithValue(e.message)),
+      .catch((e: HttpError) => {
+        dispatch(addToast({ level: 'error', description: e.message }));
+
+        return rejectWithValue(e.message);
+      }),
 );
 
 export const changePaswordEmail = createAsyncThunk(
   AUTH_TYPES.RESET_PASSWORD_EMAIL,
-  (data: ISendEmail, { rejectWithValue }) =>
+  (data: ISendEmail, { rejectWithValue, dispatch }) =>
     resetPasswordEmail(data)
       .then((response) => response)
-      .catch((e: HttpError) => rejectWithValue(e.message)),
+      .catch((e: HttpError) => {
+        dispatch(addToast({ level: 'error', description: e.message }));
+
+        return rejectWithValue(e.message);
+      }),
 );
 
 export const changePassword = createAsyncThunk(
   AUTH_TYPES.RESET_PASSWORD,
   (
     { data, token }: { data: IResetPassword; token: string },
-    { rejectWithValue },
+    { rejectWithValue, dispatch },
   ) =>
     resetPassword(data, token)
+      .then((response) => response)
+      .catch((e: HttpError) => {
+        dispatch(addToast({ level: 'error', description: e.message }));
+
+        return rejectWithValue(e.message);
+      }),
+);
+
+export const authTokens = createAsyncThunk(
+  AUTH_TYPES.UPDATE_TOKENS,
+  (_data, { rejectWithValue }) =>
+    updateTokens()
       .then((response) => response)
       .catch((e: HttpError) => rejectWithValue(e.message)),
 );

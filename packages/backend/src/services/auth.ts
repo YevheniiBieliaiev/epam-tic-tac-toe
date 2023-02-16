@@ -240,7 +240,8 @@ export class AuthServices {
     const currentRefreshToken = await this._authRepository.findRefreshToken({
       refreshToken: token,
     });
-    if (!currentRefreshToken?.id) {
+
+    if (!currentRefreshToken) {
       throw new HttpError({
         status: HttpStatusCode.UNAUTHORIZED,
         message: ErrorMessages.UNAUTHORIZED_SESSION,

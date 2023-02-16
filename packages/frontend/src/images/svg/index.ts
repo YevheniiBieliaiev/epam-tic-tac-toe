@@ -12,6 +12,8 @@ import play from './play.svg';
 import search from './search.svg';
 import trophy from './trophy.svg';
 import xClose from './x-close.svg';
+import eyeHidden from './eye-hidden.svg';
+import eyeVisible from './eye-visible.svg';
 
 export {
   arrowLeft,
@@ -28,4 +30,6 @@ export {
   search,
   trophy,
   xClose,
+  eyeHidden,
+  eyeVisible,
 };

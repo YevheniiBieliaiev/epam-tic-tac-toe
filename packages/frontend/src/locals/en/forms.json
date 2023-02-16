@@ -1,0 +1,50 @@
+{
+  "signup": {
+    "nickname": {
+      "label": "Nickname (will shown for other users)",
+      "placeholder": "Enter your nickname"
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter your email"
+    },
+    "password": {
+      "label": "Create a password",
+      "placeholder": "Enter your password"
+    },
+    "confirmPassword": {
+      "label": "Confirm a password",
+      "placeholder": "Repeat your password"
+    },
+    "acceptTerms": {
+      "label": "I accept the"
+    },
+    "passwordTips": {
+      "lowerCase": "One lowercase character",
+      "upperCase": "One uppercase character",
+      "symbol": "At least 1 symbol",
+      "minChars": "8 characters minimum"
+    },
+    "submit": "Sign Up",
+    "userSignin": {
+      "label": "Already have an account?",
+      "link": "Sign In"
+    }
+  },
+  "signin": {
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter your email"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password"
+    },
+    "submit": "Sign In",
+    "resetPassword": "Forgot your password?",
+    "userSignup": {
+      "label": "Don't have an account?",
+      "link": "Sign Up now ➝"
+    }
+  }
+}

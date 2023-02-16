@@ -49,6 +49,10 @@ export const linkLabel = ({
     color: ${colors.links};
   }
 
+  &[data-active='inactive'] {
+    color: ${colors.sideText};
+  }
+
   &:hover {
     text-decoration: underline;
   }

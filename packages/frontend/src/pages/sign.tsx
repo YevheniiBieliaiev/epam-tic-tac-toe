@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom';
-import { MainLayout } from '@components/layout';
+import { Outlet } from 'react-router-dom';
+import { Container } from '@primitives';
+import { MainLayout, SignLayout } from '@components/layout';
 
 const Sign = () => (
-  <div>
-    Sign Page
-    <Link to="/terms">Terms</Link>
-  </div>
+  <Container type="centered">
+    <SignLayout>
+      <Outlet />
+    </SignLayout>
+  </Container>
 );
 
 export const SignPage = () => (
-  <MainLayout>
+  <MainLayout title="Sign">
     <Sign />
   </MainLayout>
 );

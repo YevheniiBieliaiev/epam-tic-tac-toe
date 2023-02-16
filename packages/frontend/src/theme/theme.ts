@@ -18,13 +18,21 @@ const colors = {
   links: '#3396BB',
   input: '#F5F1E7',
   bkgMain: '#FAF8F0',
+  lightSpinner: '#D6D6DD',
+  disabledLight: '#DFDFDF',
+  disabledPrimary: '#707190',
+  inactiveBorder: '#CECED5',
 };
 
 const borders = {
   boardCell: `2px solid ${colors.boardCellBorder}`,
   darkButton: `3px solid ${colors.darkButtonBorder}`,
+  lightButton: `2px solid ${colors.mainDark}`,
   input: `1px solid ${colors.mainDark}`,
+  checkbox: `1.5px solid ${colors.mainDark}`,
+  checkboxMark: `2px solid ${colors.mainDark}`,
   header: `2px solid ${colors.mainDark}`,
+  toast: '2px solid transparent',
 };
 
 const spaces = {
@@ -42,21 +50,45 @@ const spaces = {
   buttonSm: '12px',
   scrollBottom: '25%',
   scrollRight: '15%',
+  input: {
+    x: '12px',
+    y: '9px',
+  },
+  button: {
+    x: {
+      standart: '12px',
+      small: '8px',
+    },
+    y: '8px',
+  },
+  checkboxMark: {
+    top: '-5px',
+    left: '2px',
+  },
 };
 
 const widths = {
-  boardCell: '96px',
+  tipMark: '4px',
+  markCircle: '6px',
   xsIcon: '16px',
   smIcon: '20px',
   mdIcon: '32px',
-  logoSm: '40px',
   logoXs: '33px',
+  logoSm: '40px',
+  boardCell: '96px',
   bkgFrameXl: '20%',
   bkgFrameLg: '12%',
   bkgFrameMd: '6%',
+  form: '350px',
+  toast: '200px',
   pageContent: '710px',
   mainLayout: '740px',
-  markCircle: '6px',
+  checkbox: '12px',
+  checkboxMark: '9px',
+  spinner: {
+    xs: '10px',
+    sm: '20px',
+  },
 };
 
 const heights = {
@@ -66,7 +98,17 @@ const heights = {
   mdIcon: '32px',
   logoSm: '20px',
   logoXs: '17px',
+  tipMark: '4px',
   markCircle: '6px',
+  checkbox: '12px',
+  checkboxMark: '13px',
+  button: {
+    form: '41px',
+  },
+  spinner: {
+    xs: '10px',
+    sm: '20px',
+  },
 };
 
 const fontFamily = {
@@ -74,6 +116,7 @@ const fontFamily = {
 };
 
 const fontSizes = {
+  xxs: '8px',
   xs: '10px',
   headingXl: '24px',
   headingLg: '20px',
@@ -85,6 +128,7 @@ const fontSizes = {
 };
 
 const lineHeights = {
+  xs: '10px',
   headingXl: '33px',
   headingLg: '27px',
   headingSm: '22px',
@@ -95,6 +139,7 @@ const lineHeights = {
 };
 
 const fontWeights = {
+  standart: 400,
   body1: 500,
   body2: 700,
   body3: 800,
@@ -102,11 +147,18 @@ const fontWeights = {
 
 const zIndex = {
   scrollButton: 50,
+  toast: 150,
 };
 
 const radiuses = {
+  xxs: '2px',
   xs: '4px',
   circle: '50%',
+};
+
+const shadows = {
+  input: '0 0 5px rgba(0, 0, 0, 0.4)',
+  toast: '0 0 6px rgba(0, 0, 0, 0.7)',
 };
 
 const breakpoints = {
@@ -131,6 +183,7 @@ const maxMq = (bp: Breakpoints) => `@media (max-width: ${breakpoints[bp]}px)`;
 const lightTheme = {
   colors,
   borders,
+  shadows,
   spaces,
   widths,
   heights,

@@ -55,7 +55,6 @@ export const initAuthRouter = (
 
       res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
         httpOnly: true,
-        sameSite: true,
       });
 
       return {
@@ -82,14 +81,13 @@ export const initAuthRouter = (
     apiPath(path, AuthSubRoutes.REFRESH_TOKEN),
     requestWrapper(async (req, res): Promise<IResponseUpdateTokens> => {
       const { refTokETTT } = <TCookiesKeys>req.cookies;
-
+      console.log(refTokETTT);
       const { accessToken, refreshToken } = await authService.updateTokens({
         token: refTokETTT,
       });
 
       res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
         httpOnly: true,
-        sameSite: true,
       });
 
       return {

@@ -13,6 +13,11 @@ export enum ValidationNicknameError {
 export enum ValidationPasswordError {
   PASSWORD_MIN_SYMBOLS = 'Password length must be at least 8 characters',
   PASSWORD_MAX_SYMBOLS = 'Password length must not exceed 16 characters',
-  PASSWORD_PATTERN = 'Password should include at least one uppercase letter, one lowercase letter and one number',
+  PASSWORD_PATTERN = 'Password should include at least one uppercase letter, one lowercase letter and one symbol',
   PASSWORD_EMPTY = 'Fill the password please',
+  DIFFERNT_PASSWORDS = 'Passwords are not same',
+}
+
+export enum ValidationCheckbox {
+  TERMS = 'Need to accept terms and conditions',
 }

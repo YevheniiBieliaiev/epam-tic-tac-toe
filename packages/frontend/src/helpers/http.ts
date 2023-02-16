@@ -15,8 +15,6 @@ import type {
 import { store, setAccessToken } from '@store';
 
 class Http {
-  private _apiUrl: string;
-
   private _setRequestOptions({
     method,
     contentType = HttpContentType.APPLICATION_JSON,
@@ -51,7 +49,7 @@ class Http {
 
   private async _updateAccessTokens(): Promise<void> {
     const response = await fetch(
-      `${this._apiUrl + ApiRoutes.USER + AuthSubRoutes.REFRESH_TOKEN}`,
+      `${ApiRoutes.USER + AuthSubRoutes.REFRESH_TOKEN}`,
       {
         method: HttpMethod.POST,
       },
@@ -76,7 +74,7 @@ class Http {
     url: string,
     options: RequestInit,
   ): Promise<T> {
-    const apiUrl = `${this._apiUrl}${url}`;
+    const apiUrl = url;
     let response = await fetch(apiUrl, options);
     let resStatus = response.status;
 
@@ -113,9 +111,6 @@ class Http {
     return response.json() as Promise<T>;
   }
 
-  constructor(apiUrl: string) {
-    this._apiUrl = apiUrl;
-  }
   //TODO: method get
   // public get({ url, headers }: IRequestBase) {}
 
@@ -144,4 +139,4 @@ class Http {
   //public delete() {}
 }
 
-export const http = new Http(process.env.REACT_PUBLIC_API_URL);
+export const http = new Http();

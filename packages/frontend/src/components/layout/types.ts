@@ -6,3 +6,7 @@ export interface MainLayoutProps {
   withHeader?: boolean;
   withFooter?: boolean;
 }
+
+export interface SignLayoutProps {
+  children: ReactNode;
+}

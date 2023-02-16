@@ -8,4 +8,6 @@ export enum ClientRoutes {
   SIGNUP = 'signup',
   TERMS = '/terms',
   CONTACT_US = '/contact-us',
+  PASSWORD_RESET = '/password-reset',
+  CONFIRM_EMAIL = '/confirm-email',
 }
