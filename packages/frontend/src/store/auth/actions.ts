@@ -16,7 +16,7 @@ import {
   resetPassword,
   updateTokens,
 } from '@services';
-import { addToast } from '@store';
+import { addToast, openModal } from '@store';
 import { AUTH_TYPES } from './action-types';
 
 export const userSignup = createAsyncThunk(
@@ -59,7 +59,9 @@ export const proveEmail = createAsyncThunk(
   AUTH_TYPES.PROVE_EMAIL,
   (data: IConfirmEmail, { rejectWithValue, dispatch }) =>
     confirmEmail(data)
-      .then((response) => response)
+      .then(() => {
+        dispatch(openModal('accountConfirmationModal'));
+      })
       .catch((e: HttpError) => {
         dispatch(addToast({ level: 'error', description: e.message }));
 

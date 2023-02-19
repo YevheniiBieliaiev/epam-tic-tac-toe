@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
+import { useNavigate } from 'react-router-dom';
 import type { ISignUpForm } from '@interfaces';
 import { userSignUpSchema } from '@validation';
 import { ClientRoutes } from '@enums';
@@ -20,13 +21,15 @@ import { SignUpDTO } from './utils';
 import * as styles from './styles';
 
 export const SignUp = () => {
-  const loading = useAppSelector((state) => state.auth.loading);
+  const { loading, isRegistered } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
-  const inputFocusedRef = useRef(null);
+  const inputFocusedRef = useRef<boolean>(false);
+  const navigate = useNavigate();
 
   const {
     register,
     watch,
+    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<ISignUpForm>({
@@ -41,6 +44,12 @@ export const SignUp = () => {
   });
 
   const password = watch('password');
+
+  useEffect(() => {
+    if (isRegistered) {
+      navigate(ClientRoutes.CONFIRM_EMAIL, { state: getValues('email') });
+    }
+  }, [isRegistered, navigate, getValues]);
 
   const onFocuse = () => (inputFocusedRef.current = true);
 

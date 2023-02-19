@@ -21,3 +21,8 @@ export enum ValidationPasswordError {
 export enum ValidationCheckbox {
   TERMS = 'Need to accept terms and conditions',
 }
+
+export enum ValidationTokenEmail {
+  REQUIRED = 'Please enter verification code',
+  REQUIRED_SYMBOLS = `Please enter 6 symbols`,
+}

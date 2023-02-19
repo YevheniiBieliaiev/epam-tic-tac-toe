@@ -3,7 +3,9 @@ import {
   updateEmailSchema,
   updateNicknameSchema,
   updatePasswordSchema,
+  userConfirmEmailSchema,
 } from '@validation';
+import type { IConfirmEmail } from '@tic-tac-toe/shared';
 import { HttpError, HttpStatusCode } from '@tic-tac-toe/shared';
 
 export const validateAccountData = ({
@@ -22,6 +24,25 @@ export const validateAccountData = ({
   };
 
   const { error } = createAccountSchema.validate(data);
+
+  if (error) {
+    throw new HttpError({
+      status: HttpStatusCode.BAD_REQUEST,
+      message: error.message,
+    });
+  }
+};
+
+export const validateConfirmAccount = ({
+  email,
+  tokenEmail,
+}: IConfirmEmail): void => {
+  const data = {
+    email,
+    tokenEmail,
+  };
+
+  const { error } = userConfirmEmailSchema.validate(data);
 
   if (error) {
     throw new HttpError({

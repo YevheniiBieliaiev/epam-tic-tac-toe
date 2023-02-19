@@ -10,7 +10,11 @@ import type {
 } from '@interfaces';
 import { type EmailSubjects, ErrorMessages } from '@enums';
 import type { TTemplates } from '@types';
-import { generateToken, validateAccountData } from '@helpers';
+import {
+  generateToken,
+  validateAccountData,
+  validateConfirmAccount,
+} from '@helpers';
 
 export class AuthServices {
   private _authRepository: AuthRepository;
@@ -92,7 +96,7 @@ export class AuthServices {
     if (!user?.email) {
       throw new HttpError({
         status: HttpStatusCode.BAD_REQUEST,
-        message: ErrorMessages.WRONG_PASSWORD_OR_EMAIL,
+        message: ErrorMessages.NOT_FOUND_EMAIL,
       });
     }
 
@@ -159,6 +163,8 @@ export class AuthServices {
     email: string;
     tokenEmail: string;
   }): Promise<void> {
+    validateConfirmAccount({ email, tokenEmail });
+
     const user = await this._authRepository.findUserByEmail({
       email,
     });

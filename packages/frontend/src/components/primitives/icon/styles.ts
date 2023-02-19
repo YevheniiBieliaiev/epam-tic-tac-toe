@@ -21,4 +21,9 @@ export const icon = ({ widths, heights }: Theme) => css`
     height: ${heights.mdIcon};
     width: ${widths.mdIcon};
   }
+
+  &[data-size='lg'] {
+    height: ${heights.lgIcon};
+    width: ${widths.lgIcon};
+  }
 `;

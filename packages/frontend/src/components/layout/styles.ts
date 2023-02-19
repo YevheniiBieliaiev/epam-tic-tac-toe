@@ -11,11 +11,16 @@ export const main = ({ widths, spaces }: Theme) => css`
 `;
 
 //sign layout
-export const sign = ({ widths }: Theme) => css`
+export const sign = ({ widths, spaces, minMq }: Theme) => css`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: ${widths.form};
+  margin-bottom: ${spaces.xs};
+  width: ${widths.formMin};
+
+  ${minMq('lg')} {
+    width: ${widths.form};
+  }
 `;
 
 export const linksGroup = ({ spaces }: Theme) => css`

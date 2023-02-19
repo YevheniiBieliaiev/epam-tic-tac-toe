@@ -3,4 +3,5 @@ export enum ValidationRanges {
   MAX_NAME_SYMBOLS = 40,
   MIN_PASSWORD_SYMBOLS = 8,
   MAX_PASSWORD_SYMBOLS = 16,
+  TOKEN_EMAIL_SYMBOLS = 6,
 }

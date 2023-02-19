@@ -1,7 +1,11 @@
 import { css, type Theme } from '@emotion/react';
 
-export const formWrapper = ({ widths }: Theme) => css`
-  width: ${widths.form};
+export const formWrapper = ({ widths, minMq }: Theme) => css`
+  width: ${widths.formMin};
+
+  ${minMq('lg')} {
+    width: ${widths.form};
+  }
 `;
 
 export const row = ({ spaces }: Theme) => css`

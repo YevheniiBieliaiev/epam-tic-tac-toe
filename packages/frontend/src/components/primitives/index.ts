@@ -11,3 +11,6 @@ export * from './checkbox';
 export * from './spinner';
 export * from './password-tips';
 export * from './sign-link';
+export * from './input-group';
+export * from './modal';
+export * from './icon-button';

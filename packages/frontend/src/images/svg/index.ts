@@ -14,6 +14,8 @@ import trophy from './trophy.svg';
 import xClose from './x-close.svg';
 import eyeHidden from './eye-hidden.svg';
 import eyeVisible from './eye-visible.svg';
+import error from './error.svg';
+import success from './success.svg';
 
 export {
   arrowLeft,
@@ -32,4 +34,6 @@ export {
   xClose,
   eyeHidden,
   eyeVisible,
+  error,
+  success,
 };

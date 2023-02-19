@@ -4,7 +4,7 @@ export const linkWrapper = ({ spaces }: Theme) => css`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: ${spaces.lg};
+  margin-bottom: ${spaces.xxs};
 `;
 
 export const label = ({ fontSizes, lineHeights, spaces }: Theme) => css`

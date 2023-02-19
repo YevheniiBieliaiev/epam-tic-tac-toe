@@ -48,6 +48,14 @@ export const SignLayout = ({ children }: SignLayoutProps) => {
           linkLabel={enLocal.forms.signup.userSignin.link}
         />
       )}
+
+      {isSignIn && (
+        <SignLink
+          label={enLocal.forms.signin.userConfirm.label}
+          path={ClientRoutes.CONFIRM_EMAIL}
+          linkLabel={enLocal.forms.signin.userConfirm.link}
+        />
+      )}
     </div>
   );
 };

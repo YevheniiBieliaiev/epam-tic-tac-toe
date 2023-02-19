@@ -4,7 +4,13 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import { ClientRoutes } from '@enums';
-import { HomePage, SignPage, TermsPage, ProfilePage } from '@pages';
+import {
+  HomePage,
+  SignPage,
+  TermsPage,
+  ProfilePage,
+  ConfirmEmailPage,
+} from '@pages';
 import { SignIn, SignUp } from '@components/sign';
 
 interface AppRouterProviderProps {
@@ -22,7 +28,7 @@ const publicRoutes: RouteObject[] = [
     ],
   },
   { path: ClientRoutes.PASSWORD_RESET },
-  { path: ClientRoutes.CONFIRM_EMAIL },
+  { path: ClientRoutes.CONFIRM_EMAIL, element: <ConfirmEmailPage /> },
   { path: ClientRoutes.TERMS, element: <TermsPage /> },
 ];
 

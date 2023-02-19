@@ -33,6 +33,7 @@ const borders = {
   checkboxMark: `2px solid ${colors.mainDark}`,
   header: `2px solid ${colors.mainDark}`,
   toast: '2px solid transparent',
+  code: `2px solid ${colors.mainDark}`,
 };
 
 const spaces = {
@@ -43,7 +44,8 @@ const spaces = {
   lg: '25px',
   xl: '30px',
   xxl: '40px',
-  xxxl: '70px',
+  xl3: '50px',
+  xl4: '70px',
   footerPaddingTB: '32px',
   playLinks: '45px',
   buttonXs: '8px',
@@ -73,6 +75,7 @@ const widths = {
   xsIcon: '16px',
   smIcon: '20px',
   mdIcon: '32px',
+  lgIcon: '50px',
   logoXs: '33px',
   logoSm: '40px',
   boardCell: '96px',
@@ -80,11 +83,15 @@ const widths = {
   bkgFrameLg: '12%',
   bkgFrameMd: '6%',
   form: '350px',
+  formMin: '330px',
   toast: '200px',
   pageContent: '710px',
   mainLayout: '740px',
+  modalInnerMax: '300px',
+  modalInnerMin: '250px',
   checkbox: '12px',
   checkboxMark: '9px',
+  codeInput: '45px',
   spinner: {
     xs: '10px',
     sm: '20px',
@@ -96,6 +103,7 @@ const heights = {
   xsIcon: '16px',
   smIcon: '20px',
   mdIcon: '32px',
+  lgIcon: '50px',
   logoSm: '20px',
   logoXs: '17px',
   tipMark: '4px',
@@ -153,7 +161,12 @@ const zIndex = {
 const radiuses = {
   xxs: '2px',
   xs: '4px',
+  sm: '8px',
   circle: '50%',
+};
+
+const backdropFilters = {
+  mainModal: '3px',
 };
 
 const shadows = {
@@ -196,6 +209,7 @@ const lightTheme = {
   minMq,
   maxMq,
   frames,
+  backdropFilters,
 };
 
 export { lightTheme };

@@ -15,5 +15,10 @@
   "copyRight": {
     "yearAndOwner": "© 2022 EPAM Systems, Inc.",
     "rights": "All Rights Reserved."
+  },
+  "errorModal": {
+    "result": "Sorry, something went wrong. ",
+    "instruction": "Please try again or ",
+    "linkLabel": "Contact Us"
   }
 }

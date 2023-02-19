@@ -4,6 +4,7 @@ import { ScrollButton } from '@primitives';
 import { Header } from '@components/header';
 import { Footer } from '@components/footer';
 import { ToastStack } from '@components/toast';
+import { ModalStack } from '@components/modal-stack';
 import type { MainLayoutProps } from './types';
 import { setTitle } from './utils';
 import * as styles from './styles';
@@ -36,6 +37,7 @@ export const MainLayout = ({
         {scrollVisible && <ScrollButton />}
       </main>
       {withFooter && <Footer />}
+      <ModalStack />
     </>
   );
 };

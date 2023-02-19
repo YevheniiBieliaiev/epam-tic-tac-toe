@@ -15,7 +15,7 @@ export const footerContent = ({ spaces }: Theme) => css`
 export const copyrightBlock = ({ spaces }: Theme) => css`
   display: flex;
   flex-direction: column;
-  margin-right: ${spaces.xxxl};
+  margin-right: ${spaces.xl4};
 `;
 
 export const links = ({ spaces }: Theme) => css`

@@ -16,6 +16,7 @@ interface AuthState {
   nickname: string;
   loading: boolean;
   error: string;
+  isRegistered: boolean;
 }
 
 const initialState: AuthState = {
@@ -24,6 +25,7 @@ const initialState: AuthState = {
   nickname: null,
   loading: false,
   error: null,
+  isRegistered: null,
 };
 
 const authSlice = createSlice({
@@ -39,8 +41,9 @@ const authSlice = createSlice({
     builder.addCase(userSignup.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(userSignup.fulfilled, (state) => {
+    builder.addCase(userSignup.fulfilled, (state, action) => {
       state.loading = false;
+      state.isRegistered = action.payload.success;
     });
     builder.addCase(userSignup.rejected, (state) => {
       state.loading = false;
@@ -79,6 +82,7 @@ const authSlice = createSlice({
     });
     builder.addCase(proveEmail.fulfilled, (state) => {
       state.loading = false;
+      state.isRegistered = false;
     });
     builder.addCase(proveEmail.rejected, (state) => {
       state.loading = false;
