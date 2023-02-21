@@ -1,10 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import { enLocal } from '@locals';
 import { Modal } from '@primitives';
+import { ClientRoutes } from '@enums';
+import { useAppDispatch } from '@hooks';
+import { closeModal } from '@store';
 import { ModalConfirm } from './primitives/modal-confirm';
 
 export const ResetPasswordEmailModal = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
   const onCloseHandle = () => {
-    console.log('close');
+    dispatch(closeModal('emailPasswordModal'));
+    navigate(ClientRoutes.EMAIL_INFO);
   };
 
   return (

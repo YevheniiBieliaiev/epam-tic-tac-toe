@@ -35,6 +35,9 @@ const authSlice = createSlice({
     setAccessToken(state, action: PayloadAction<{ accessToken: string }>) {
       state.accessToken = action.payload.accessToken;
     },
+    resetRegisteredFlag(state) {
+      state.isRegistered = null;
+    },
   },
   extraReducers: (builder) => {
     //signup
@@ -103,8 +106,12 @@ const authSlice = createSlice({
     builder.addCase(changePassword.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(changePassword.fulfilled, (state) => {
+    builder.addCase(changePassword.fulfilled, (state, action) => {
       state.loading = false;
+      const { avatar, nickname, accessToken } = action.payload;
+      state.avatar = avatar;
+      state.nickname = nickname;
+      state.accessToken = accessToken;
     });
     builder.addCase(changePassword.rejected, (state) => {
       state.loading = false;
@@ -126,4 +133,4 @@ const authSlice = createSlice({
 
 export const authReducer = authSlice.reducer;
 
-export const { setAccessToken } = authSlice.actions;
+export const { setAccessToken, resetRegisteredFlag } = authSlice.actions;

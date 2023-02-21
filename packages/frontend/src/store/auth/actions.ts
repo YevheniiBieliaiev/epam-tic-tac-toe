@@ -17,6 +17,7 @@ import {
   updateTokens,
 } from '@services';
 import { addToast, openModal } from '@store';
+import { enLocal } from '@locals';
 import { AUTH_TYPES } from './action-types';
 
 export const userSignup = createAsyncThunk(
@@ -73,7 +74,9 @@ export const changePaswordEmail = createAsyncThunk(
   AUTH_TYPES.RESET_PASSWORD_EMAIL,
   (data: ISendEmail, { rejectWithValue, dispatch }) =>
     resetPasswordEmail(data)
-      .then((response) => response)
+      .then(() => {
+        dispatch(openModal('emailPasswordModal'));
+      })
       .catch((e: HttpError) => {
         dispatch(addToast({ level: 'error', description: e.message }));
 
@@ -88,7 +91,16 @@ export const changePassword = createAsyncThunk(
     { rejectWithValue, dispatch },
   ) =>
     resetPassword(data, token)
-      .then((response) => response)
+      .then((response) => {
+        dispatch(
+          addToast({
+            level: 'success',
+            description: enLocal.toast.resetPassword,
+          }),
+        );
+
+        return response;
+      })
       .catch((e: HttpError) => {
         dispatch(addToast({ level: 'error', description: e.message }));
 

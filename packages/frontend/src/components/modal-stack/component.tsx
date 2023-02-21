@@ -1,8 +1,18 @@
 import { useAppSelector } from '@hooks';
-import { ConfirmEmailModal } from '@components/modal-inner';
+import {
+  ConfirmEmailModal,
+  ResetPasswordEmailModal,
+} from '@components/modal-inner';
 
 export const ModalStack = () => {
-  const { accountConfirmationModal } = useAppSelector((state) => state.modal);
+  const { accountConfirmationModal, emailPasswordModal } = useAppSelector(
+    (state) => state.modal,
+  );
 
-  return <>{accountConfirmationModal && <ConfirmEmailModal />}</>;
+  return (
+    <>
+      {accountConfirmationModal && <ConfirmEmailModal />}
+      {emailPasswordModal && <ResetPasswordEmailModal />}
+    </>
+  );
 };

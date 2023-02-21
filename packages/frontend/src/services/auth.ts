@@ -41,9 +41,9 @@ export const resetPasswordEmail = (data: ISendEmail): Promise<IEmptyResult> =>
 export const resetPassword = (
   data: IResetPassword,
   token: string,
-): Promise<IEmptyResult> =>
+): Promise<IResponseLogin> =>
   http.put({
-    url: `${ApiRoutes.USER}${AuthSubRoutes.PASSWORD_CHANGE}/:${token}`,
+    url: `${ApiRoutes.USER}${AuthSubRoutes.PASSWORD_CHANGE}/${token}`,
     body: { ...data },
   });
 

@@ -20,5 +20,9 @@
     "result": "Sorry, something went wrong. ",
     "instruction": "Please try again or ",
     "linkLabel": "Contact Us"
+  },
+  "emailInstruction": {
+    "header": "We sent an instruction to your email.",
+    "instruction": "Please go to your email and use all functions."
   }
 }

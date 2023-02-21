@@ -44,7 +44,7 @@
     "resetPassword": "Forgot your password?",
     "userSignup": {
       "label": "Don't have an account?",
-      "link": "Sign Up now ➝"
+      "link": "Sign Up now ➡"
     },
     "userConfirm": {
       "label": "Haven't confirmed an account?",
@@ -69,9 +69,25 @@
     }
   },
   "resetPassword": {
+    "email": {
+      "label": "Email Address",
+      "placeholder": "Enter your email"
+    },
+    "submit": "Reset password",
+    "signinLink": "⬅ Back to Sign In",
     "modal": {
       "result": "We successfully received your data and sent data for reset password",
       "instruction": "Please go to your email to reset password"
-    }
+    },
+    "password": {
+      "label": "Create a new password",
+      "placeholder": "Create a new password"
+    },
+    "confirmPassword": {
+      "label": "Confirm a password",
+      "placeholder": "Repeat your password"
+    },
+    "changeHeader": "Reset password",
+    "changeSubmit": "Submit"
   }
 }

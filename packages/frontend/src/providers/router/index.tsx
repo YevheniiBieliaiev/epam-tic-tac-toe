@@ -10,8 +10,10 @@ import {
   TermsPage,
   ProfilePage,
   ConfirmEmailPage,
+  EmailInstructionPage,
+  ResetPasswordPage,
 } from '@pages';
-import { SignIn, SignUp } from '@components/sign';
+import { SignIn, SignUp, ResetPasswordEmail } from '@components/sign';
 
 interface AppRouterProviderProps {
   accessToken: string;
@@ -25,11 +27,16 @@ const publicRoutes: RouteObject[] = [
     children: [
       { path: ClientRoutes.SIGNIN, element: <SignIn /> },
       { path: ClientRoutes.SIGNUP, element: <SignUp /> },
+      {
+        path: ClientRoutes.RESET_PASSWORD_EMAIL,
+        element: <ResetPasswordEmail />,
+      },
     ],
   },
-  { path: ClientRoutes.PASSWORD_RESET },
   { path: ClientRoutes.CONFIRM_EMAIL, element: <ConfirmEmailPage /> },
+  { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
   { path: ClientRoutes.TERMS, element: <TermsPage /> },
+  { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
 ];
 
 const privateRoutes: RouteObject[] = [

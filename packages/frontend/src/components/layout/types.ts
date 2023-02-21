@@ -10,3 +10,9 @@ export interface MainLayoutProps {
 export interface SignLayoutProps {
   children: ReactNode;
 }
+
+export interface DefineLocation {
+  signin: boolean;
+  signup: boolean;
+  resetEmail: boolean;
+}

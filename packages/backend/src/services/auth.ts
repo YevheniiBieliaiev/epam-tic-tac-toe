@@ -208,7 +208,7 @@ export class AuthServices {
   }: {
     token: string;
     password: string;
-  }): Promise<void> {
+  }): Promise<ISigned> {
     const userData = this._jwtService.emailTokenValidation({ token });
     if (!userData?.id) {
       throw new HttpError({
@@ -235,7 +235,28 @@ export class AuthServices {
       salt,
     });
 
-    return;
+    const { id, avatar, nickname, role } = isUserExist;
+
+    const payload = this._jwtService.createPayload({
+      user: { id, nickname, role },
+    });
+    const { accessToken, refreshToken } = this._jwtService.generateAccessTokens(
+      {
+        payload,
+      },
+    );
+
+    await this._jwtService.saveRefreshToken({
+      userId: isUserExist.id,
+      refreshToken,
+    });
+
+    return {
+      avatar,
+      nickname,
+      accessToken,
+      refreshToken,
+    };
   }
 
   public async updateTokens({

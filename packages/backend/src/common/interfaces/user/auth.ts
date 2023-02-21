@@ -14,6 +14,9 @@ export interface IUserCreated {
 export interface IAuthID {
   id: string;
   tokenEmail?: string;
+  avatar?: string;
+  nickname?: string;
+  role?: string;
 }
 
 export interface IUserNickname {

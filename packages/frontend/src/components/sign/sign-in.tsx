@@ -8,7 +8,7 @@ import { enLocal } from '@locals';
 import { userSignInSchema } from '@validation';
 import { Button, InputText, InternalLink, Spinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
-import { userSignin } from '@store';
+import { userSignin, resetRegisteredFlag } from '@store';
 import * as styles from './styles';
 
 export const SignIn = () => {
@@ -20,7 +20,8 @@ export const SignIn = () => {
     if (accessToken) {
       navigate(ClientRoutes.HOME);
     }
-  }, [accessToken, navigate]);
+    dispatch(resetRegisteredFlag());
+  }, [accessToken, navigate, dispatch]);
 
   const {
     register,
@@ -84,7 +85,7 @@ export const SignIn = () => {
 
           <div css={styles.resetLink}>
             <InternalLink
-              path={ClientRoutes.PASSWORD_RESET}
+              path={`${ClientRoutes.SIGN}/${ClientRoutes.RESET_PASSWORD_EMAIL}`}
               label={enLocal.forms.signin.resetPassword}
               contrast="secondary"
               txtSize="md"

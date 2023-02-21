@@ -25,6 +25,9 @@ export class AuthRepository {
       select: {
         id: true,
         tokenEmail: true,
+        avatar: true,
+        nickname: true,
+        role: true,
       },
     });
   }

@@ -127,13 +127,22 @@ export const initAuthRouter = (
 
   router.put(
     apiPath(path, `${AuthSubRoutes.PASSWORD_CHANGE}${RouteIdParam.TOKEN}`),
-    requestWrapper(async (req): Promise<void> => {
+    requestWrapper(async (req, res): Promise<IResponseLogin> => {
       const { token } = req.params;
       const { password } = <IResetPassword>req.body;
 
-      await authService.resetPassword({ token, password });
+      const { avatar, nickname, accessToken, refreshToken } =
+        await authService.resetPassword({ token, password });
 
-      return;
+      res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
+        httpOnly: true,
+      });
+
+      return {
+        accessToken,
+        avatar,
+        nickname,
+      };
     }),
   );
 
