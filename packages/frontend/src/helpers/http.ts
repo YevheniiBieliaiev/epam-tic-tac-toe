@@ -59,7 +59,7 @@ class Http {
     if (!response.ok) {
       const message: ErrorResponse = await response.json();
       store.dispatch(setAccessToken({ accessToken: null }));
-      //TODO: reset redux store
+
       throw new HttpError({
         status: resStatus,
         message: message.error,
@@ -137,6 +137,10 @@ class Http {
   }
   //TODO: method delete
   //public delete() {}
+
+  public setTokens(): Promise<void> {
+    return this._updateAccessTokens();
+  }
 }
 
 export const http = new Http();

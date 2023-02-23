@@ -6,7 +6,6 @@ import type {
   IResetPassword,
   IConfirmEmail,
   IResponseLogin,
-  IResponseUpdateTokens,
 } from '@tic-tac-toe/shared';
 import { ApiRoutes, AuthSubRoutes } from '@tic-tac-toe/shared';
 import type { IEmptyResult } from '@interfaces';
@@ -47,8 +46,4 @@ export const resetPassword = (
     body: { ...data },
   });
 
-export const updateTokens = (): Promise<IResponseUpdateTokens> =>
-  http.post({
-    url: `${ApiRoutes.USER}${AuthSubRoutes.REFRESH_TOKEN}`,
-    body: {},
-  });
+export const updateTokens = (): Promise<void> => http.setTokens();

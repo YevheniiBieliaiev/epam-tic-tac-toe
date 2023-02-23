@@ -1,8 +1,17 @@
+import { lazy, Suspense } from 'react';
 import { useAppSelector } from '@hooks';
-import {
-  ConfirmEmailModal,
-  ResetPasswordEmailModal,
-} from '@components/modal-inner';
+
+const ConfirmEmailModal = lazy(() =>
+  import('../modal-inner').then(({ ConfirmEmailModal }) => ({
+    default: ConfirmEmailModal,
+  })),
+);
+
+const ResetPasswordEmailModal = lazy(() =>
+  import('../modal-inner').then(({ ResetPasswordEmailModal }) => ({
+    default: ResetPasswordEmailModal,
+  })),
+);
 
 export const ModalStack = () => {
   const { accountConfirmationModal, emailPasswordModal } = useAppSelector(
@@ -11,8 +20,17 @@ export const ModalStack = () => {
 
   return (
     <>
-      {accountConfirmationModal && <ConfirmEmailModal />}
-      {emailPasswordModal && <ResetPasswordEmailModal />}
+      {accountConfirmationModal && (
+        <Suspense fallback={null}>
+          <ConfirmEmailModal />
+        </Suspense>
+      )}
+
+      {emailPasswordModal && (
+        <Suspense fallback={null}>
+          <ResetPasswordEmailModal />
+        </Suspense>
+      )}
     </>
   );
 };

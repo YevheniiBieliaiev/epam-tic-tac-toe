@@ -121,8 +121,7 @@ const authSlice = createSlice({
     builder.addCase(authTokens.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(authTokens.fulfilled, (state, action) => {
-      state.accessToken = action.payload.accessToken;
+    builder.addCase(authTokens.fulfilled, (state) => {
       state.loading = false;
     });
     builder.addCase(authTokens.rejected, (state) => {

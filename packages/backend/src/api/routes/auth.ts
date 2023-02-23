@@ -9,7 +9,7 @@ import type {
   IResponseLogin,
   IResponseUpdateTokens,
 } from '@tic-tac-toe/shared';
-import { AuthSubRoutes, RouteIdParam } from '@tic-tac-toe/shared';
+import { AuthSubRoutes, RouteIdParam, HttpError } from '@tic-tac-toe/shared';
 import type { Request } from 'express';
 import { Router } from 'express';
 import { apiPath, getEnv } from '@helpers';
@@ -81,18 +81,30 @@ export const initAuthRouter = (
     apiPath(path, AuthSubRoutes.REFRESH_TOKEN),
     requestWrapper(async (req, res): Promise<IResponseUpdateTokens> => {
       const { refTokETTT } = <TCookiesKeys>req.cookies;
-      console.log(refTokETTT);
-      const { accessToken, refreshToken } = await authService.updateTokens({
-        token: refTokETTT,
-      });
+      try {
+        const { accessToken, refreshToken } = await authService.updateTokens({
+          token: refTokETTT,
+        });
 
-      res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
-        httpOnly: true,
-      });
+        res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
+          httpOnly: true,
+        });
 
-      return {
-        accessToken,
-      };
+        return {
+          accessToken,
+        };
+      } catch (err) {
+        res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), null);
+
+        if (err instanceof HttpError) {
+          throw new HttpError({
+            status: err.status,
+            message: err.message,
+          });
+        } else {
+          throw new Error();
+        }
+      }
     }),
   );
 

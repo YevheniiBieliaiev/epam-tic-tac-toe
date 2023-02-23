@@ -7,6 +7,7 @@ import type {
   IConfirmEmail,
   HttpError,
 } from '@tic-tac-toe/shared';
+import { HttpStatusCode } from '@tic-tac-toe/shared';
 import {
   signUp,
   signIn,
@@ -110,8 +111,14 @@ export const changePassword = createAsyncThunk(
 
 export const authTokens = createAsyncThunk(
   AUTH_TYPES.UPDATE_TOKENS,
-  (_data, { rejectWithValue }) =>
+  (_data, { rejectWithValue, dispatch }) =>
     updateTokens()
       .then((response) => response)
-      .catch((e: HttpError) => rejectWithValue(e.message)),
+      .catch((e: HttpError) => {
+        if (e.status === HttpStatusCode.INTERNAL_SERVER_ERROR) {
+          dispatch(addToast({ level: 'error', description: e.message }));
+        }
+
+        return rejectWithValue(e.message);
+      }),
 );
