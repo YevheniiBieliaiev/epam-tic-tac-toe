@@ -187,10 +187,12 @@ export class AuthRepository {
     userId,
     passwordHash,
     salt,
+    passwordUpdatedAt,
   }: {
     userId: string;
     passwordHash: string;
     salt: string;
+    passwordUpdatedAt: Date;
   }): Promise<User> {
     return this._dbClient.user.update({
       where: {
@@ -199,6 +201,7 @@ export class AuthRepository {
       data: {
         passwordHash,
         salt,
+        passwordUpdatedAt,
       },
     });
   }

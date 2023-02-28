@@ -31,7 +31,7 @@ export const Header = () => {
           </div>
         </div>
 
-        <div>
+        <div css={styles.auth}>
           {accessToken ? (
             <InternalLink
               path={ClientRoutes.PROFILE}

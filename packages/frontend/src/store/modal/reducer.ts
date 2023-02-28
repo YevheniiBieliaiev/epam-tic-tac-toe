@@ -5,9 +5,8 @@ import { openModal } from './actions';
 
 const initialState: IModalState = {
   accountConfirmationModal: false,
-  internalErrorModal: false,
   emailPasswordModal: false,
-  resetPasswordModal: false,
+  verifyNewEmailModal: false,
 };
 
 const modalSlice = createSlice({

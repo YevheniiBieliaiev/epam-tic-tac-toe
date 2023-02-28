@@ -9,10 +9,8 @@ export interface IResponseUpdateTokens {
 }
 
 export interface IResponseProfile {
-  avatar: string;
-  nickname: string;
+  passwordUpdatedAt: Date;
   email: string;
-  isActivated: boolean;
 }
 
 export interface IResponseUpdNickname {
@@ -20,11 +18,7 @@ export interface IResponseUpdNickname {
 }
 
 export interface IResponseUpdEmail {
-  email: string;
-  isActivated: boolean;
-}
-
-export interface IResponseVerifyEmail {
+  email?: string;
   isActivated: boolean;
 }
 

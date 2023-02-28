@@ -40,10 +40,10 @@ export const ProveEmail = () => {
             {enLocal.forms.confirmEmail.textContent.header}
           </h1>
           <span css={styles.instructionHeader}>
-            {enLocal.forms.confirmEmail.textContent.insructionHeader}
+            {enLocal.forms.confirmEmail.textContent.instructionHeader}
           </span>
           <span css={styles.instruction}>
-            {enLocal.forms.confirmEmail.textContent.insruction}
+            {enLocal.forms.confirmEmail.textContent.instruction}
           </span>
         </div>
 

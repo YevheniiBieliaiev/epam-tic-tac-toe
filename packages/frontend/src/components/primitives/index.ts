@@ -14,3 +14,4 @@ export * from './sign-link';
 export * from './input-group';
 export * from './modal';
 export * from './icon-button';
+export * from './avatar';

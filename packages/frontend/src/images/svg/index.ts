@@ -12,6 +12,7 @@ import play from './play.svg';
 import search from './search.svg';
 import trophy from './trophy.svg';
 import xClose from './x-close.svg';
+import xCloseSecondary from './x-close-secondary.svg';
 import eyeHidden from './eye-hidden.svg';
 import eyeVisible from './eye-visible.svg';
 import error from './error.svg';
@@ -32,6 +33,7 @@ export {
   search,
   trophy,
   xClose,
+  xCloseSecondary,
   eyeHidden,
   eyeVisible,
   error,

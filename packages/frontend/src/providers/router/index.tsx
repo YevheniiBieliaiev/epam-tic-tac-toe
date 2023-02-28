@@ -2,6 +2,7 @@ import {
   createBrowserRouter,
   type RouteObject,
   RouterProvider,
+  Navigate,
 } from 'react-router-dom';
 import { ClientRoutes } from '@enums';
 import {
@@ -37,12 +38,26 @@ const publicRoutes: RouteObject[] = [
   { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
   { path: ClientRoutes.TERMS, element: <TermsPage /> },
   { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
+  { path: '*', element: <Navigate to={ClientRoutes.HOME} replace={true} /> },
 ];
 
 const privateRoutes: RouteObject[] = [
   { path: ClientRoutes.HOME, element: <HomePage /> },
   { path: ClientRoutes.TERMS, element: <TermsPage /> },
   { path: ClientRoutes.PROFILE, element: <ProfilePage /> },
+  {
+    path: ClientRoutes.SIGN,
+    element: <SignPage />,
+    children: [
+      {
+        path: ClientRoutes.RESET_PASSWORD_EMAIL,
+        element: <ResetPasswordEmail />,
+      },
+    ],
+  },
+  { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
+  { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
+  { path: '*', element: <Navigate to={ClientRoutes.HOME} replace={true} /> },
 ];
 
 const routes = (accessToken: string): RouteObject[] =>

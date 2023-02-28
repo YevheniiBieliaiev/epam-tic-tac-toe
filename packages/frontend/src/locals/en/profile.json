@@ -12,7 +12,29 @@
     "header": "Email address"
   },
   "password": {
-    "header": "Password"
+    "header": "Password",
+    "currentPassword": {
+      "label": "Current password",
+      "placeholder": "Enter password"
+    },
+    "newPassword": {
+      "label": "New password",
+      "placeholder": "Enter password"
+    },
+    "confirmPassword": {
+      "label": "Confirm a password",
+      "placeholder": "Repeat your password"
+    },
+    "defaultText": {
+      "passwordUpdDate": "Last updated",
+      "adverb": "just only"
+    }
   },
-  "logout": "Logout"
+  "editButton": {
+    "edit": "Edit",
+    "cancel": "Cancel"
+  },
+  "submit": "Save",
+  "logout": "Logout",
+  "confirmEmail": "Confirm"
 }

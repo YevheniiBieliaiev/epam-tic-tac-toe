@@ -54,8 +54,8 @@
   "confirmEmail": {
     "textContent": {
       "header": "Confirm your email",
-      "insructionHeader": "Awesome! Just one last step",
-      "insruction": "We sent data for confirmation. Please go to your email to confirm the account and use all functions."
+      "instructionHeader": "Awesome! Just one last step",
+      "instruction": "We sent data for confirmation. Please go to your email to confirm the account and use all functions."
     },
     "email": {
       "label": "Email Address",

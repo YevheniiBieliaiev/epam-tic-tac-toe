@@ -1,6 +1,6 @@
 import type { AuthRepository } from '@repositories';
 import type { HashService, JWTService, EmailService } from '@services';
-import type { ICandidate } from '@tic-tac-toe/shared';
+import type { ICandidate, IResponseLogin } from '@tic-tac-toe/shared';
 import { HttpError, HttpStatusCode } from '@tic-tac-toe/shared';
 import type {
   IUserCreated,
@@ -205,9 +205,11 @@ export class AuthServices {
   public async resetPassword({
     token,
     password,
+    passwordUpdatedAt,
   }: {
     token: string;
     password: string;
+    passwordUpdatedAt: Date;
   }): Promise<ISigned> {
     const userData = this._jwtService.emailTokenValidation({ token });
     if (!userData?.id) {
@@ -233,6 +235,7 @@ export class AuthServices {
       userId: userData.id,
       passwordHash,
       salt,
+      passwordUpdatedAt,
     });
 
     const { id, avatar, nickname, role } = isUserExist;
@@ -263,7 +266,7 @@ export class AuthServices {
     token,
   }: {
     token: string;
-  }): Promise<IUpdateTokens> {
+  }): Promise<IUpdateTokens & IResponseLogin> {
     const currentRefreshToken = await this._authRepository.findRefreshToken({
       refreshToken: token,
     });
@@ -289,6 +292,10 @@ export class AuthServices {
       });
     }
 
+    const user = await this._authRepository.findUserById({
+      userId: userData.id,
+    });
+
     const payload = this._jwtService.createPayload({ user: userData });
     const { accessToken, refreshToken } = this._jwtService.generateAccessTokens(
       { payload },
@@ -300,6 +307,8 @@ export class AuthServices {
     });
 
     return {
+      avatar: user.avatar,
+      nickname: user.nickname,
       accessToken,
       refreshToken,
     };

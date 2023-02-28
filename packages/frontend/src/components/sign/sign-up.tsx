@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ import { SignUpDTO } from './utils';
 import * as styles from './styles';
 
 export const SignUp = () => {
-  const { loading, isRegistered } = useAppSelector((state) => state.auth);
+  const loading = useAppSelector((state) => state.auth.loading);
   const dispatch = useAppDispatch();
   const inputFocusedRef = useRef<boolean>(false);
   const navigate = useNavigate();
@@ -29,7 +29,6 @@ export const SignUp = () => {
   const {
     register,
     watch,
-    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<ISignUpForm>({
@@ -45,17 +44,11 @@ export const SignUp = () => {
 
   const password = watch('password');
 
-  useEffect(() => {
-    if (isRegistered) {
-      navigate(ClientRoutes.CONFIRM_EMAIL, { state: getValues('email') });
-    }
-  }, [isRegistered, navigate, getValues]);
-
   const onFocuse = () => (inputFocusedRef.current = true);
 
   const signupHandler: SubmitHandler<ISignUpForm> = (data) => {
     const candidate = new SignUpDTO(data);
-    dispatch(userSignup(candidate));
+    dispatch(userSignup({ data: candidate, navigate }));
   };
 
   const onCutHandler = (event: React.ClipboardEvent<HTMLInputElement>) => {

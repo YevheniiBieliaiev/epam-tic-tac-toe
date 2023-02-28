@@ -20,6 +20,7 @@ export interface ISendEmail {
 
 export interface IResetPassword {
   password: string;
+  passwordUpdatedAt: Date;
 }
 
 export interface IUpdateNickname {
@@ -37,4 +38,5 @@ export interface IEmailVerification {
 export interface IUpdatePassword {
   currentPassword: string;
   newPassword: string;
+  passwordUpdatedAt: Date;
 }

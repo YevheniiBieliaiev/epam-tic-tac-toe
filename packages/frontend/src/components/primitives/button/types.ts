@@ -1,7 +1,7 @@
 import type { TElementSizes } from '@types';
 
-type ButtonContrast = 'primary' | 'light';
-type ButtonVariant = 'form' | 'standart';
+type ButtonContrast = 'primary' | 'light' | 'secondary';
+type ButtonVariant = 'form' | 'standart' | 'secondary';
 
 export interface ButtonProps
   extends Omit<React.HTMLProps<HTMLButtonElement>, 'type' | 'size'> {

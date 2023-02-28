@@ -1,48 +1,53 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { enLocal } from '@locals';
-import { ClientRoutes } from '@enums';
-import { Button, Spinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
-import { userSignout } from '@store';
+import { getUserProfile } from '@store';
+import { enLocal } from '@locals';
+import {
+  ProfileAvatar,
+  ProfileNickname,
+  ProfileEmail,
+  ProfilePassword,
+  Logout,
+} from './child-components';
+import * as styles from './styles';
 
 export const UserInfo = () => {
-  const { loading, accessToken } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
-
-  const signOutHandler = () => {
-    dispatch(userSignout());
-  };
+  const profileLoader = useAppSelector((state) => state.profile.profileLoader);
 
   useEffect(() => {
-    if (!accessToken && !loading) {
-      navigate(ClientRoutes.HOME);
-    }
-  }, [accessToken, navigate, loading]);
+    dispatch(getUserProfile());
+  }, [dispatch]);
+
+  //!TODO: App Spinner
+  if (profileLoader) {
+    return <div style={{ fontSize: '42px', fontWeight: 800 }}>Loading...</div>;
+  }
 
   return (
     <div>
       <div>
         <span>{enLocal.profile.rating.header}</span>
       </div>
-      <div>
-        <span>{enLocal.profile.photo.header}</span>
-      </div>
-      <div>
-        <span>{enLocal.profile.nickname.header}</span>
-      </div>
-      <div>
-        <span>{enLocal.profile.emailAddress.header}</span>
-      </div>
-      <div>
-        <span>{enLocal.profile.password.header}</span>
+
+      <div css={styles.row}>
+        <ProfileAvatar />
       </div>
 
-      <div>
-        <Button onClick={signOutHandler}>
-          {loading ? <Spinner /> : enLocal.profile.logout}
-        </Button>
+      <div css={styles.row}>
+        <ProfileNickname />
+      </div>
+
+      <div css={styles.row}>
+        <ProfileEmail />
+      </div>
+
+      <div css={styles.row}>
+        <ProfilePassword />
+      </div>
+
+      <div css={styles.row}>
+        <Logout />
       </div>
     </div>
   );

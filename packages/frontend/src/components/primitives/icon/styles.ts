@@ -7,6 +7,11 @@ export const iconWrapper = ({ spaces }: Theme) => css`
 export const icon = ({ widths, heights }: Theme) => css`
   display: block;
 
+  &[data-size='xxs'] {
+    height: ${heights.xxsIcon};
+    width: ${widths.xxsIcon};
+  }
+
   &[data-size='xs'] {
     height: ${heights.xsIcon};
     width: ${widths.xsIcon};

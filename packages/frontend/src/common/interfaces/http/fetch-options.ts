@@ -19,7 +19,9 @@ export interface ISetRequestOptions {
   needAuth?: boolean;
 }
 
-export interface RequestWithData extends IRequestBase {
+export interface IGetRequest extends IRequestBase {}
+
+export interface IRequestWithData extends IRequestBase {
   body: Record<string, unknown> | FormData;
 }
 

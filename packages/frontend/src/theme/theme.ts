@@ -22,6 +22,8 @@ const colors = {
   disabledLight: '#DFDFDF',
   disabledPrimary: '#707190',
   inactiveBorder: '#CECED5',
+  bkgAvatar: '#BAB7B7',
+  lightGrey: '#EBE0D2',
 };
 
 const borders = {
@@ -34,6 +36,7 @@ const borders = {
   header: `2px solid ${colors.mainDark}`,
   toast: '2px solid transparent',
   code: `2px solid ${colors.mainDark}`,
+  lightDivider: `1px solid ${colors.lightGrey}`,
 };
 
 const spaces = {
@@ -72,17 +75,21 @@ const spaces = {
 const widths = {
   tipMark: '4px',
   markCircle: '6px',
+  xxsIcon: '11px',
   xsIcon: '16px',
   smIcon: '20px',
   mdIcon: '32px',
   lgIcon: '50px',
   logoXs: '33px',
   logoSm: '40px',
+  smAvatar: '27px',
+  mdAvatar: '50px',
   boardCell: '96px',
   bkgFrameXl: '20%',
   bkgFrameLg: '12%',
   bkgFrameMd: '6%',
   form: '350px',
+  profileInput: '240px',
   formMin: '330px',
   toast: '200px',
   pageContent: '710px',
@@ -100,12 +107,15 @@ const widths = {
 
 const heights = {
   boardCell: '96px',
+  xxsIcon: '11px',
   xsIcon: '16px',
   smIcon: '20px',
   mdIcon: '32px',
   lgIcon: '50px',
   logoSm: '20px',
   logoXs: '17px',
+  smAvatar: '27px',
+  mdAvatar: '50px',
   tipMark: '4px',
   markCircle: '6px',
   checkbox: '12px',

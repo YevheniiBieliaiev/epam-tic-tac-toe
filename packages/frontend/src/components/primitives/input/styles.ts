@@ -42,6 +42,10 @@ export const input = ({
     outline: none;
   }
 
+  &:disabled {
+    border-color: transparent;
+  }
+
   &[data-error='error'] {
     border-color: ${colors.warning};
   }

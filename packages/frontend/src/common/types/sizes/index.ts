@@ -1,1 +1,1 @@
-export type TElementSizes = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+export type TElementSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';

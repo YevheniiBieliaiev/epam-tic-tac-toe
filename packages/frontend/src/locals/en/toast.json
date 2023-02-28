@@ -1,3 +1,9 @@
 {
-  "resetPassword": "We updated your password! Let's play! ;)"
+  "resetPassword": "We updated your password! Let's play! ;)",
+  "profileUpdate": {
+    "avatar": "Avatar changed.",
+    "nickname": "Nickname changed.",
+    "password": "Password changed.",
+    "email": "Email is confirmed."
+  }
 }

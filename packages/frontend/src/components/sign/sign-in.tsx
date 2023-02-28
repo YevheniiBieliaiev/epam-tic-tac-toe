@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { useNavigate } from 'react-router-dom';
@@ -8,20 +7,13 @@ import { enLocal } from '@locals';
 import { userSignInSchema } from '@validation';
 import { Button, InputText, InternalLink, Spinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
-import { userSignin, resetRegisteredFlag } from '@store';
+import { userSignin } from '@store';
 import * as styles from './styles';
 
 export const SignIn = () => {
-  const { loading, accessToken } = useAppSelector((state) => state.auth);
+  const loading = useAppSelector((state) => state.auth.loading);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (accessToken) {
-      navigate(ClientRoutes.HOME);
-    }
-    dispatch(resetRegisteredFlag());
-  }, [accessToken, navigate, dispatch]);
 
   const {
     register,
@@ -36,7 +28,7 @@ export const SignIn = () => {
   });
 
   const signinHandler: SubmitHandler<ISignInForm> = (data) => {
-    dispatch(userSignin(data));
+    dispatch(userSignin({ data, navigate }));
   };
 
   const onCutHandler = (event: React.ClipboardEvent<HTMLInputElement>) => {

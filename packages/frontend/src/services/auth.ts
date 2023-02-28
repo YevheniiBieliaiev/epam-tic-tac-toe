@@ -46,4 +46,4 @@ export const resetPassword = (
     body: { ...data },
   });
 
-export const updateTokens = (): Promise<void> => http.setTokens();
+export const updateTokens = (): Promise<IResponseLogin> => http.setTokens();

@@ -3,13 +3,13 @@ import {
   AuthSubRoutes,
   HttpError,
   HttpStatusCode,
-  type IResponseUpdateTokens,
+  type IResponseLogin,
 } from '@tic-tac-toe/shared';
 import { HttpMethod, HttpHeaders, HttpContentType } from '@enums';
 import type {
   ISetRequestOptions,
-  RequestWithData,
-  //IRequestBase,
+  IRequestWithData,
+  IGetRequest,
   ErrorResponse,
 } from '@interfaces';
 import { store, setAccessToken } from '@store';
@@ -36,7 +36,8 @@ class Http {
 
     if (body && contentType === HttpContentType.APPLICATION_JSON) {
       requestHeaders[HttpHeaders.CONTENT_TYPE] = contentType;
-      fetchOptions.body = JSON.stringify(body);
+      fetchOptions.body =
+        typeof body === 'string' ? body : JSON.stringify(body);
     }
 
     //TODO: AWS, be service, fe FC
@@ -47,7 +48,7 @@ class Http {
     return fetchOptions;
   }
 
-  private async _updateAccessTokens(): Promise<void> {
+  private async _updateAccessTokens(): Promise<IResponseLogin> {
     const response = await fetch(
       `${ApiRoutes.USER + AuthSubRoutes.REFRESH_TOKEN}`,
       {
@@ -66,8 +67,10 @@ class Http {
       });
     }
 
-    const { accessToken } = (await response.json()) as IResponseUpdateTokens;
-    store.dispatch(setAccessToken({ accessToken }));
+    const data = (await response.json()) as IResponseLogin;
+    store.dispatch(setAccessToken({ accessToken: data.accessToken }));
+
+    return data;
   }
 
   private async _makeRequest<T = unknown>(
@@ -112,9 +115,16 @@ class Http {
   }
 
   //TODO: method get
-  // public get({ url, headers }: IRequestBase) {}
+  public get<T>({ url, headers }: IGetRequest) {
+    const fetchOptions = this._setRequestOptions({
+      method: HttpMethod.GET,
+      needAuth: headers.needAuth,
+    });
 
-  public post<T>({ url, body, headers }: RequestWithData) {
+    return this._makeRequest<T>(url, fetchOptions);
+  }
+
+  public post<T>({ url, body, headers }: IRequestWithData) {
     const fetchOptions = this._setRequestOptions({
       method: HttpMethod.POST,
       body,
@@ -125,7 +135,7 @@ class Http {
     return this._makeRequest<T>(url, fetchOptions);
   }
 
-  public put<T>({ url, body, headers }: RequestWithData) {
+  public put<T>({ url, body, headers }: IRequestWithData) {
     const fetchOptions = this._setRequestOptions({
       method: HttpMethod.PUT,
       body,
@@ -138,7 +148,7 @@ class Http {
   //TODO: method delete
   //public delete() {}
 
-  public setTokens(): Promise<void> {
+  public setTokens() {
     return this._updateAccessTokens();
   }
 }

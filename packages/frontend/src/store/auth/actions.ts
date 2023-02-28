@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import type { NavigateFunction } from 'react-router-dom';
 import type {
   ICandidate,
   ISignIn,
@@ -19,13 +20,21 @@ import {
 } from '@services';
 import { addToast, openModal } from '@store';
 import { enLocal } from '@locals';
+import { ClientRoutes } from '@enums';
 import { AUTH_TYPES } from './action-types';
 
 export const userSignup = createAsyncThunk(
   AUTH_TYPES.SIGNUP,
-  (data: ICandidate, { rejectWithValue, dispatch }) =>
+  (
+    { data, navigate }: { data: ICandidate; navigate: NavigateFunction },
+    { rejectWithValue, dispatch },
+  ) =>
     signUp(data)
-      .then((response) => response)
+      .then((response) => {
+        navigate(ClientRoutes.CONFIRM_EMAIL, { state: data.email });
+
+        return response;
+      })
       .catch((e: HttpError) => {
         dispatch(addToast({ level: 'error', description: e.message }));
 
@@ -35,9 +44,16 @@ export const userSignup = createAsyncThunk(
 
 export const userSignin = createAsyncThunk(
   AUTH_TYPES.SIGNIN,
-  (data: ISignIn, { rejectWithValue, dispatch }) =>
+  (
+    { data, navigate }: { data: ISignIn; navigate: NavigateFunction },
+    { rejectWithValue, dispatch },
+  ) =>
     signIn(data)
-      .then((response) => response)
+      .then((response) => {
+        navigate(ClientRoutes.HOME);
+
+        return response;
+      })
       .catch((e: HttpError) => {
         dispatch(addToast({ level: 'error', description: e.message }));
 
@@ -49,7 +65,7 @@ export const userSignout = createAsyncThunk(
   AUTH_TYPES.SIGNOUT,
   (_data, { rejectWithValue, dispatch }) =>
     signOut()
-      .then()
+      .then(() => AUTH_TYPES.SIGNOUT)
       .catch((e: HttpError) => {
         dispatch(addToast({ level: 'error', description: e.message }));
 
@@ -88,7 +104,11 @@ export const changePaswordEmail = createAsyncThunk(
 export const changePassword = createAsyncThunk(
   AUTH_TYPES.RESET_PASSWORD,
   (
-    { data, token }: { data: IResetPassword; token: string },
+    {
+      data,
+      token,
+      navigate,
+    }: { data: IResetPassword; token: string; navigate: NavigateFunction },
     { rejectWithValue, dispatch },
   ) =>
     resetPassword(data, token)
@@ -99,6 +119,8 @@ export const changePassword = createAsyncThunk(
             description: enLocal.toast.resetPassword,
           }),
         );
+
+        navigate(ClientRoutes.HOME);
 
         return response;
       })

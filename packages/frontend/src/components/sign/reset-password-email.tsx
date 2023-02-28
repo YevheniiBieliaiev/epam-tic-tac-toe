@@ -10,7 +10,8 @@ import { enLocal } from '@locals';
 import * as styles from './styles';
 
 export const ResetPasswordEmail = () => {
-  const loading = useAppSelector((state) => state.auth.loading);
+  const { loading, accessToken } = useAppSelector((state) => state.auth);
+  const email = useAppSelector((state) => state.profile.email);
   const dispatch = useAppDispatch();
 
   const {
@@ -19,7 +20,7 @@ export const ResetPasswordEmail = () => {
     formState: { errors },
   } = useForm<ISendEmail>({
     defaultValues: {
-      email: '',
+      email: email ?? '',
     },
     resolver: joiResolver(userResetEmailSchema),
   });
@@ -48,14 +49,16 @@ export const ResetPasswordEmail = () => {
           </Button>
         </div>
 
-        <div css={styles.row}>
-          <InternalLink
-            path={`${ClientRoutes.SIGN}/${ClientRoutes.SIGNIN}`}
-            label={enLocal.forms.resetPassword.signinLink}
-            contrast="secondary"
-            txtSize="md"
-          />
-        </div>
+        {!accessToken && (
+          <div css={styles.row}>
+            <InternalLink
+              path={`${ClientRoutes.SIGN}/${ClientRoutes.SIGNIN}`}
+              label={enLocal.forms.resetPassword.signinLink}
+              contrast="secondary"
+              txtSize="md"
+            />
+          </div>
+        )}
       </form>
     </div>
   );

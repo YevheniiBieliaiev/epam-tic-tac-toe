@@ -1,10 +1,9 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { changePassword } from '@store';
-import { ClientRoutes } from '@enums';
 import type { IResetPassword } from '@interfaces';
 import { userResetPasswordSchema } from '@validation';
 import {
@@ -20,11 +19,11 @@ import * as styles from './styles';
 
 export const ResetPassword = () => {
   const { token } = useParams();
-  console.log(token);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const inputFocusedRef = useRef<boolean>(false);
-  const { loading, accessToken } = useAppSelector((state) => state.auth);
+  const loading = useAppSelector((state) => state.auth.loading);
 
   const {
     register,
@@ -40,12 +39,6 @@ export const ResetPassword = () => {
   });
 
   const password = watch('password');
-
-  useEffect(() => {
-    if (accessToken) {
-      navigate(ClientRoutes.HOME);
-    }
-  }, [navigate, accessToken]);
 
   const onFocuse = () => (inputFocusedRef.current = true);
 
@@ -68,7 +61,13 @@ export const ResetPassword = () => {
   const resetPasswordHandler: SubmitHandler<IResetPassword> = ({
     password,
   }) => {
-    dispatch(changePassword({ data: { password }, token }));
+    dispatch(
+      changePassword({
+        data: { password, passwordUpdatedAt: new Date() },
+        token,
+        navigate,
+      }),
+    );
   };
 
   return (

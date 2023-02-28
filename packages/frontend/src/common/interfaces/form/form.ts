@@ -19,3 +19,17 @@ export interface IResetPassword {
   password: string;
   confirmPassword: string;
 }
+
+export interface INewNickname {
+  nickname: string;
+}
+
+export interface INewEmail {
+  email: string;
+}
+
+export interface INewPassword {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}

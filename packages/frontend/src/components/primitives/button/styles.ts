@@ -16,6 +16,7 @@ export const button = ({
   border: none;
   border-radius: ${radiuses.xs};
   background-color: transparent;
+  font-family: inherit;
   font-size: ${fontSizes.body2};
   line-height: ${lineHeights.body1};
   cursor: pointer;
@@ -47,9 +48,17 @@ export const button = ({
     }
   }
 
+  &[data-contrast='secondary'] {
+    color: ${colors.links};
+  }
+
   &[data-variant='form'] {
     height: ${heights.button.form};
     width: 100%;
+  }
+
+  &[data-size='xxs'] {
+    padding: 0;
   }
 
   &[data-size='xs'] {

@@ -8,7 +8,6 @@ import type {
   IResponseProfile,
   IResponseUpdEmail,
   IResponseUpdNickname,
-  IResponseVerifyEmail,
 } from '@tic-tac-toe/shared';
 import { ProfileSubRoutes } from '@tic-tac-toe/shared';
 import { Router } from 'express';
@@ -36,7 +35,7 @@ export const initProfileRouter = (
     requestWrapper(async (req): Promise<IResponseUpdNickname> => {
       const { userId } = req;
       const { nickname } = <IUpdateNickname>req.body;
-
+      console.log(userId, nickname);
       const userNickname = await profileServices.updateNickname({
         userId,
         nickname,
@@ -65,7 +64,7 @@ export const initProfileRouter = (
   router.put(
     apiPath(path, ProfileSubRoutes.EMAIL_VERIFICATION),
     auth,
-    requestWrapper(async (req): Promise<IResponseVerifyEmail> => {
+    requestWrapper(async (req): Promise<IResponseUpdEmail> => {
       const { userId } = req;
       const { tokenEmail } = <IEmailVerification>req.body;
 
@@ -85,12 +84,15 @@ export const initProfileRouter = (
     auth,
     requestWrapper(async (req): Promise<void> => {
       const { userId } = req;
-      const { currentPassword, newPassword } = <IUpdatePassword>req.body;
+      const { currentPassword, newPassword, passwordUpdatedAt } = <
+        IUpdatePassword
+      >req.body;
 
       await profileServices.updatePassword({
         userId,
         currentPassword,
         newPassword,
+        passwordUpdatedAt,
       });
 
       return;

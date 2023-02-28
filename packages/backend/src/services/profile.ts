@@ -4,7 +4,6 @@ import type {
   IResponseProfile,
   IResponseUpdEmail,
   IResponseUpdNickname,
-  IResponseVerifyEmail,
 } from '@tic-tac-toe/shared';
 import { HttpError, HttpStatusCode } from '@tic-tac-toe/shared';
 import { ErrorMessages, EmailSubjects } from '@enums';
@@ -66,10 +65,12 @@ export class ProfileServices {
     userId,
     currentPassword,
     newPassword,
+    passwordUpdatedAt,
   }: {
     userId: string;
     currentPassword: string;
     newPassword: string;
+    passwordUpdatedAt: Date;
   }): Promise<void> {
     validatePassword({ password: newPassword });
 
@@ -96,7 +97,12 @@ export class ProfileServices {
       password: newPassword,
     });
 
-    await this._authRepository.changePassword({ userId, passwordHash, salt });
+    await this._authRepository.changePassword({
+      userId,
+      passwordHash,
+      salt,
+      passwordUpdatedAt,
+    });
 
     return;
   }
@@ -151,7 +157,7 @@ export class ProfileServices {
   }: {
     userId: string;
     tokenEmail: string;
-  }): Promise<IResponseVerifyEmail> {
+  }): Promise<IResponseUpdEmail> {
     const user = await this._authRepository.findUserById({ userId });
     if (!user?.id) {
       throw new HttpError({

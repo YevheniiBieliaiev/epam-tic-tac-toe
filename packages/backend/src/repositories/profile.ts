@@ -3,7 +3,6 @@ import type {
   IResponseProfile,
   IResponseUpdNickname,
   IResponseUpdEmail,
-  IResponseVerifyEmail,
   IResponseUpdAvatar,
 } from '@tic-tac-toe/shared';
 
@@ -20,10 +19,8 @@ export class ProfileRepository {
         id: userId,
       },
       select: {
-        avatar: true,
-        nickname: true,
         email: true,
-        isActivated: true,
+        passwordUpdatedAt: true,
       },
     });
   }
@@ -97,7 +94,7 @@ export class ProfileRepository {
     userId,
   }: {
     userId: string;
-  }): Promise<IResponseVerifyEmail> {
+  }): Promise<IResponseUpdEmail> {
     return this._dbClient.user.update({
       where: {
         id: userId,

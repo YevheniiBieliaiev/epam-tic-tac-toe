@@ -32,3 +32,9 @@ export const playLink = ({ spaces, minMq }: Theme) => css`
     margin-right: ${spaces.playLinks};
   }
 `;
+
+export const auth = ({ heights }: Theme) => css`
+  display: flex;
+  align-items: center;
+  height: ${heights.mdIcon};
+`;

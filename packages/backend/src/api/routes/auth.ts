@@ -7,9 +7,8 @@ import type {
   ISignIn,
   ISendEmail,
   IResponseLogin,
-  IResponseUpdateTokens,
 } from '@tic-tac-toe/shared';
-import { AuthSubRoutes, RouteIdParam, HttpError } from '@tic-tac-toe/shared';
+import { AuthSubRoutes, RouteIdParam } from '@tic-tac-toe/shared';
 import type { Request } from 'express';
 import { Router } from 'express';
 import { apiPath, getEnv } from '@helpers';
@@ -79,32 +78,23 @@ export const initAuthRouter = (
 
   router.post(
     apiPath(path, AuthSubRoutes.REFRESH_TOKEN),
-    requestWrapper(async (req, res): Promise<IResponseUpdateTokens> => {
+    requestWrapper(async (req, res): Promise<IResponseLogin> => {
       const { refTokETTT } = <TCookiesKeys>req.cookies;
-      try {
-        const { accessToken, refreshToken } = await authService.updateTokens({
+
+      const { accessToken, refreshToken, avatar, nickname } =
+        await authService.updateTokens({
           token: refTokETTT,
         });
 
-        res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
-          httpOnly: true,
-        });
+      res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
+        httpOnly: true,
+      });
 
-        return {
-          accessToken,
-        };
-      } catch (err) {
-        res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), null);
-
-        if (err instanceof HttpError) {
-          throw new HttpError({
-            status: err.status,
-            message: err.message,
-          });
-        } else {
-          throw new Error();
-        }
-      }
+      return {
+        accessToken,
+        avatar,
+        nickname,
+      };
     }),
   );
 
@@ -141,10 +131,10 @@ export const initAuthRouter = (
     apiPath(path, `${AuthSubRoutes.PASSWORD_CHANGE}${RouteIdParam.TOKEN}`),
     requestWrapper(async (req, res): Promise<IResponseLogin> => {
       const { token } = req.params;
-      const { password } = <IResetPassword>req.body;
+      const { password, passwordUpdatedAt } = <IResetPassword>req.body;
 
       const { avatar, nickname, accessToken, refreshToken } =
-        await authService.resetPassword({ token, password });
+        await authService.resetPassword({ token, password, passwordUpdatedAt });
 
       res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
         httpOnly: true,

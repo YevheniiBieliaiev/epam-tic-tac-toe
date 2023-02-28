@@ -2,39 +2,45 @@ import { useLocation } from 'react-router-dom';
 import { InternalLink, SignLink } from '@primitives';
 import { ClientRoutes } from '@enums';
 import { enLocal } from '@locals';
+import { useAppSelector } from '@hooks';
 import type { SignLayoutProps } from './types';
 import { defineLocation } from './utils';
 import * as styles from './styles';
 
 export const SignLayout = ({ children }: SignLayoutProps) => {
   const location = defineLocation(useLocation());
+  const accessToken = useAppSelector((state) => state.auth.accessToken);
 
   return (
     <div css={styles.sign}>
-      <div css={styles.linksGroup}>
-        <div css={styles.tab} data-location={location.signup && 'inactive'}>
-          <div css={styles.tabInner}>
-            <InternalLink
-              path={ClientRoutes.SIGNIN}
-              label={enLocal.common.clientLinks.signSubroutes.signin}
-              isInactive={location.signup}
-            />
+      {!accessToken && (
+        <div css={styles.linksGroup}>
+          <div css={styles.tab} data-location={location.signup && 'inactive'}>
+            <div css={styles.tabInner}>
+              <InternalLink
+                path={ClientRoutes.SIGNIN}
+                label={enLocal.common.clientLinks.signSubroutes.signin}
+                isInactive={location.signup}
+              />
+            </div>
           </div>
-        </div>
 
-        <div
-          css={styles.tab}
-          data-location={(location.signin || location.resetEmail) && 'inactive'}
-        >
-          <div css={styles.tabInner}>
-            <InternalLink
-              path={ClientRoutes.SIGNUP}
-              label={enLocal.common.clientLinks.signSubroutes.signup}
-              isInactive={location.signin || location.resetEmail}
-            />
+          <div
+            css={styles.tab}
+            data-location={
+              (location.signin || location.resetEmail) && 'inactive'
+            }
+          >
+            <div css={styles.tabInner}>
+              <InternalLink
+                path={ClientRoutes.SIGNUP}
+                label={enLocal.common.clientLinks.signSubroutes.signup}
+                isInactive={location.signin || location.resetEmail}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {children}
 
