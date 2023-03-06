@@ -7,12 +7,13 @@ import { profileEmailSchema } from '@validation';
 import { enLocal } from '@locals';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { changeEmail } from '@store';
+import { profileEmail } from '@selectors';
 import { EmailToken } from './sub-component';
 import * as styles from './styles';
 
 export const ProfileEmail = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const { loading, email, isActive } = useAppSelector((state) => state.profile);
+  const { loading, email, isActive } = useAppSelector(profileEmail);
   const dispatch = useAppDispatch();
 
   const {

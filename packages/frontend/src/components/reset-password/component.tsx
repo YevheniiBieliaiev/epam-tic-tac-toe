@@ -4,6 +4,7 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { changePassword } from '@store';
+import { authLoader } from '@selectors';
 import type { IResetPassword } from '@interfaces';
 import { userResetPasswordSchema } from '@validation';
 import {
@@ -23,7 +24,7 @@ export const ResetPassword = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const inputFocusedRef = useRef<boolean>(false);
-  const loading = useAppSelector((state) => state.auth.loading);
+  const loading = useAppSelector(authLoader);
 
   const {
     register,

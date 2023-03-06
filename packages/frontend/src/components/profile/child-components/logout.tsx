@@ -5,9 +5,12 @@ import { ClientRoutes } from '@enums';
 import { Button, Spinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { userSignout } from '@store';
+import { authLoader, userAccessToken } from '@selectors';
 
 export const Logout = () => {
-  const { loading, accessToken } = useAppSelector((state) => state.auth);
+  const loading = useAppSelector(authLoader);
+  const accessToken = useAppSelector(userAccessToken);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

@@ -2,10 +2,11 @@ import { useAppSelector } from '@hooks';
 import { ClientRoutes } from '@enums';
 import { enLocal } from '@locals';
 import { Container, InternalLink, Logo } from '@primitives';
+import { userAccessToken } from '@selectors';
 import * as styles from './styles';
 
 export const Header = () => {
-  const accessToken = useAppSelector((state) => state.auth.accessToken);
+  const accessToken = useAppSelector(userAccessToken);
 
   return (
     <header css={styles.headerWrapper}>

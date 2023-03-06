@@ -14,6 +14,7 @@ module.exports = {
       '@hooks': resolvePath('./src/hooks'),
       '@services': resolvePath('./src/services'),
       '@store': resolvePath('./src/store'),
+      '@selectors': resolvePath('./src/store/selectors'),
       '@interfaces': resolvePath('./src/common/interfaces'),
       '@enums': resolvePath('./src/common/enums'),
       '@types': resolvePath('./src/common/types'),

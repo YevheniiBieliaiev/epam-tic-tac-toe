@@ -1,6 +1,7 @@
 import type { FC } from 'react';
-import { useAppSelector } from '@hooks';
 import type { IToast } from '@interfaces';
+import { useAppSelector } from '@hooks';
+import { toastStack } from '@selectors';
 import * as styles from './styles';
 
 const Toast: FC<IToast> = ({ id, level, description }) => (
@@ -13,7 +14,7 @@ const Toast: FC<IToast> = ({ id, level, description }) => (
 );
 
 export const ToastStack = (): JSX.Element => {
-  const toastList = useAppSelector((state) => state.toast.toastList);
+  const toastList = useAppSelector(toastStack);
 
   return (
     <div css={styles.toastStack}>

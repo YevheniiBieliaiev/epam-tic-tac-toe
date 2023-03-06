@@ -7,10 +7,11 @@ import { enLocal } from '@locals';
 import { userConfirmEmailSchema } from '@validation';
 import { useAppSelector, useAppDispatch } from '@hooks';
 import { proveEmail } from '@store';
+import {authLoader} from '@selectors';
 import * as styles from './styles';
 
 export const ProveEmail = () => {
-  const loading = useAppSelector((state) => state.auth.loading);
+  const loading = useAppSelector(authLoader);
   const dispatch = useAppDispatch();
   const { state } = useLocation();
 

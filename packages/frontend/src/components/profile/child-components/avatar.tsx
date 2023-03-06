@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Button, SVGIcon, Avatar } from '@primitives';
 import { useAppSelector } from '@hooks';
+import { user } from '@selectors';
 import { enLocal } from '@locals';
 import * as styles from './styles';
 
 export const ProfileAvatar = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
 
-  const { nickname, avatar } = useAppSelector((state) => state.auth);
+  const { nickname, avatar } = useAppSelector(user);
 
   const onSetEditHandler = () => {
     setIsEdit((prev) => !prev);

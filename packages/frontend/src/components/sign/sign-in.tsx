@@ -8,10 +8,11 @@ import { userSignInSchema } from '@validation';
 import { Button, InputText, InternalLink, Spinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { userSignin } from '@store';
+import { authLoader } from '@selectors';
 import * as styles from './styles';
 
 export const SignIn = () => {
-  const loading = useAppSelector((state) => state.auth.loading);
+  const loading = useAppSelector(authLoader);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 

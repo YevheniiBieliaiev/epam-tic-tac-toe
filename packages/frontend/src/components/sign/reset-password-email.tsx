@@ -3,6 +3,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import type { ISendEmail } from '@tic-tac-toe/shared';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { changePaswordEmail } from '@store';
+import { authLoader, userAccessToken, userEmail } from '@selectors';
 import { InputText, Button, Spinner, InternalLink } from '@primitives';
 import { userResetEmailSchema } from '@validation';
 import { ClientRoutes } from '@enums';
@@ -10,8 +11,9 @@ import { enLocal } from '@locals';
 import * as styles from './styles';
 
 export const ResetPasswordEmail = () => {
-  const { loading, accessToken } = useAppSelector((state) => state.auth);
-  const email = useAppSelector((state) => state.profile.email);
+  const loading = useAppSelector(authLoader);
+  const accessToken = useAppSelector(userAccessToken);
+  const email = useAppSelector(userEmail);
   const dispatch = useAppDispatch();
 
   const {

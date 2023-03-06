@@ -16,12 +16,13 @@ import {
 } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { userSignup } from '@store';
+import { authLoader } from '@selectors';
 import { checkPassword } from '@helpers';
 import { SignUpDTO } from './utils';
 import * as styles from './styles';
 
 export const SignUp = () => {
-  const loading = useAppSelector((state) => state.auth.loading);
+  const loading = useAppSelector(authLoader);
   const dispatch = useAppDispatch();
   const inputFocusedRef = useRef<boolean>(false);
   const navigate = useNavigate();

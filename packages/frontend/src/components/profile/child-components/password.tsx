@@ -15,6 +15,7 @@ import { enLocal } from '@locals';
 import { ClientRoutes } from '@enums';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { setNewPassword } from '@store';
+import { loader, passwordUpdDate } from '@selectors';
 import { checkPassword } from '@helpers';
 import * as styles from './styles';
 
@@ -22,9 +23,8 @@ export const ProfilePassword = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const inputFocusedRef = useRef<boolean>(false);
-  const { loading, passwordUpdatedAt } = useAppSelector(
-    (state) => state.profile,
-  );
+  const loading = useAppSelector(loader);
+  const passwordUpdatedAt = useAppSelector(passwordUpdDate);
 
   const {
     register,

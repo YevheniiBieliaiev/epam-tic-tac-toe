@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { AppSpinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { getUserProfile } from '@store';
+import {profileLoading} from '@selectors';
 import { enLocal } from '@locals';
 import {
   ProfileAvatar,
@@ -14,7 +15,7 @@ import * as styles from './styles';
 
 export const UserInfo = () => {
   const dispatch = useAppDispatch();
-  const profileLoader = useAppSelector((state) => state.profile.profileLoader);
+  const profileLoader = useAppSelector(profileLoading);
 
   useEffect(() => {
     dispatch(getUserProfile());

@@ -3,13 +3,14 @@ import { InternalLink, SignLink } from '@primitives';
 import { ClientRoutes } from '@enums';
 import { enLocal } from '@locals';
 import { useAppSelector } from '@hooks';
+import { userAccessToken } from '@selectors';
 import type { SignLayoutProps } from './types';
 import { defineLocation } from './utils';
 import * as styles from './styles';
 
 export const SignLayout = ({ children }: SignLayoutProps) => {
   const location = defineLocation(useLocation());
-  const accessToken = useAppSelector((state) => state.auth.accessToken);
+  const accessToken = useAppSelector(userAccessToken);
 
   return (
     <div css={styles.sign}>

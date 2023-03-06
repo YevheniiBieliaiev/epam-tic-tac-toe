@@ -7,12 +7,13 @@ import { profileNicknameSchema } from '@validation';
 import { enLocal } from '@locals';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { changeNickname } from '@store';
+import { userNickname, loader } from '@selectors';
 import * as styles from './styles';
 
 export const ProfileNickname = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const nickname = useAppSelector((state) => state.auth.nickname);
-  const loading = useAppSelector((state) => state.profile.loading);
+  const nickname = useAppSelector(userNickname);
+  const loading = useAppSelector(loader);
   const dispatch = useAppDispatch();
 
   const {

@@ -4,12 +4,13 @@ import type { IEmailVerification } from '@tic-tac-toe/shared';
 import { InputGroup, Button, Spinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { confirmEmail } from '@store';
+import { loader } from '@selectors';
 import { enLocal } from '@locals';
 import { profileEmailTokenSchema } from '@validation';
 import * as styles from '../styles';
 
 export const EmailToken = () => {
-  const loading = useAppSelector((state) => state.profile.loading);
+  const loading = useAppSelector(loader);
   const dispatch = useAppDispatch();
 
   const {

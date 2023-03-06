@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { useAppSelector } from '@hooks';
+import { modalStates } from '@selectors';
 
 const ConfirmEmailModal = lazy(() =>
   import('../modal-inner').then(({ ConfirmEmailModal }) => ({
@@ -21,7 +22,7 @@ const VerifyNewEmailModal = lazy(() =>
 
 export const ModalStack = () => {
   const { accountConfirmationModal, emailPasswordModal, verifyNewEmailModal } =
-    useAppSelector((state) => state.modal);
+    useAppSelector(modalStates);
 
   return (
     <>
