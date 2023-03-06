@@ -15,3 +15,4 @@ export * from './input-group';
 export * from './modal';
 export * from './icon-button';
 export * from './avatar';
+export * from './app-spinner';

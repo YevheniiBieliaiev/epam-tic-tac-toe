@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { AppSpinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { getUserProfile } from '@store';
 import { enLocal } from '@locals';
@@ -19,9 +20,8 @@ export const UserInfo = () => {
     dispatch(getUserProfile());
   }, [dispatch]);
 
-  //!TODO: App Spinner
   if (profileLoader) {
-    return <div style={{ fontSize: '42px', fontWeight: 800 }}>Loading...</div>;
+    return <AppSpinner />;
   }
 
   return (

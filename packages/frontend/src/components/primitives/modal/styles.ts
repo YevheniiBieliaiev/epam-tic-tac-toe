@@ -22,6 +22,6 @@ export const modalInner = ({ colors, radiuses, spaces }: Theme) => css`
 
 export const modalClose = ({ spaces }: Theme) => css`
   position: absolute;
-  top: 0;
-  right: -${spaces.xl};
+  top: -${spaces.lg};
+  right: ${spaces.xxs};
 `;

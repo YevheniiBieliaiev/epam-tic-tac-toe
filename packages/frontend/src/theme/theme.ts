@@ -24,6 +24,7 @@ const colors = {
   inactiveBorder: '#CECED5',
   bkgAvatar: '#BAB7B7',
   lightGrey: '#EBE0D2',
+  gold: '#FFD700',
 };
 
 const borders = {
@@ -37,6 +38,7 @@ const borders = {
   toast: '2px solid transparent',
   code: `2px solid ${colors.mainDark}`,
   lightDivider: `1px solid ${colors.lightGrey}`,
+  o: `15px solid ${colors.gold}`,
 };
 
 const spaces = {
@@ -103,6 +105,11 @@ const widths = {
     xs: '10px',
     sm: '20px',
   },
+  appSpinner: '270px',
+  spinnerElem: {
+    x: '15px',
+    o: '80px',
+  },
 };
 
 const heights = {
@@ -126,6 +133,11 @@ const heights = {
   spinner: {
     xs: '10px',
     sm: '20px',
+  },
+  appSpinner: '300px',
+  spinnerElem: {
+    x: '80px',
+    o: '80px',
   },
 };
 

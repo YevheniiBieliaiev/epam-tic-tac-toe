@@ -4,7 +4,7 @@ export const group = ({ widths }: Theme) => css`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: ${widths.form};
+  max-width: ${widths.form};
 `;
 
 export const label = ({ fontSizes, lineHeights, colors }: Theme) => css`

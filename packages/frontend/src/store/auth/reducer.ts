@@ -14,6 +14,7 @@ interface AuthState {
   avatar: string;
   nickname: string;
   loading: boolean;
+  appLoader: boolean;
   error: string;
 }
 
@@ -22,6 +23,7 @@ const initialState: AuthState = {
   avatar: '',
   nickname: null,
   loading: false,
+  appLoader: false,
   error: null,
 };
 
@@ -107,16 +109,16 @@ const authSlice = createSlice({
     });
 
     builder.addCase(authTokens.pending, (state) => {
-      state.loading = true;
+      state.appLoader = true;
     });
     builder.addCase(authTokens.fulfilled, (state, action) => {
       const { avatar, nickname } = action.payload;
       state.avatar = avatar;
       state.nickname = nickname;
-      state.loading = false;
+      state.appLoader = false;
     });
     builder.addCase(authTokens.rejected, (state) => {
-      state.loading = false;
+      state.appLoader = false;
     });
   },
 });
