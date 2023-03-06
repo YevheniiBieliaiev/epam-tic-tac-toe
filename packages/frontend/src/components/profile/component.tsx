@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { AppSpinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { getUserProfile } from '@store';
-import {profileLoading} from '@selectors';
+import { profileLoading } from '@selectors';
 import { enLocal } from '@locals';
 import {
   ProfileAvatar,

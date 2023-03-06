@@ -7,7 +7,7 @@ import { enLocal } from '@locals';
 import { userConfirmEmailSchema } from '@validation';
 import { useAppSelector, useAppDispatch } from '@hooks';
 import { proveEmail } from '@store';
-import {authLoader} from '@selectors';
+import { authLoader } from '@selectors';
 import * as styles from './styles';
 
 export const ProveEmail = () => {
