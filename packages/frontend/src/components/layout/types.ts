@@ -16,3 +16,7 @@ export interface DefineLocation {
   signup: boolean;
   resetEmail: boolean;
 }
+
+export interface BoardLayoutProps {
+  children: ReactNode;
+}

@@ -23,3 +23,11 @@ export const ulList = ({
     }
   }
 `;
+
+export const ol = ({ spaces }: Theme) => css`
+  padding-left: ${spaces.sm};
+`;
+
+export const olList = () => css`
+  list-style-type: decimal;
+`;

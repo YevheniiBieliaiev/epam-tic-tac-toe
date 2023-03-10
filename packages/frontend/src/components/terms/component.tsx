@@ -4,7 +4,7 @@ import {
   Container,
   PageHeading,
   SecondaryHeading,
-  UnorderedList,
+  List,
   ButtonInternal,
 } from '@primitives';
 import * as styles from './styles';
@@ -14,9 +14,10 @@ export const TermsContent = () => (
     <ButtonInternal
       path={ClientRoutes.HOME}
       label={enLocal.common.clientLinks.toGame}
-      type="primary"
+      type="dark"
       icon="arrowLeft"
       iconSize="xs"
+      cssExtension={styles.linkButton}
     />
 
     <div css={styles.pageHeader}>
@@ -52,11 +53,11 @@ export const TermsContent = () => (
       <div>
         <p>{enLocal.terms.license.p1}</p>
         <p>{enLocal.terms.license.list1}</p>
-        <UnorderedList list={enLocal.terms.license['list1-content']} />
+        <List list={enLocal.terms.license['list1-content']} />
         <p>{enLocal.terms.license.p2}</p>
         <p>{enLocal.terms.license.p3}</p>
         <p>{enLocal.terms.license.list2}</p>
-        <UnorderedList list={enLocal.terms.license['list2-content']} />
+        <List list={enLocal.terms.license['list2-content']} />
         <p>{enLocal.terms.license.p4}</p>
       </div>
     </div>
@@ -70,15 +71,15 @@ export const TermsContent = () => (
 
       <div>
         <p>{enLocal.terms.hyperlink.list1}</p>
-        <UnorderedList list={enLocal.terms.hyperlink['list1-content']} />
+        <List list={enLocal.terms.hyperlink['list1-content']} />
         <p>{enLocal.terms.hyperlink.p1}</p>
         <p>{enLocal.terms.hyperlink.list2}</p>
-        <UnorderedList list={enLocal.terms.hyperlink['list2-content']} />
+        <List list={enLocal.terms.hyperlink['list2-content']} />
         <p>{enLocal.terms.hyperlink.p2}</p>
         <p>{enLocal.terms.hyperlink.p3}</p>
         <p>{enLocal.terms.hyperlink.p4}</p>
         <p>{enLocal.terms.hyperlink.list3}</p>
-        <UnorderedList list={enLocal.terms.hyperlink['list3-content']} />
+        <List list={enLocal.terms.hyperlink['list3-content']} />
       </div>
     </div>
 
@@ -140,7 +141,7 @@ export const TermsContent = () => (
 
       <div>
         <p>{enLocal.terms.disclaimer.list1}</p>
-        <UnorderedList list={enLocal.terms.disclaimer['list1-content']} />
+        <List list={enLocal.terms.disclaimer['list1-content']} />
         <p>{enLocal.terms.disclaimer.p1}</p>
       </div>
     </div>
@@ -148,9 +149,10 @@ export const TermsContent = () => (
     <ButtonInternal
       path={ClientRoutes.HOME}
       label={enLocal.common.clientLinks.toGame}
-      type="primary"
+      type="dark"
       icon="arrowLeft"
       iconSize="xs"
+      cssExtension={styles.linkButton}
     />
   </Container>
 );

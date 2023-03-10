@@ -34,3 +34,11 @@ export const chapterHeading = ({ spaces, minMq }: Theme) => css`
     margin-bottom: ${spaces.sm};
   }
 `;
+
+export const linkButton = ({ spaces, minMq }: Theme) => css`
+  margin-bottom: ${spaces.md};
+
+  ${minMq('lg')} {
+    margin-bottom: ${spaces.xl};
+  }
+`;

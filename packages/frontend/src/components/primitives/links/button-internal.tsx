@@ -7,10 +7,17 @@ export const ButtonInternal = ({
   path,
   label,
   type,
+  txtSize = 'md',
   icon,
   iconSize,
+  cssExtension,
 }: ButtonInternalProps) => (
-  <Link css={styles.buttonLink} to={path} data-type={type}>
+  <Link
+    css={[styles.buttonLink, cssExtension]}
+    to={path}
+    data-type={type}
+    data-size={txtSize}
+  >
     {icon && <SVGIcon icon={icon} size={iconSize} />}
     {label && <span>{label}</span>}
   </Link>

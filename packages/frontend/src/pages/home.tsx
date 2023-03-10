@@ -1,6 +1,7 @@
 import { MainLayout } from '@components/layout';
+import { HomeContent } from '@components/home';
 
-const Home = () => <div></div>;
+const Home = () => <HomeContent />;
 
 export const HomePage = () => (
   <MainLayout>

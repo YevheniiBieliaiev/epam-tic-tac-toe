@@ -4,8 +4,6 @@ import type { ClientRoutes } from '@enums';
 
 type Contrast = 'light' | 'dark' | 'secondary';
 
-type ButtonContrast = 'primary';
-
 export interface InternalLinkProps {
   path: string;
   label?: string;
@@ -29,7 +27,9 @@ export interface ExternalLinkProps {
 export interface ButtonInternalProps {
   path: ClientRoutes;
   label: string;
-  type: ButtonContrast;
+  type: Contrast;
+  txtSize?: TElementSizes;
   icon?: TIconsSVG;
   iconSize?: TElementSizes;
+  cssExtension?: Interpolation<Theme>;
 }

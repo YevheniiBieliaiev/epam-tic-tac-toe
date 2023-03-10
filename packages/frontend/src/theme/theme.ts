@@ -12,7 +12,7 @@ const colors = {
   textGreyContrast: '#D6D6DD',
   sideText: '#9293A3',
   backdrop: 'rgba(49, 50, 83, 0.5)',
-  boardCell: '#DCC9B5',
+  homeBoardCell: '#DCC9B5',
   boardCellBorder: '#967552',
   darkButtonBorder: '#08091A',
   links: '#3396BB',
@@ -28,7 +28,7 @@ const colors = {
 };
 
 const borders = {
-  boardCell: `2px solid ${colors.boardCellBorder}`,
+  homeBoardCell: `2px solid ${colors.boardCellBorder}`,
   darkButton: `3px solid ${colors.darkButtonBorder}`,
   lightButton: `2px solid ${colors.mainDark}`,
   input: `1px solid ${colors.mainDark}`,
@@ -51,6 +51,7 @@ const spaces = {
   xxl: '40px',
   xl3: '50px',
   xl4: '70px',
+  squareGap: '12px',
   footerPaddingTB: '32px',
   playLinks: '45px',
   buttonXs: '8px',
@@ -90,7 +91,15 @@ const widths = {
   bkgFrameXl: '20%',
   bkgFrameLg: '12%',
   bkgFrameMd: '6%',
+  square: {
+    lg: '108px',
+    sm: '95px',
+  },
   form: '350px',
+  gameBoard: {
+    lg: '412px',
+    sm: '344px',
+  },
   profileInput: '240px',
   formMin: '330px',
   toast: '200px',
@@ -127,6 +136,14 @@ const heights = {
   markCircle: '6px',
   checkbox: '12px',
   checkboxMark: '13px',
+  square: {
+    lg: '108px',
+    sm: '95px',
+  },
+  gameBoard: {
+    lg: '412px',
+    sm: '344px',
+  },
   button: {
     form: '41px',
   },

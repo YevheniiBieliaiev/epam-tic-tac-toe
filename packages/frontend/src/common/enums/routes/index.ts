@@ -1,6 +1,7 @@
 export enum ClientRoutes {
   HOME = '/',
   GAME_ROOM = '/game-room',
+  BOT_GAME = '/bot-game',
   LEADER_BOARD = '/leader-board',
   PROFILE = '/profile',
   TERMS = '/terms',

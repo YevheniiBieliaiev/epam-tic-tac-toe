@@ -69,24 +69,39 @@ export const buttonLink = ({
 }: Theme) => css`
   display: inline-flex;
   align-items: center;
-  margin-bottom: ${spaces.md};
-  border-bottom: ${borders.darkButton};
+  justify-content: center;
   border-radius: ${radiuses.xs};
-  padding: ${spaces.buttonXs} ${spaces.buttonXs};
-  font-size: ${fontSizes.body3};
-  line-height: ${lineHeights.body2};
   text-decoration: none;
 
-  ${minMq('lg')} {
-    margin-bottom: ${spaces.xl};
-    padding: ${spaces.buttonXs} ${spaces.buttonSm};
-    font-size: ${fontSizes.body2};
-    line-height: ${lineHeights.body1};
+  &[data-size='sm'] {
+    padding: ${spaces.buttonXs};
+    font-size: ${fontSizes.body3};
+    line-height: ${lineHeights.body2};
   }
 
-  &[data-type='primary'] {
+  &[data-size='md'] {
+    padding: ${spaces.buttonXs} ${spaces.buttonXs};
+    font-size: ${fontSizes.body3};
+    line-height: ${lineHeights.body2};
+
+    ${minMq('lg')} {
+      padding: ${spaces.buttonXs} ${spaces.buttonSm};
+      font-size: ${fontSizes.body2};
+      line-height: ${lineHeights.body1};
+    }
+  }
+
+  &[data-type='dark'] {
+    border-bottom: ${borders.darkButton};
     background-color: ${colors.mainDark};
     color: ${colors.textMainContrast};
+  }
+
+  &[data-type='light'] {
+    border: ${borders.input};
+    border-bottom: ${borders.lightButton};
+    background: ${colors.textMainContrast};
+    color: ${colors.textDarkContrast};
   }
 
   &:hover {

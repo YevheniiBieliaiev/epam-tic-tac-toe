@@ -6,6 +6,7 @@ export const button = ({
   borders,
   fontSizes,
   lineHeights,
+  fontWeights,
   radiuses,
   shadows,
   heights,
@@ -19,6 +20,7 @@ export const button = ({
   font-family: inherit;
   font-size: ${fontSizes.body2};
   line-height: ${lineHeights.body1};
+  font-weight: ${fontWeights.body2};
   cursor: pointer;
 
   &[data-contrast='primary'] {
@@ -38,6 +40,7 @@ export const button = ({
   }
 
   &[data-contrast='light'] {
+    border: ${borders.input};
     border-bottom: ${borders.lightButton};
     background-color: ${colors.textMainContrast};
     color: ${colors.mainDark};

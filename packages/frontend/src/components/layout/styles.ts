@@ -46,3 +46,108 @@ export const tab = ({ colors }: Theme) => css`
 export const tabInner = ({ spaces }: Theme) => css`
   padding: ${spaces.xxs};
 `;
+
+//board-layout
+export const boardLayout = ({ spaces, minMq }: Theme) => css`
+  margin-bottom: ${spaces.lg};
+
+  ${minMq('lg')} {
+    margin-bottom: ${spaces.xl};
+  }
+`;
+
+export const communication = ({ borders, spaces, minMq }: Theme) => css`
+  border-top: ${borders.lightDivider};
+  border-bottom: ${borders.lightDivider};
+  margin-bottom: ${spaces.lg};
+
+  ${minMq('lg')} {
+    margin-bottom: ${spaces.xs};
+  }
+`;
+
+export const communicationInner = ({ spaces, minMq }: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  transition: all 1s ease-in-out;
+  padding: ${spaces.lg} 0 ${spaces.xl};
+
+  ${minMq('sm')} {
+    flex-direction: row;
+    padding: ${spaces.xs} 0 ${spaces.sm};
+  }
+`;
+
+export const action = ({ minMq, spaces, borders }: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 0;
+
+  &:nth-of-type(n) {
+    border-bottom: ${borders.lightDivider};
+    padding: ${spaces.lg} 0 ${spaces.lg};
+  }
+
+  &:first-of-type {
+    padding: 0 0 ${spaces.lg};
+  }
+
+  &:last-of-type {
+    border: none;
+    padding: ${spaces.lg} 0 0;
+  }
+
+  ${minMq('sm')} {
+    margin-right: ${spaces.xl4};
+    width: unset;
+
+    &:nth-of-type(n) {
+      border: none;
+      padding: 0;
+    }
+  }
+`;
+
+export const actionHeader = ({
+  spaces,
+  fontSizes,
+  lineHeights,
+  fontWeights,
+}: Theme) => css`
+  margin-bottom: ${spaces.xs};
+  font-size: ${fontSizes.headingLg};
+  line-height: ${lineHeights.headingLg};
+  font-weight: ${fontWeights.body3};
+`;
+
+export const actionMotion = ({ spaces, fontSizes, lineHeights }: Theme) => css`
+  margin-bottom: ${spaces.xs};
+  font-size: ${fontSizes.body2};
+  line-height: ${lineHeights.body1};
+`;
+
+export const linkButton = ({ minMq }: Theme) => css`
+  ${minMq('md')} {
+  }
+`;
+
+export const rules = ({ fontSizes, lineHeights }: Theme) => css`
+  font-size: ${fontSizes.body2};
+  line-height: ${lineHeights.body1};
+  text-align: justify;
+`;
+
+export const rulesHeader = ({
+  fontSizes,
+  lineHeights,
+  fontWeights,
+  spaces,
+}: Theme) => css`
+  margin-bottom: ${spaces.xs};
+  font-size: ${fontSizes.headingLg};
+  line-height: ${lineHeights.headingLg};
+  font-weight: ${fontWeights.body3};
+`;

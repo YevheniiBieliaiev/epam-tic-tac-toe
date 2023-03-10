@@ -1,6 +1,7 @@
 type Marks = 'filled circle';
 
-export interface UnorderedListProps {
+export interface ListProps {
   list: string[];
   marks?: Marks;
+  isOrdered?: boolean;
 }

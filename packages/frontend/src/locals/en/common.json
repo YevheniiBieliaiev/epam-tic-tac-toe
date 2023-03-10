@@ -24,5 +24,10 @@
   "emailInstruction": {
     "header": "We sent an instruction to your email.",
     "instruction": "Please go to your email and use all functions."
+  },
+  "confirmError": {
+    "header": "Find error?",
+    "motion": "Please let us know",
+    "linkButton": "Report an error"
   }
 }
