@@ -46,13 +46,21 @@ export const HomeContent = () => {
             </div>
 
             <div>
-              <Button contrast="light" onClick={onHandlePlayVsRandom} disabled={true}>
+              <Button
+                contrast="light"
+                onClick={onHandlePlayVsRandom}
+                disabled={true}
+              >
                 {enLocal.home.buttonGroup.randomPlayer}
               </Button>
             </div>
 
             <div>
-              <Button contrast="light" onClick={onHandlePlayVsFriend} disabled={true}>
+              <Button
+                contrast="light"
+                onClick={onHandlePlayVsFriend}
+                disabled={true}
+              >
                 {enLocal.home.buttonGroup.friendPlay}
               </Button>
             </div>
