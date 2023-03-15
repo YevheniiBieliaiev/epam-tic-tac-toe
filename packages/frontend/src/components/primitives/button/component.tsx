@@ -8,10 +8,11 @@ export const Button = ({
   size = 'sm',
   onClick,
   children,
+  cssExtension,
   ...props
 }: ButtonProps) => (
   <button
-    css={styles.button}
+    css={[styles.button, cssExtension]}
     type={type}
     data-contrast={contrast}
     data-variant={variant}

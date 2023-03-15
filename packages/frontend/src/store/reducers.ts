@@ -4,12 +4,14 @@ import { authReducer, AUTH_TYPES } from './auth';
 import { toastReducer } from './toast';
 import { modalReducer } from './modal';
 import { profileReducer } from './profile';
+import { botGameReducer } from './bot-game';
 
 const combinedReducers = combineReducers({
   auth: authReducer,
   profile: profileReducer,
   toast: toastReducer,
   modal: modalReducer,
+  botGame: botGameReducer,
 });
 
 export type RootState = ReturnType<typeof combinedReducers>;

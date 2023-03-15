@@ -7,6 +7,7 @@
     "sign": "Sign Up / Sign In",
     "profile": "Profile",
     "toGame": "To Game",
+    "home": "Back to Home",
     "signSubroutes": {
       "signin": "Sign In",
       "signup": "Sign Up"

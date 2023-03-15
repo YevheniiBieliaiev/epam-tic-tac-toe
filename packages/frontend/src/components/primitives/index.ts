@@ -16,3 +16,7 @@ export * from './modal';
 export * from './icon-button';
 export * from './avatar';
 export * from './app-spinner';
+export * from './input-radio';
+export * from './game-statistic';
+export * from './square';
+export * from './game-cells';

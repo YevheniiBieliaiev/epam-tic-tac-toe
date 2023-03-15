@@ -1,3 +1,4 @@
+import type { Interpolation, Theme } from '@emotion/react';
 import type { TElementSizes } from '@types';
 
 type ButtonContrast = 'primary' | 'light' | 'secondary';
@@ -9,4 +10,5 @@ export interface ButtonProps
   contrast?: ButtonContrast;
   variant?: ButtonVariant;
   size?: TElementSizes;
+  cssExtension?: Interpolation<Theme>;
 }

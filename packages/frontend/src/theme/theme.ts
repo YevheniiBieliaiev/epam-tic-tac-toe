@@ -25,6 +25,8 @@ const colors = {
   bkgAvatar: '#BAB7B7',
   lightGrey: '#EBE0D2',
   gold: '#FFD700',
+  grey: '#F5F1E7',
+  radioBorder: 'rgba(49, 50, 83, 0.7)',
 };
 
 const borders = {
@@ -119,6 +121,8 @@ const widths = {
     x: '15px',
     o: '80px',
   },
+  radio: '16px',
+  radioMark: '8px',
 };
 
 const heights = {
@@ -156,6 +160,8 @@ const heights = {
     x: '80px',
     o: '80px',
   },
+  radio: '16px',
+  radioMark: '8px',
 };
 
 const fontFamily = {

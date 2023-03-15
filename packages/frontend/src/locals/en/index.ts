@@ -4,6 +4,7 @@ import forms from './forms.json';
 import profile from './profile.json';
 import toast from './toast.json';
 import home from './home.json';
+import playBoard from './play-board.json';
 
 export const enLocal = {
   common,
@@ -12,4 +13,5 @@ export const enLocal = {
   profile,
   toast,
   home,
+  playBoard,
 };

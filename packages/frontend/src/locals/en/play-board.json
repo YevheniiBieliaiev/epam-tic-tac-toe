@@ -1,0 +1,35 @@
+{
+  "bot": {
+    "level": {
+      "header": "Complexity:",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "userStatistic": {
+      "won": "You won: ",
+      "draw": "Draw: ",
+      "robotWon": "Robot won: "
+    },
+    "symbols": {
+      "header": "Preferred symbol:",
+      "x": "X",
+      "o": "O"
+    },
+    "action": {
+      "start": "Start",
+      "saveResult": "Save result"
+    },
+    "startBar": {
+      "start": "Start",
+      "stop": "Stop"
+    }
+  },
+  "users": {
+    "userStatistic": {
+      "won": "You won: ",
+      "draw": "Draw: ",
+      "lose": "You lose: "
+    }
+  }
+}

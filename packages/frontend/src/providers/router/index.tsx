@@ -13,6 +13,7 @@ import {
   ConfirmEmailPage,
   EmailInstructionPage,
   ResetPasswordPage,
+  PlayRobotPage,
 } from '@pages';
 import { SignIn, SignUp, ResetPasswordEmail } from '@components/sign';
 
@@ -38,6 +39,7 @@ const publicRoutes: RouteObject[] = [
   { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
   { path: ClientRoutes.TERMS, element: <TermsPage /> },
   { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
+  { path: ClientRoutes.BOT_GAME, element: <PlayRobotPage /> },
   { path: '*', element: <Navigate to={ClientRoutes.HOME} replace={true} /> },
 ];
 
@@ -57,6 +59,7 @@ const privateRoutes: RouteObject[] = [
   },
   { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
   { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
+  { path: ClientRoutes.BOT_GAME, element: <PlayRobotPage /> },
   { path: '*', element: <Navigate to={ClientRoutes.HOME} replace={true} /> },
 ];
 
