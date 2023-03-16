@@ -40,3 +40,15 @@ export interface IUpdatePassword {
   newPassword: string;
   passwordUpdatedAt: Date;
 }
+
+export interface IGameBotStat {
+  won: number;
+  drow: number;
+  robotWon: number;
+}
+
+export interface IGameUserStat {
+  won: number;
+  drow: number;
+  lose: number;
+}

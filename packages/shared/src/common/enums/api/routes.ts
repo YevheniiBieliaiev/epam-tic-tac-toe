@@ -2,6 +2,7 @@ export enum ApiRoutes {
   HEALTH = '/health',
   USER = '/auth',
   PROFILE = '/profile',
+  GAME_STAT = '/gamestat',
 }
 
 export enum AuthSubRoutes {
@@ -25,4 +26,9 @@ export enum ProfileSubRoutes {
   EMAIL_VERIFICATION = '/email-verification',
   UPDATE_PASSWORD = '/update-password',
   UPDATE_AVATAR = '/update-avatar',
+}
+
+export enum GameStatSubRoutes {
+  BOT_STAT = '/bot',
+  UPDATE_BOT_STAT = '/update-botstat',
 }

@@ -7,6 +7,7 @@ import { S3StorageService } from './s3-storage';
 import { HashService } from './hash';
 import { JWTService } from './jwt';
 import { EmailService } from './email';
+import { GameStatServices } from './game-stat';
 
 export const initServices = ({
   repositories,
@@ -41,6 +42,10 @@ export const initServices = ({
       storageService: s3StorageService,
       emailService,
     }),
+
+    gameStatServices: new GameStatServices({
+      gameStatRepository: repositories.gameStatRepository,
+    }),
   };
 };
 
@@ -54,4 +59,5 @@ export {
   type AuthServices,
   type JWTService,
   type EmailService,
+  type GameStatServices,
 };

@@ -78,6 +78,12 @@ export class AuthRepository {
         salt,
         passwordHash,
         tokenEmail,
+        gameBotStat: {
+          create: {},
+        },
+        gameUserStat: {
+          create: {},
+        },
       },
       select: {
         tokenEmail: true,
