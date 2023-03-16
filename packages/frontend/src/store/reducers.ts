@@ -5,6 +5,7 @@ import { toastReducer } from './toast';
 import { modalReducer } from './modal';
 import { profileReducer } from './profile';
 import { botGameReducer } from './bot-game';
+import { gameStatReducer } from './game-stat';
 
 const combinedReducers = combineReducers({
   auth: authReducer,
@@ -12,6 +13,7 @@ const combinedReducers = combineReducers({
   toast: toastReducer,
   modal: modalReducer,
   botGame: botGameReducer,
+  gameStat: gameStatReducer,
 });
 
 export type RootState = ReturnType<typeof combinedReducers>;

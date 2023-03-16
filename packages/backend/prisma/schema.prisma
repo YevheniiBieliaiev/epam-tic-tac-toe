@@ -47,7 +47,7 @@ model GameBotStat {
   user              User                @relation(fields: [userId], references: [id])
   userId            String              @unique @db.Uuid
   won               Int                 @default(0)
-  drow              Int                 @default(0)
+  draw              Int                 @default(0)
   robotWon          Int                 @default(0)
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt
@@ -58,7 +58,7 @@ model GameUserStat {
   user              User                @relation(fields: [userId], references: [id])
   userId            String              @unique @db.Uuid
   won               Int                 @default(0)
-  drow              Int                 @default(0)
+  draw              Int                 @default(0)
   lose              Int                 @default(0)
   createdAt         DateTime            @default(now())
   updatedAt         DateTime            @updatedAt

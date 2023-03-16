@@ -43,12 +43,12 @@ export interface IUpdatePassword {
 
 export interface IGameBotStat {
   won: number;
-  drow: number;
+  draw: number;
   robotWon: number;
 }
 
 export interface IGameUserStat {
   won: number;
-  drow: number;
+  draw: number;
   lose: number;
 }

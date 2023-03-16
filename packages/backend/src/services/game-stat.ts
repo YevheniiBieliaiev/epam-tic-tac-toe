@@ -24,13 +24,13 @@ export class GameStatServices {
   public updateBotScore({
     userId,
     won,
-    drow,
+    draw,
     robotWon,
   }: IUpdGameBotStat): Promise<IGameBotStat> {
     return this._gameStatRepository.updateBotScore({
       userId,
       won,
-      drow,
+      draw,
       robotWon,
     });
   }
@@ -38,13 +38,13 @@ export class GameStatServices {
   public updateUserScore({
     userId,
     won,
-    drow,
+    draw,
     lose,
   }: IUpdGameUserStat): Promise<IGameUserStat> {
     return this._gameStatRepository.updateUserScore({
       userId,
       won,
-      drow,
+      draw,
       lose,
     });
   }

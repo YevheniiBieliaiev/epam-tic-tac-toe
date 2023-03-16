@@ -3,3 +3,4 @@ export * from './icons';
 export * from './sizes';
 export * from './modals';
 export * from './game';
+export * from './game-stat';

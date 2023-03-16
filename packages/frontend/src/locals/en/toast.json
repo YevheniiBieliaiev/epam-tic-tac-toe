@@ -5,5 +5,8 @@
     "nickname": "Nickname changed.",
     "password": "Password changed.",
     "email": "Email is confirmed."
+  },
+  "gamestat": {
+    "scoreSaved": "Score saved."
   }
 }

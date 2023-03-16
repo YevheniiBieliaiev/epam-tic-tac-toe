@@ -16,7 +16,7 @@ export class GameStatRepository {
       },
       select: {
         won: true,
-        drow: true,
+        draw: true,
         robotWon: true,
       },
     });
@@ -29,7 +29,7 @@ export class GameStatRepository {
       },
       select: {
         won: true,
-        drow: true,
+        draw: true,
         lose: true,
       },
     });
@@ -38,26 +38,26 @@ export class GameStatRepository {
   public updateBotScore({
     userId,
     won,
-    drow,
+    draw,
     robotWon,
   }: IUpdGameBotStat): Promise<IGameBotStat> {
     return this._dbClient.gameBotStat.update({
       where: { userId },
-      data: { won, drow, robotWon },
-      select: { won: true, drow: true, robotWon: true },
+      data: { won, draw, robotWon },
+      select: { won: true, draw: true, robotWon: true },
     });
   }
 
   public updateUserScore({
     userId,
     won,
-    drow,
+    draw,
     lose,
   }: IUpdGameUserStat): Promise<IGameUserStat> {
     return this._dbClient.gameUserStat.update({
       where: { userId },
-      data: { won, drow, lose },
-      select: { won: true, drow: true, lose: true },
+      data: { won, draw, lose },
+      select: { won: true, draw: true, lose: true },
     });
   }
 }
