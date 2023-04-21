@@ -27,6 +27,8 @@ const colors = {
   gold: '#FFD700',
   grey: '#F5F1E7',
   radioBorder: 'rgba(49, 50, 83, 0.7)',
+  boardBackdrop:
+    'linear-gradient(180deg, rgba(49, 50, 83, 0.5) 0%, rgba(49, 50, 83, 0) 84.77%)',
 };
 
 const borders = {
@@ -85,6 +87,7 @@ const widths = {
   smIcon: '20px',
   mdIcon: '32px',
   lgIcon: '50px',
+  xlIcon: '60px',
   logoXs: '33px',
   logoSm: '40px',
   smAvatar: '27px',
@@ -123,6 +126,11 @@ const widths = {
   },
   radio: '16px',
   radioMark: '8px',
+  gameRestart: {
+    sm: '310px',
+    md: '350px',
+  },
+  tooltip: '200px',
 };
 
 const heights = {
@@ -132,6 +140,7 @@ const heights = {
   smIcon: '20px',
   mdIcon: '32px',
   lgIcon: '50px',
+  xlIcon: '60px',
   logoSm: '20px',
   logoXs: '17px',
   smAvatar: '27px',

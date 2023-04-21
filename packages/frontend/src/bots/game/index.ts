@@ -1,0 +1,1 @@
+export { gameBot } from './bot';

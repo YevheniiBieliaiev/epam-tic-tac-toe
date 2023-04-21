@@ -8,6 +8,9 @@ export const square = ({
   borders,
   minMq,
 }: Theme) => css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: none;
   background: ${colors.homeBoardCell};
   border-radius: ${radiuses.xs};
@@ -20,4 +23,8 @@ export const square = ({
     width: ${widths.square.lg};
     height: ${heights.square.lg};
   }
+`;
+
+export const gameSymbol = css`
+  margin-right: 0;
 `;

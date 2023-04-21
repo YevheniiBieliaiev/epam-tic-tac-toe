@@ -48,6 +48,7 @@ export const optionsWrapper = ({ minMq }: Theme) => css`
 `;
 
 export const startBar = ({ minMq, spaces }: Theme) => css`
+  position: relative;
   display: flex;
   flex-direction: row;
   margin-top: ${spaces.md};

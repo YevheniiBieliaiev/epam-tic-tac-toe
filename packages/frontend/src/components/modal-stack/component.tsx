@@ -20,9 +20,19 @@ const VerifyNewEmailModal = lazy(() =>
   })),
 );
 
+const SaveScoreModal = lazy(() =>
+  import('../modal-inner').then(({ SaveScoreModal }) => ({
+    default: SaveScoreModal,
+  })),
+);
+
 export const ModalStack = () => {
-  const { accountConfirmationModal, emailPasswordModal, verifyNewEmailModal } =
-    useAppSelector(modalStates);
+  const {
+    accountConfirmationModal,
+    emailPasswordModal,
+    verifyNewEmailModal,
+    saveScoreModal,
+  } = useAppSelector(modalStates);
 
   return (
     <>
@@ -41,6 +51,12 @@ export const ModalStack = () => {
       {verifyNewEmailModal && (
         <Suspense fallback={null}>
           <VerifyNewEmailModal />
+        </Suspense>
+      )}
+
+      {saveScoreModal && (
+        <Suspense fallback={null}>
+          <SaveScoreModal />
         </Suspense>
       )}
     </>

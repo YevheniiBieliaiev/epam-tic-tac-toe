@@ -31,4 +31,9 @@ export const icon = ({ widths, heights }: Theme) => css`
     height: ${heights.lgIcon};
     width: ${widths.lgIcon};
   }
+
+  &[data-size='xl'] {
+    height: ${heights.xlIcon};
+    width: ${widths.xlIcon};
+  }
 `;

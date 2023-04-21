@@ -1,12 +1,13 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { IGameBotStat, IGameUserStat } from '@tic-tac-toe/shared';
-import type { Result } from '@interfaces';
+import type { TResultKey } from '@types';
 import { gameBotStat, updGameBotStat } from './actions';
 
 interface GamestatState {
   botState: IGameBotStat;
   userStat: IGameUserStat;
   loading: boolean;
+  saveLoading: boolean;
 }
 
 const initialState: GamestatState = {
@@ -21,14 +22,15 @@ const initialState: GamestatState = {
     lose: 0,
   },
   loading: false,
+  saveLoading: false,
 };
 
 const gameStatSlice = createSlice({
   name: 'gamestat',
   initialState,
   reducers: {
-    setBotScore(state, action: PayloadAction<Result>) {
-      state.botState[action.payload.result] = action.payload.score;
+    setBotScore(state, action: PayloadAction<TResultKey>) {
+      state.botState[action.payload] = state.botState[action.payload] + 1;
     },
   },
   extraReducers: (builder) => {
@@ -38,7 +40,11 @@ const gameStatSlice = createSlice({
     builder.addCase(
       gameBotStat.fulfilled,
       (state, action: PayloadAction<IGameBotStat>) => {
-        state.botState = { ...action.payload };
+        const { won, draw, robotWon } = action.payload;
+        state.botState.won = won;
+        state.botState.draw = draw;
+        state.botState.robotWon = robotWon;
+
         state.loading = false;
       },
     );
@@ -47,17 +53,17 @@ const gameStatSlice = createSlice({
     });
 
     builder.addCase(updGameBotStat.pending, (state) => {
-      state.loading = true;
+      state.saveLoading = true;
     });
     builder.addCase(
       updGameBotStat.fulfilled,
       (state, action: PayloadAction<IGameBotStat>) => {
         state.botState = { ...action.payload };
-        state.loading = false;
+        state.saveLoading = false;
       },
     );
     builder.addCase(updGameBotStat.rejected, (state) => {
-      state.loading = false;
+      state.saveLoading = false;
     });
   },
 });

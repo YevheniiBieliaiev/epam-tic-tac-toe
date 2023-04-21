@@ -21,7 +21,8 @@
       "@theme": ["theme"],
       "@pages": ["pages"],
       "@svg-icons": ["images/svg"],
-      "@locals": ["locals"]
+      "@locals": ["locals"],
+      "@gamebots": ["bots"]
     }
   },
   "include": ["src"]

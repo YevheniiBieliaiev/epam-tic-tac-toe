@@ -1,6 +1,5 @@
 import type { Interpolation, Theme } from '@emotion/react';
 import type { TElementSizes, TIconsSVG } from '@types';
-import type { ClientRoutes } from '@enums';
 
 type Contrast = 'light' | 'dark' | 'secondary';
 
@@ -25,7 +24,7 @@ export interface ExternalLinkProps {
 }
 
 export interface ButtonInternalProps {
-  path: ClientRoutes;
+  path: string;
   label: string;
   type: Contrast;
   txtSize?: TElementSizes;

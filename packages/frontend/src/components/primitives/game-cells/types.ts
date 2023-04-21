@@ -1,4 +1,6 @@
+import type { ChosenSymbol } from '@types';
+
 export interface GameCellsProps {
-  buttons: string[];
+  buttons: ChosenSymbol[];
   onClick(event: React.MouseEvent<HTMLButtonElement>): void;
 }

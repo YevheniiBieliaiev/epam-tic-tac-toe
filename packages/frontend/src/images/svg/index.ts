@@ -17,6 +17,8 @@ import eyeHidden from './eye-hidden.svg';
 import eyeVisible from './eye-visible.svg';
 import error from './error.svg';
 import success from './success.svg';
+import gameSymbol_O from './gameSymbol_O.svg';
+import gameSymbol_X from './gameSymbol_X.svg';
 
 export {
   arrowLeft,
@@ -38,4 +40,6 @@ export {
   eyeVisible,
   error,
   success,
+  gameSymbol_O,
+  gameSymbol_X,
 };

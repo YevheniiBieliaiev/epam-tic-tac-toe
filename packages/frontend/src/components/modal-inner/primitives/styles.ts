@@ -32,3 +32,44 @@ export const instruction = ({ fontSizes, lineHeights }: Theme) => css`
   font-size: ${fontSizes.body2};
   line-height: ${lineHeights.body1};
 `;
+
+export const tipSign = ({ widths }: Theme) => css`
+  width: ${widths.tooltip};
+`;
+
+export const tipInner = ({ spaces }: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  padding: ${spaces.xs};
+`;
+
+export const description = ({ spaces }: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: ${spaces.sm};
+  text-align: center;
+`;
+
+export const header = ({
+  fontSizes,
+  lineHeights,
+  fontWeights,
+  colors,
+}: Theme) => css`
+  font-size: ${fontSizes.headingLg};
+  line-height: ${lineHeights.headingLg};
+  font-weight: ${fontWeights.body3};
+  color: ${colors.mainDark};
+`;
+
+export const text = ({ fontSizes, lineHeights, colors }: Theme) => css`
+  font-size: ${fontSizes.body2};
+  line-height: ${lineHeights.body1};
+  color: ${colors.mainDark};
+`;
+
+export const links = css`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`;

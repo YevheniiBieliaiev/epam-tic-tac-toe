@@ -4,7 +4,7 @@ import { enLocal } from '@locals';
 import { Modal } from '@primitives';
 import { useAppDispatch } from '@hooks';
 import { closeModal } from '@store';
-import { ModalConfirm } from './primitives/modal-confirm';
+import { ModalConfirm } from './primitives';
 
 export const ConfirmEmailModal = () => {
   const dispatch = useAppDispatch();

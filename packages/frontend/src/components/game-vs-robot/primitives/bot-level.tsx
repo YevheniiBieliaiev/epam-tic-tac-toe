@@ -3,13 +3,13 @@ import type { Levels } from '@types';
 import { enLocal } from '@locals';
 import { useAppSelector, useAppDispatch } from '@hooks';
 import { setLevel } from '@store';
-import { disabledOptions, botLevel } from '@selectors';
+import { setOptions, botLevel } from '@selectors';
 import * as styles from './styles';
 
 export const BotLevel = () => {
   const dispatch = useAppDispatch();
   const level = useAppSelector(botLevel);
-  const disabled = useAppSelector(disabledOptions);
+  const disabled = useAppSelector(setOptions);
 
   const onSetLevelHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const level = event.currentTarget.value as Levels;

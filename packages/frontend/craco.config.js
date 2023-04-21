@@ -21,6 +21,7 @@ module.exports = {
       '@pages': resolvePath('./src/pages'),
       '@svg-icons': resolvePath('./src/images/svg'),
       '@locals': resolvePath('./src/locals'),
+      '@gamebots': resolvePath('./src/bots'),
     },
   },
   babel: {

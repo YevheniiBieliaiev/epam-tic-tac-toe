@@ -1,3 +1,4 @@
+import { SVGIcon } from '@primitives';
 import type { SquareProps } from './types';
 import * as styles from './styles';
 
@@ -8,5 +9,13 @@ export const Square = ({ id, value, onClick }: SquareProps) => (
     id={id}
     value={value}
     onClick={onClick}
-  ></button>
+  >
+    {value === 'X' ? (
+      <SVGIcon icon="gameSymbol_X" size="xl" cssExtension={styles.gameSymbol} />
+    ) : value === 'O' ? (
+      <SVGIcon icon="gameSymbol_O" size="xl" cssExtension={styles.gameSymbol} />
+    ) : (
+      value
+    )}
+  </button>
 );

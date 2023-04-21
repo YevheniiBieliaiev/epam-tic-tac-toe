@@ -18,8 +18,8 @@ const combinedReducers = combineReducers({
 
 export type RootState = ReturnType<typeof combinedReducers>;
 
-export const rootReducer: Reducer = (
-  state: RootState,
+export const rootReducer: Reducer<RootState> = (
+  state,
   action: PayloadAction<string>,
 ) => {
   if (action.payload === AUTH_TYPES.SIGNOUT) {

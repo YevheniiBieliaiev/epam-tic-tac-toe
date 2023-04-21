@@ -2,14 +2,14 @@ import { InputRadio } from '@primitives';
 import { enLocal } from '@locals';
 import { useAppSelector, useAppDispatch } from '@hooks';
 import { setSymbol } from '@store';
-import { disabledOptions, userSymbol } from '@selectors';
+import { setOptions, userSymbol } from '@selectors';
 import type { ChosenSymbol } from '@types';
 import * as styles from './styles';
 
 export const SetSymbol = () => {
   const dispatch = useAppDispatch();
   const chosenSymbol = useAppSelector(userSymbol);
-  const disabled = useAppSelector(disabledOptions);
+  const disabled = useAppSelector(setOptions);
 
   const onSetSymbolHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const symbol = event.currentTarget.value as ChosenSymbol;

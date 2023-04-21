@@ -16,13 +16,22 @@
       "x": "X",
       "o": "O"
     },
-    "action": {
-      "start": "Start",
-      "saveResult": "Save result"
-    },
     "startBar": {
-      "start": "Start",
-      "stop": "Stop"
+      "start": "Play",
+      "stop": "Stop",
+      "saveResult": "Save Result",
+      "playAgain": "Play Again"
+    },
+    "result": {
+      "botWon": "Bot won",
+      "userWon": "User won!",
+      "draw": "Draw"
+    },
+    "tooltip": {
+      "sign": {
+        "header": "Save your score",
+        "tip": "You can save your results and participate in the ranking"
+      }
     }
   },
   "users": {
