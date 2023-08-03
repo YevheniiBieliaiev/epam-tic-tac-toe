@@ -2,9 +2,6 @@ import type { Location } from 'react-router-dom';
 import { ClientRoutes } from '@enums';
 import type { DefineLocation } from './types';
 
-export const setTitle = (text: string) =>
-  text ? `Tic Tac Toe | ${text}` : 'Tic Tac Toe';
-
 export const defineLocation = (location: Location): DefineLocation => {
   const signin = new RegExp(ClientRoutes.SIGNIN);
   const signup = new RegExp(ClientRoutes.SIGNUP);

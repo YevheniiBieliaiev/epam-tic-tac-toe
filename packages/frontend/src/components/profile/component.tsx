@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { AppSpinner } from '@primitives';
+import { PageTitle, AppSpinner } from '@primitives';
+import { PageTitles } from '@enums';
 import { useAppDispatch, useAppSelector } from '@hooks';
 import { getUserProfile } from '@store';
 import { profileLoading } from '@selectors';
@@ -26,30 +27,32 @@ export const UserInfo = () => {
   }
 
   return (
-    <div>
+    <PageTitle title={PageTitles.PROFILE}>
       <div>
-        <span>{enLocal.profile.rating.header}</span>
-      </div>
+        <div>
+          <span>{enLocal.profile.rating.header}</span>
+        </div>
 
-      <div css={styles.row}>
-        <ProfileAvatar />
-      </div>
+        <div css={styles.row}>
+          <ProfileAvatar />
+        </div>
 
-      <div css={styles.row}>
-        <ProfileNickname />
-      </div>
+        <div css={styles.row}>
+          <ProfileNickname />
+        </div>
 
-      <div css={styles.row}>
-        <ProfileEmail />
-      </div>
+        <div css={styles.row}>
+          <ProfileEmail />
+        </div>
 
-      <div css={styles.row}>
-        <ProfilePassword />
-      </div>
+        <div css={styles.row}>
+          <ProfilePassword />
+        </div>
 
-      <div css={styles.row}>
-        <Logout />
+        <div css={styles.row}>
+          <Logout />
+        </div>
       </div>
-    </div>
+    </PageTitle>
   );
 };

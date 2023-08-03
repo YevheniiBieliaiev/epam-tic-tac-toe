@@ -5,61 +5,73 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { ClientRoutes } from '@enums';
+import { MainLayout, SignLayout } from '@components/layout';
 import {
   HomePage,
-  SignPage,
   TermsPage,
   ProfilePage,
   ConfirmEmailPage,
   EmailInstructionPage,
   ResetPasswordPage,
   PlayRobotPage,
+  SignInPage,
+  SignUpPage,
+  ResetPasswordEmailPage,
 } from '@pages';
-import { SignIn, SignUp, ResetPasswordEmail } from '@components/sign';
 
 interface AppRouterProviderProps {
   accessToken: string;
 }
 
 const publicRoutes: RouteObject[] = [
-  { path: ClientRoutes.HOME, element: <HomePage /> },
   {
-    path: ClientRoutes.SIGN,
-    element: <SignPage />,
+    element: <MainLayout />,
     children: [
-      { path: ClientRoutes.SIGNIN, element: <SignIn /> },
-      { path: ClientRoutes.SIGNUP, element: <SignUp /> },
+      { path: ClientRoutes.HOME, element: <HomePage /> },
       {
-        path: ClientRoutes.RESET_PASSWORD_EMAIL,
-        element: <ResetPasswordEmail />,
+        element: <SignLayout />,
+        children: [
+          { path: ClientRoutes.SIGNIN, element: <SignInPage /> },
+          { path: ClientRoutes.SIGNUP, element: <SignUpPage /> },
+          {
+            path: ClientRoutes.RESET_PASSWORD_EMAIL,
+            element: <ResetPasswordEmailPage />,
+          },
+        ],
       },
+      { path: ClientRoutes.CONFIRM_EMAIL, element: <ConfirmEmailPage /> },
+      { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
+      { path: ClientRoutes.TERMS, element: <TermsPage /> },
+      { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
+      { path: ClientRoutes.BOT_GAME, element: <PlayRobotPage /> },
     ],
   },
-  { path: ClientRoutes.CONFIRM_EMAIL, element: <ConfirmEmailPage /> },
-  { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
-  { path: ClientRoutes.TERMS, element: <TermsPage /> },
-  { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
-  { path: ClientRoutes.BOT_GAME, element: <PlayRobotPage /> },
+
   { path: '*', element: <Navigate to={ClientRoutes.HOME} replace={true} /> },
 ];
 
 const privateRoutes: RouteObject[] = [
-  { path: ClientRoutes.HOME, element: <HomePage /> },
-  { path: ClientRoutes.TERMS, element: <TermsPage /> },
-  { path: ClientRoutes.PROFILE, element: <ProfilePage /> },
   {
-    path: ClientRoutes.SIGN,
-    element: <SignPage />,
+    element: <MainLayout />,
     children: [
+      { path: ClientRoutes.HOME, element: <HomePage /> },
+      { path: ClientRoutes.TERMS, element: <TermsPage /> },
+      { path: ClientRoutes.PROFILE, element: <ProfilePage /> },
       {
-        path: ClientRoutes.RESET_PASSWORD_EMAIL,
-        element: <ResetPasswordEmail />,
+        element: <SignLayout />,
+        children: [
+          {
+            path: ClientRoutes.RESET_PASSWORD_EMAIL,
+            element: <ResetPasswordEmailPage />,
+          },
+        ],
       },
+      { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
+      { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
+      { path: ClientRoutes.BOT_GAME, element: <PlayRobotPage /> },
     ],
   },
-  { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
-  { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
-  { path: ClientRoutes.BOT_GAME, element: <PlayRobotPage /> },
+
   { path: '*', element: <Navigate to={ClientRoutes.HOME} replace={true} /> },
 ];
 

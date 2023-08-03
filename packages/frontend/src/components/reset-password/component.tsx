@@ -8,12 +8,14 @@ import { authLoader } from '@selectors';
 import type { IResetPassword } from '@interfaces';
 import { userResetPasswordSchema } from '@validation';
 import {
+  PageTitle,
   InputText,
   Button,
   PasswordTips,
   Spinner,
   Container,
-} from '@components/primitives';
+} from '@primitives';
+import { PageTitles } from '@enums';
 import { checkPassword } from '@helpers';
 import { enLocal } from '@locals';
 import * as styles from './styles';
@@ -72,57 +74,59 @@ export const ResetPassword = () => {
   };
 
   return (
-    <Container type="centered" cssExtention={styles.resetContainer}>
-      <h1 css={styles.header}>{enLocal.forms.resetPassword.changeHeader}</h1>
+    <PageTitle title={PageTitles.RESET_PASSWORD}>
+      <Container type="centered" cssExtention={styles.resetContainer}>
+        <h1 css={styles.header}>{enLocal.forms.resetPassword.changeHeader}</h1>
 
-      <form
-        css={styles.formWrapper}
-        onSubmit={handleSubmit(resetPasswordHandler)}
-      >
-        <div css={styles.row}>
-          <InputText
-            {...register('password')}
-            id="resetPassword"
-            label={enLocal.forms.resetPassword.password.label}
-            placeholder={enLocal.forms.resetPassword.password.placeholder}
-            isPassword={true}
-            error={errors.password?.message}
-            autoComplete="new-password"
-            onFocus={onFocuse}
-            onCut={onCutHandler}
-            onCopy={onCopyHandler}
-            onPaste={onPastHandler}
-          />
-        </div>
+        <form
+          css={styles.formWrapper}
+          onSubmit={handleSubmit(resetPasswordHandler)}
+        >
+          <div css={styles.row}>
+            <InputText
+              {...register('password')}
+              id="resetPassword"
+              label={enLocal.forms.resetPassword.password.label}
+              placeholder={enLocal.forms.resetPassword.password.placeholder}
+              isPassword={true}
+              error={errors.password?.message}
+              autoComplete="new-password"
+              onFocus={onFocuse}
+              onCut={onCutHandler}
+              onCopy={onCopyHandler}
+              onPaste={onPastHandler}
+            />
+          </div>
 
-        <div css={styles.row}>
-          <InputText
-            {...register('confirmPassword')}
-            id="confirmResetPassword"
-            label={enLocal.forms.resetPassword.confirmPassword.label}
-            placeholder={
-              enLocal.forms.resetPassword.confirmPassword.placeholder
-            }
-            isPassword={true}
-            error={errors.confirmPassword?.message}
-            autoComplete="new-password"
-            onCut={onCutHandler}
-            onCopy={onCopyHandler}
-            onPaste={onPastHandler}
-          />
+          <div css={styles.row}>
+            <InputText
+              {...register('confirmPassword')}
+              id="confirmResetPassword"
+              label={enLocal.forms.resetPassword.confirmPassword.label}
+              placeholder={
+                enLocal.forms.resetPassword.confirmPassword.placeholder
+              }
+              isPassword={true}
+              error={errors.confirmPassword?.message}
+              autoComplete="new-password"
+              onCut={onCutHandler}
+              onCopy={onCopyHandler}
+              onPaste={onPastHandler}
+            />
 
-          <PasswordTips
-            ref={inputFocusedRef}
-            result={checkPassword(password)}
-          />
-        </div>
+            <PasswordTips
+              ref={inputFocusedRef}
+              result={checkPassword(password)}
+            />
+          </div>
 
-        <div css={styles.row}>
-          <Button type="submit" variant="form" disabled={loading}>
-            {loading ? <Spinner /> : enLocal.forms.resetPassword.changeSubmit}
-          </Button>
-        </div>
-      </form>
-    </Container>
+          <div css={styles.row}>
+            <Button type="submit" variant="form" disabled={loading}>
+              {loading ? <Spinner /> : enLocal.forms.resetPassword.changeSubmit}
+            </Button>
+          </div>
+        </form>
+      </Container>
+    </PageTitle>
   );
 };

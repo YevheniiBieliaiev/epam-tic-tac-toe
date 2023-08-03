@@ -1,10 +1,7 @@
-import { TermsContent } from '@components/terms';
-import { MainLayout } from '@components/layout';
+import { lazy } from 'react';
 
-const Terms = () => <TermsContent />;
-
-export const TermsPage = () => (
-  <MainLayout title="Terms">
-    <Terms />
-  </MainLayout>
+export const TermsPage = lazy(() =>
+  import('../components/terms').then(({ TermsContent }) => ({
+    default: TermsContent,
+  })),
 );

@@ -1,8 +1,7 @@
-import { MainLayout } from '@components/layout';
-import { EmailInstruction } from '@components/email-instruction';
+import { lazy } from 'react';
 
-export const EmailInstructionPage = () => (
-  <MainLayout>
-    <EmailInstruction />
-  </MainLayout>
+export const EmailInstructionPage = lazy(() =>
+  import('../components/email-instruction').then(({ EmailInstruction }) => ({
+    default: EmailInstruction,
+  })),
 );

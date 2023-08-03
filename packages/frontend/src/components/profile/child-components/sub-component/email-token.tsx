@@ -1,4 +1,4 @@
-import { useForm, type SubmitHandler } from 'react-hook-form';
+import { useForm, type SubmitHandler, FormProvider } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import type { IEmailVerification } from '@tic-tac-toe/shared';
 import { InputGroup, Button, Spinner } from '@primitives';
@@ -13,17 +13,14 @@ export const EmailToken = () => {
   const loading = useAppSelector(loader);
   const dispatch = useAppDispatch();
 
-  const {
-    handleSubmit,
-    setValue,
-    clearErrors,
-    formState: { errors },
-  } = useForm<IEmailVerification>({
+  const methods = useForm<IEmailVerification>({
     defaultValues: {
       tokenEmail: '',
     },
     resolver: joiResolver(profileEmailTokenSchema),
   });
+
+  const { handleSubmit } = methods;
 
   const onSubmitHandler: SubmitHandler<IEmailVerification> = (data) => {
     dispatch(confirmEmail(data));
@@ -31,26 +28,25 @@ export const EmailToken = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <div css={styles.inputRow}>
-          <InputGroup
-            size={6}
-            label={enLocal.forms.confirmEmail.code}
-            setValue={setValue}
-            clearErrors={clearErrors}
-            keyValue="tokenEmail"
-            error={errors.tokenEmail?.message}
-          />
-        </div>
-
-        <div css={styles.submitRow}>
-          <div css={styles.submitInner}>
-            <Button type="submit" disabled={loading}>
-              {loading ? <Spinner /> : enLocal.profile.confirmEmail}
-            </Button>
+      <FormProvider {...methods}>
+        <form onSubmit={handleSubmit(onSubmitHandler)}>
+          <div css={styles.inputRow}>
+            <InputGroup
+              size={6}
+              label={enLocal.forms.confirmEmail.code}
+              keyValue="tokenEmail"
+            />
           </div>
-        </div>
-      </form>
+
+          <div css={styles.submitRow}>
+            <div css={styles.submitInner}>
+              <Button type="submit" disabled={loading}>
+                {loading ? <Spinner /> : enLocal.profile.confirmEmail}
+              </Button>
+            </div>
+          </div>
+        </form>
+      </FormProvider>
     </div>
   );
 };

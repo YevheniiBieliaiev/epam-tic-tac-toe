@@ -1,8 +1,7 @@
-import { MainLayout } from '@components/layout';
-import { GameVsBot } from '@components/game-vs-robot';
+import { lazy } from 'react';
 
-export const PlayRobotPage = () => (
-  <MainLayout title="Game">
-    <GameVsBot />
-  </MainLayout>
+export const PlayRobotPage = lazy(() =>
+  import('../components/game-vs-robot').then(({ GameVsBot }) => ({
+    default: GameVsBot,
+  })),
 );

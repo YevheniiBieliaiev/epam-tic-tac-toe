@@ -1,19 +1,13 @@
 import type { ConcatToken } from './types';
 
 export const concatToken = ({
-  code,
+  segments,
   setValue,
   clearErrors,
   keyValue,
   size,
 }: ConcatToken): void => {
-  const keys = Object.keys(code);
-
-  let tokenEmail = '';
-
-  keys.sort().forEach((it) => {
-    tokenEmail += code[it];
-  });
+  const tokenEmail = segments.join('');
 
   setValue(keyValue, tokenEmail);
 

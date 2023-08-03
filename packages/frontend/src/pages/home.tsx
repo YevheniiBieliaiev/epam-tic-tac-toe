@@ -1,10 +1,7 @@
-import { MainLayout } from '@components/layout';
-import { HomeContent } from '@components/home';
+import { lazy } from 'react';
 
-const Home = () => <HomeContent />;
-
-export const HomePage = () => (
-  <MainLayout>
-    <Home />
-  </MainLayout>
+export const HomePage = lazy(() =>
+  import('../components/home').then(({ HomeContent }) => ({
+    default: HomeContent,
+  })),
 );

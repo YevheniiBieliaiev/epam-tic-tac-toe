@@ -1,17 +1,15 @@
-import { Outlet } from 'react-router-dom';
-import { Container } from '@primitives';
-import { MainLayout, SignLayout } from '@components/layout';
+import { lazy } from 'react';
 
-const Sign = () => (
-  <Container type="centered">
-    <SignLayout>
-      <Outlet />
-    </SignLayout>
-  </Container>
+export const SignInPage = lazy(() =>
+  import('../components/sign').then(({ SignIn }) => ({ default: SignIn })),
 );
 
-export const SignPage = () => (
-  <MainLayout title="Sign">
-    <Sign />
-  </MainLayout>
+export const SignUpPage = lazy(() =>
+  import('../components/sign').then(({ SignUp }) => ({ default: SignUp })),
+);
+
+export const ResetPasswordEmailPage = lazy(() =>
+  import('../components/sign').then(({ ResetPasswordEmail }) => ({
+    default: ResetPasswordEmail,
+  })),
 );

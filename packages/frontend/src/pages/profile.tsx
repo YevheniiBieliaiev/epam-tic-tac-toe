@@ -1,10 +1,7 @@
-import { MainLayout } from '@components/layout';
-import { UserInfo } from '@components/profile';
+import { lazy } from 'react';
 
-const Profile = () => <UserInfo />;
-
-export const ProfilePage = () => (
-  <MainLayout title="Profile">
-    <Profile />
-  </MainLayout>
+export const ProfilePage = lazy(() =>
+  import('../components/profile').then(({ UserInfo }) => ({
+    default: UserInfo,
+  })),
 );

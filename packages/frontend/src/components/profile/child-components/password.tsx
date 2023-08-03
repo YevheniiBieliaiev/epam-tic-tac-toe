@@ -4,7 +4,6 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import type { INewPassword } from '@interfaces';
 import {
   Button,
-  SVGIcon,
   InputText,
   PasswordTips,
   Spinner,
@@ -17,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '@hooks';
 import { setNewPassword } from '@store';
 import { loader, passwordUpdDate } from '@selectors';
 import { checkPassword } from '@helpers';
+import { EditedField } from './edited-field';
 import * as styles from './styles';
 
 export const ProfilePassword = () => {
@@ -84,111 +84,84 @@ export const ProfilePassword = () => {
   };
 
   return (
-    <div css={styles.block}>
-      <div css={styles.blockInner}>
-        <div css={styles.blockHeader}>
-          <span css={styles.header}>{enLocal.profile.password.header}</span>
-
-          <Button
-            type="button"
-            contrast="secondary"
-            size="xxs"
-            onClick={onSetEditHandler}
-          >
-            <span css={styles.edit}>
-              {isEdit
-                ? enLocal.profile.editButton.cancel
-                : enLocal.profile.editButton.edit}
-            </span>
-
-            <SVGIcon
-              icon={isEdit ? 'xCloseSecondary' : 'pencil'}
-              size="xxs"
-              cssExtension={styles.editIcon}
+    <EditedField
+      label={enLocal.profile.password.header}
+      isEdit={isEdit}
+      onClick={onSetEditHandler}
+    >
+      {isEdit ? (
+        <form onSubmit={handleSubmit(onSubmitHandler)}>
+          <div css={[styles.inputRow, styles.inputPassword]}>
+            <InputText
+              {...register('currentPassword')}
+              id="currentPassword"
+              label={enLocal.profile.password.currentPassword.label}
+              placeholder={enLocal.profile.password.currentPassword.placeholder}
+              error={errors.currentPassword?.message}
+              isPassword={true}
+              autoComplete="off"
+              onCut={onCutHandler}
+              onCopy={onCopyHandler}
+              onPaste={onPastHandler}
             />
-          </Button>
-        </div>
 
-        <div>
-          {isEdit ? (
-            <form onSubmit={handleSubmit(onSubmitHandler)}>
-              <div css={[styles.inputRow, styles.inputPassword]}>
-                <InputText
-                  {...register('currentPassword')}
-                  id="currentPassword"
-                  label={enLocal.profile.password.currentPassword.label}
-                  placeholder={
-                    enLocal.profile.password.currentPassword.placeholder
-                  }
-                  error={errors.currentPassword?.message}
-                  isPassword={true}
-                  autoComplete="off"
-                  onCut={onCutHandler}
-                  onCopy={onCopyHandler}
-                  onPaste={onPastHandler}
-                />
+            <div css={styles.resetLink}>
+              <InternalLink
+                path={ClientRoutes.RESET_PASSWORD_EMAIL}
+                label={enLocal.forms.signin.resetPassword}
+                contrast="secondary"
+                txtSize="md"
+              />
+            </div>
+          </div>
 
-                <div css={styles.resetLink}>
-                  <InternalLink
-                    path={`${ClientRoutes.SIGN}/${ClientRoutes.RESET_PASSWORD_EMAIL}`}
-                    label={enLocal.forms.signin.resetPassword}
-                    contrast="secondary"
-                    txtSize="md"
-                  />
-                </div>
-              </div>
+          <div css={[styles.inputRow, styles.inputPassword]}>
+            <InputText
+              {...register('newPassword')}
+              id="newPassword"
+              label={enLocal.profile.password.newPassword.label}
+              placeholder={enLocal.profile.password.newPassword.placeholder}
+              error={errors.newPassword?.message}
+              isPassword={true}
+              autoComplete="new-password"
+              onFocus={onFocuse}
+              onCut={onCutHandler}
+              onCopy={onCopyHandler}
+              onPaste={onPastHandler}
+            />
+          </div>
 
-              <div css={[styles.inputRow, styles.inputPassword]}>
-                <InputText
-                  {...register('newPassword')}
-                  id="newPassword"
-                  label={enLocal.profile.password.newPassword.label}
-                  placeholder={enLocal.profile.password.newPassword.placeholder}
-                  error={errors.newPassword?.message}
-                  isPassword={true}
-                  autoComplete="new-password"
-                  onFocus={onFocuse}
-                  onCut={onCutHandler}
-                  onCopy={onCopyHandler}
-                  onPaste={onPastHandler}
-                />
-              </div>
+          <div css={[styles.inputRow, styles.inputPassword]}>
+            <InputText
+              {...register('confirmPassword')}
+              id="confirmNewPassword"
+              label={enLocal.profile.password.confirmPassword.label}
+              placeholder={enLocal.profile.password.confirmPassword.placeholder}
+              error={errors.confirmPassword?.message}
+              isPassword={true}
+              autoComplete="new-password"
+              onCut={onCutHandler}
+              onCopy={onCopyHandler}
+              onPaste={onPastHandler}
+            />
 
-              <div css={[styles.inputRow, styles.inputPassword]}>
-                <InputText
-                  {...register('confirmPassword')}
-                  id="confirmNewPassword"
-                  label={enLocal.profile.password.confirmPassword.label}
-                  placeholder={
-                    enLocal.profile.password.confirmPassword.placeholder
-                  }
-                  error={errors.confirmPassword?.message}
-                  isPassword={true}
-                  autoComplete="new-password"
-                  onCut={onCutHandler}
-                  onCopy={onCopyHandler}
-                  onPaste={onPastHandler}
-                />
+            <PasswordTips
+              ref={inputFocusedRef}
+              result={checkPassword(password)}
+            />
+          </div>
 
-                <PasswordTips
-                  ref={inputFocusedRef}
-                  result={checkPassword(password)}
-                />
-              </div>
-
-              <div css={styles.submitRow}>
-                <div css={styles.submitInner}>
-                  <Button type="submit" disabled={loading}>
-                    {loading ? <Spinner /> : enLocal.profile.submit}
-                  </Button>
-                </div>
-              </div>
-            </form>
-          ) : (
-            <span css={styles.updatingDate}>{passwordUpdatedAt}</span>
-          )}
-        </div>
-      </div>
-    </div>
+          <div css={styles.submitRow}>
+            <div css={styles.submitInner}>
+              <Button type="submit" disabled={loading}>
+                {loading ? <Spinner /> : enLocal.profile.submit}
+              </Button>
+            </div>
+          </div>
+        </form>
+      ) : (
+        <span css={styles.updatingDate}>{passwordUpdatedAt}</span>
+      )}
+    </EditedField>
   );
 };

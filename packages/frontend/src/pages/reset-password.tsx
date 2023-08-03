@@ -1,8 +1,7 @@
-import { MainLayout } from '@components/layout';
-import { ResetPassword } from '@components/reset-password';
+import { lazy } from 'react';
 
-export const ResetPasswordPage = () => (
-  <MainLayout>
-    <ResetPassword />
-  </MainLayout>
+export const ResetPasswordPage = lazy(() =>
+  import('../components/reset-password').then(({ ResetPassword }) => ({
+    default: ResetPassword,
+  })),
 );

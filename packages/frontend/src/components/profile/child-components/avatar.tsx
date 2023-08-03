@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Button, SVGIcon, Avatar } from '@primitives';
+import { Avatar } from '@primitives';
 import { useAppSelector } from '@hooks';
 import { user } from '@selectors';
 import { enLocal } from '@locals';
-import * as styles from './styles';
+import { EditedField } from './edited-field';
 
 export const ProfileAvatar = () => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
@@ -15,35 +15,12 @@ export const ProfileAvatar = () => {
   };
 
   return (
-    <div css={styles.block}>
-      <div css={styles.blockInner}>
-        <div css={styles.blockHeader}>
-          <span css={styles.header}>{enLocal.profile.photo.header}</span>
-
-          <Button
-            type="button"
-            contrast="secondary"
-            size="xxs"
-            onClick={onSetEditHandler}
-          >
-            <span css={styles.edit}>
-              {isEdit
-                ? enLocal.profile.editButton.cancel
-                : enLocal.profile.editButton.edit}
-            </span>
-
-            <SVGIcon
-              icon={isEdit ? 'xCloseSecondary' : 'pencil'}
-              size="xxs"
-              cssExtension={styles.editIcon}
-            />
-          </Button>
-        </div>
-
-        <div>
-          <Avatar src={avatar} nickname={nickname} />
-        </div>
-      </div>
-    </div>
+    <EditedField
+      label={enLocal.profile.photo.header}
+      isEdit={isEdit}
+      onClick={onSetEditHandler}
+    >
+      <Avatar src={avatar} nickname={nickname} />
+    </EditedField>
   );
 };

@@ -4,9 +4,10 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import { useNavigate } from 'react-router-dom';
 import type { ISignUpForm } from '@interfaces';
 import { userSignUpSchema } from '@validation';
-import { ClientRoutes } from '@enums';
+import { ClientRoutes, PageTitles } from '@enums';
 import { enLocal } from '@locals';
 import {
+  PageTitle,
   InputText,
   Checkbox,
   Button,
@@ -69,87 +70,89 @@ export const SignUp = () => {
   };
 
   return (
-    <div css={styles.formWrapper}>
-      <form onSubmit={handleSubmit(signupHandler)}>
-        <div css={styles.row}>
-          <InputText
-            {...register('nickname')}
-            id="signupNickname"
-            label={enLocal.forms.signup.nickname.label}
-            placeholder={enLocal.forms.signup.nickname.label}
-            error={errors.nickname?.message}
-            autoComplete="off"
-          />
-        </div>
+    <PageTitle title={PageTitles.SIGN_UP}>
+      <div css={styles.formWrapper}>
+        <form onSubmit={handleSubmit(signupHandler)}>
+          <div css={styles.row}>
+            <InputText
+              {...register('nickname')}
+              id="signupNickname"
+              label={enLocal.forms.signup.nickname.label}
+              placeholder={enLocal.forms.signup.nickname.label}
+              error={errors.nickname?.message}
+              autoComplete="off"
+            />
+          </div>
 
-        <div css={styles.row}>
-          <InputText
-            {...register('email')}
-            id="signupEmail"
-            label={enLocal.forms.signup.email.label}
-            placeholder={enLocal.forms.signup.email.placeholder}
-            error={errors.email?.message}
-            autoComplete="off"
-          />
-        </div>
+          <div css={styles.row}>
+            <InputText
+              {...register('email')}
+              id="signupEmail"
+              label={enLocal.forms.signup.email.label}
+              placeholder={enLocal.forms.signup.email.placeholder}
+              error={errors.email?.message}
+              autoComplete="off"
+            />
+          </div>
 
-        <div css={styles.row}>
-          <InputText
-            {...register('password')}
-            id="signupPassword"
-            label={enLocal.forms.signup.password.label}
-            placeholder={enLocal.forms.signup.password.placeholder}
-            isPassword={true}
-            error={errors.password?.message}
-            autoComplete="new-password"
-            onFocus={onFocuse}
-            onCut={onCutHandler}
-            onCopy={onCopyHandler}
-            onPaste={onPastHandler}
-          />
-        </div>
+          <div css={styles.row}>
+            <InputText
+              {...register('password')}
+              id="signupPassword"
+              label={enLocal.forms.signup.password.label}
+              placeholder={enLocal.forms.signup.password.placeholder}
+              isPassword={true}
+              error={errors.password?.message}
+              autoComplete="new-password"
+              onFocus={onFocuse}
+              onCut={onCutHandler}
+              onCopy={onCopyHandler}
+              onPaste={onPastHandler}
+            />
+          </div>
 
-        <div css={styles.row}>
-          <InputText
-            {...register('confirmPassword')}
-            id="signupConfirmPassword"
-            label={enLocal.forms.signup.confirmPassword.label}
-            placeholder={enLocal.forms.signup.confirmPassword.placeholder}
-            isPassword={true}
-            error={errors.confirmPassword?.message}
-            autoComplete="new-password"
-            onCut={onCutHandler}
-            onCopy={onCopyHandler}
-            onPaste={onPastHandler}
-          />
+          <div css={styles.row}>
+            <InputText
+              {...register('confirmPassword')}
+              id="signupConfirmPassword"
+              label={enLocal.forms.signup.confirmPassword.label}
+              placeholder={enLocal.forms.signup.confirmPassword.placeholder}
+              isPassword={true}
+              error={errors.confirmPassword?.message}
+              autoComplete="new-password"
+              onCut={onCutHandler}
+              onCopy={onCopyHandler}
+              onPaste={onPastHandler}
+            />
 
-          <PasswordTips
-            ref={inputFocusedRef}
-            result={checkPassword(password)}
-          />
-        </div>
+            <PasswordTips
+              ref={inputFocusedRef}
+              result={checkPassword(password)}
+            />
+          </div>
 
-        <div css={[styles.row, styles.checkbox]}>
-          <Checkbox
-            {...register('terms')}
-            id="signupCheckbox"
-            label={enLocal.forms.signup.acceptTerms.label}
-            error={errors.terms?.message}
-          />
-          <InternalLink
-            path={ClientRoutes.TERMS}
-            label={enLocal.common.clientLinks.terms}
-            txtSize="sm"
-            contrast="secondary"
-          />
-        </div>
+          <div css={[styles.row, styles.checkbox]}>
+            <Checkbox
+              {...register('terms')}
+              id="signupCheckbox"
+              label={enLocal.forms.signup.acceptTerms.label}
+              error={errors.terms?.message}
+            />
+            <InternalLink
+              path={ClientRoutes.TERMS}
+              label={enLocal.common.clientLinks.terms}
+              txtSize="sm"
+              contrast="secondary"
+            />
+          </div>
 
-        <div css={styles.row}>
-          <Button type="submit" variant="form" disabled={loading}>
-            {loading ? <Spinner /> : enLocal.forms.signup.submit}
-          </Button>
-        </div>
-      </form>
-    </div>
+          <div css={styles.row}>
+            <Button type="submit" variant="form" disabled={loading}>
+              {loading ? <Spinner /> : enLocal.forms.signup.submit}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </PageTitle>
   );
 };

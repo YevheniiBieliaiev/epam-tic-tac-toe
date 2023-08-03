@@ -1,10 +1,7 @@
-import { MainLayout } from '@components/layout';
-import { ProveEmail } from '@components/confirm-email';
+import { lazy } from 'react';
 
-const ConfirmEmail = () => <ProveEmail />;
-
-export const ConfirmEmailPage = () => (
-  <MainLayout>
-    <ConfirmEmail />
-  </MainLayout>
+export const ConfirmEmailPage = lazy(() =>
+  import('../components/confirm-email').then(({ ProveEmail }) => ({
+    default: ProveEmail,
+  })),
 );

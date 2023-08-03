@@ -1,7 +1,3 @@
-export interface InputsState {
-  [key: string]: string;
-}
-
 type Options = Partial<{
   shouldValidate: boolean;
   shouldDirty: boolean;
@@ -16,14 +12,11 @@ export interface InputGroupProps extends React.HTMLProps<HTMLInputElement> {
   size: number;
   placeholderSymbol?: 'X' | '-';
   label?: string;
-  setValue: SetValue;
-  clearErrors: ClearErrors;
   keyValue: string;
-  error: string;
 }
 
 export interface ConcatToken {
-  code: InputsState;
+  segments: string[];
   size: number;
   setValue: SetValue;
   clearErrors: ClearErrors;

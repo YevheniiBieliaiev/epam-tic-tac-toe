@@ -1,7 +1,12 @@
 import { useEffect } from 'react';
 import { BoardLayout } from '@components/layout';
-import { ButtonInternal, AppSpinner, BotGameStatistic } from '@primitives';
-import { ClientRoutes } from '@enums';
+import {
+  PageTitle,
+  ButtonInternal,
+  AppSpinner,
+  BotGameStatistic,
+} from '@primitives';
+import { ClientRoutes, PageTitles } from '@enums';
 import { enLocal } from '@locals';
 import { useAppSelector, useAppDispatch } from '@hooks';
 import { closeModal, gameBotStat } from '@store';
@@ -30,34 +35,36 @@ export const GameVsBot = () => {
   }
 
   return (
-    <BoardLayout>
-      <div css={styles.gameWrapper}>
-        <ButtonInternal
-          path={ClientRoutes.HOME}
-          label={enLocal.common.clientLinks.home}
-          type="dark"
-          icon="arrowLeft"
-          iconSize="xs"
-          cssExtension={styles.linkButton}
-        />
+    <PageTitle title={PageTitles.BOT_GAME}>
+      <BoardLayout>
+        <div css={styles.gameWrapper}>
+          <ButtonInternal
+            path={ClientRoutes.HOME}
+            label={enLocal.common.clientLinks.home}
+            type="dark"
+            icon="arrowLeft"
+            iconSize="xs"
+            cssExtension={styles.linkButton}
+          />
 
-        <div css={styles.game}>
-          <div css={styles.infoFrame}>
-            <BotGameStatistic />
+          <div css={styles.game}>
+            <div css={styles.infoFrame}>
+              <BotGameStatistic />
 
-            <div css={styles.optionsWrapper}>
-              <BotLevel />
-              <SetSymbol />
+              <div css={styles.optionsWrapper}>
+                <BotLevel />
+                <SetSymbol />
+              </div>
+            </div>
+
+            <Board />
+
+            <div css={styles.startBar}>
+              <StartBar />
             </div>
           </div>
-
-          <Board />
-
-          <div css={styles.startBar}>
-            <StartBar />
-          </div>
         </div>
-      </div>
-    </BoardLayout>
+      </BoardLayout>
+    </PageTitle>
   );
 };
