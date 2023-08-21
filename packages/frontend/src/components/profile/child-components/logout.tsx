@@ -4,6 +4,7 @@ import { enLocal } from '@locals';
 import { ClientRoutes } from '@enums';
 import { Button, Spinner } from '@primitives';
 import { useAppDispatch, useAppSelector } from '@hooks';
+import { socketEvents } from '@socket';
 import { userSignout } from '@store';
 import { authLoader, userAccessToken } from '@selectors';
 
@@ -20,6 +21,7 @@ export const Logout = () => {
 
   useEffect(() => {
     if (!accessToken && !loading) {
+      socketEvents.disconnect();
       navigate(ClientRoutes.HOME);
     }
   }, [accessToken, navigate, loading]);

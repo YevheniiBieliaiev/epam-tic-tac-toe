@@ -1,23 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { AppRouterProvider } from '@providers';
+import { socketEvents } from '@socket';
 import { AppSpinner } from '@primitives';
 import { useAuth, useAppSelector } from '@hooks';
-import { userAccessToken, appLoader } from '@selectors';
+import { userAccessToken, appLoader, userAuth } from '@selectors';
 
 export const App = () => {
-  const [token, setToken] = useState<string>('');
   const accessToken = useAppSelector(userAccessToken);
+  const isAuth = useAppSelector(userAuth);
   const loader = useAppSelector(appLoader);
 
-  useEffect(() => {
-    setToken(accessToken);
-  }, [accessToken]);
-
   useAuth();
+
+  useEffect(() => {
+    if (isAuth) {
+      socketEvents.connect();
+    } else {
+      socketEvents.disconnect();
+    }
+
+    socketEvents.connectError();
+
+    return () => {
+      socketEvents.disconnect();
+    };
+  }, [isAuth]);
 
   if (loader) {
     return <AppSpinner />;
   }
 
-  return <AppRouterProvider accessToken={token} />;
+  return <AppRouterProvider accessToken={accessToken} />;
 };

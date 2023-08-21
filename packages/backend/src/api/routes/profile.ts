@@ -1,4 +1,4 @@
-import type { Services } from '@services';
+import type { InitServices } from '@services';
 import type {
   ApiRoutes,
   IUpdateEmail,
@@ -15,7 +15,7 @@ import { apiPath } from '@helpers';
 import { requestWrapper, auth } from '@middlewares';
 
 export const initProfileRouter = (
-  { profileServices }: Services,
+  { profileServices }: InitServices,
   path: ApiRoutes,
 ): Router => {
   const router = Router();

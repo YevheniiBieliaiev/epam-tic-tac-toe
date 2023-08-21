@@ -1,12 +1,12 @@
 import { Router } from 'express';
 import type { ApiRoutes, IGameBotStat } from '@tic-tac-toe/shared';
 import { GameStatSubRoutes } from '@tic-tac-toe/shared';
-import type { Services } from '@services';
+import type { InitServices } from '@services';
 import { apiPath } from '@helpers';
 import { requestWrapper, auth } from '@middlewares';
 
 export const initGameStatRouter = (
-  { gameStatServices }: Services,
+  { gameStatServices }: InitServices,
   path: ApiRoutes,
 ): Router => {
   const router = Router();

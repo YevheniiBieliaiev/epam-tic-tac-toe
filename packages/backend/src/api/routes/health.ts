@@ -1,10 +1,10 @@
-import type { Services } from '@services';
+import type { InitServices } from '@services';
 import type { ApiRoutes } from '@tic-tac-toe/shared';
 import { HttpStatusCode } from '@tic-tac-toe/shared';
 import { type Response, type Request, Router } from 'express';
 
 export function initHealthRoutes(
-  { healthService }: Services,
+  { healthService }: InitServices,
   path: ApiRoutes,
 ): Router {
   const router = Router();

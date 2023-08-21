@@ -1,16 +1,17 @@
 // import { useNavigate } from 'react-router-dom';
 import { BoardLayout } from '@components/layout';
+// import { socket } from '@socket';
 import { PageTitle, ButtonInternal, Button } from '@primitives';
 import { enLocal } from '@locals';
 import { ClientRoutes } from '@enums';
-// import { useAppSelector } from '@hooks';
-// import { userAccessToken } from '@selectors';
+import { useAppSelector } from '@hooks';
+import { userAuth } from '@selectors';
 import { Square } from './primitives';
 import * as styles from './styles';
 
 export const HomeContent = () => {
   // const navigate = useNavigate();
-  // const accessToken = useAppSelector(userAccessToken);
+  const isAuth = useAppSelector(userAuth);
 
   const onHandlePlayVsRandom = () => {
     console.log('PlayVsRandom');
@@ -50,7 +51,7 @@ export const HomeContent = () => {
                 <Button
                   contrast="light"
                   onClick={onHandlePlayVsRandom}
-                  disabled={true}
+                  disabled={!isAuth}
                 >
                   {enLocal.home.buttonGroup.randomPlayer}
                 </Button>
@@ -60,7 +61,7 @@ export const HomeContent = () => {
                 <Button
                   contrast="light"
                   onClick={onHandlePlayVsFriend}
-                  disabled={true}
+                  disabled={!isAuth}
                 >
                   {enLocal.home.buttonGroup.friendPlay}
                 </Button>

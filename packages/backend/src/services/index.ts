@@ -1,5 +1,4 @@
-import type { Repositories } from '@repositories';
-import type { InitServices } from '@interfaces';
+import type { InitRepositories } from '@repositories';
 import { HealthService } from './health';
 import { AuthServices } from './auth';
 import { ProfileServices } from './profile';
@@ -9,10 +8,17 @@ import { JWTService } from './jwt';
 import { EmailService } from './email';
 import { GameStatServices } from './game-stat';
 
+export interface InitServices {
+  healthService: HealthService;
+  authService: AuthServices;
+  profileServices: ProfileServices;
+  gameStatServices: GameStatServices;
+}
+
 export const initServices = ({
   repositories,
 }: {
-  repositories: Repositories;
+  repositories: InitRepositories;
 }): InitServices => {
   const s3StorageService = new S3StorageService();
   const hashService = new HashService({
@@ -48,8 +54,6 @@ export const initServices = ({
     }),
   };
 };
-
-export type Services = ReturnType<typeof initServices>;
 
 export {
   type HealthService,

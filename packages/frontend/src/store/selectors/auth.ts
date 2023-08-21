@@ -6,6 +6,7 @@ const accessToken = (state: RootState) => state.auth.accessToken;
 const nickname = (state: RootState) => state.auth.nickname;
 const avatar = (state: RootState) => state.auth.avatar;
 const mainLoader = (state: RootState) => state.auth.appLoader;
+const auth = (state: RootState) => state.auth.isAuth;
 
 export const authLoader = createSelector(loading, (loading) => loading);
 export const userAccessToken = createSelector(
@@ -20,3 +21,5 @@ export const user = createSelector([nickname, avatar], (nickname, avatar) => ({
   nickname,
   avatar,
 }));
+
+export const userAuth = createSelector(auth, (auth) => auth);

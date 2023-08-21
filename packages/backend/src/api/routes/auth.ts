@@ -1,4 +1,4 @@
-import type { Services } from '@services';
+import type { InitServices } from '@services';
 import type {
   ApiRoutes,
   ICandidate,
@@ -17,7 +17,7 @@ import type { TCookiesKeys } from '@types';
 import { EmailSubjects } from '@enums';
 
 export const initAuthRouter = (
-  { authService }: Services,
+  { authService }: InitServices,
   path: ApiRoutes,
 ): Router => {
   const router = Router();

@@ -18,6 +18,7 @@
       "@components/*": ["components/*"],
       "@primitives": ["components/primitives"],
       "@providers": ["providers"],
+      "@socket": ["socket"],
       "@theme": ["theme"],
       "@pages": ["pages"],
       "@svg-icons": ["images/svg"],

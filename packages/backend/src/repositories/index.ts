@@ -1,9 +1,15 @@
 import type { PrismaClient } from '@prisma/client';
-import type { InitRepositories } from '@interfaces';
 import { HealthRepository } from './health';
 import { AuthRepository } from './auth';
 import { ProfileRepository } from './profile';
 import { GameStatRepository } from './game-stat';
+
+export interface InitRepositories {
+  healthRepository: HealthRepository;
+  authRepository: AuthRepository;
+  profileRepository: ProfileRepository;
+  gameStatRepository: GameStatRepository;
+}
 
 export const initRepositories = ({
   prismaClient,
@@ -15,8 +21,6 @@ export const initRepositories = ({
   profileRepository: new ProfileRepository({ prismaClient }),
   gameStatRepository: new GameStatRepository({ prismaClient }),
 });
-
-export type Repositories = ReturnType<typeof initRepositories>;
 
 export {
   type HealthRepository,

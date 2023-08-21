@@ -11,6 +11,7 @@ import {
 
 interface AuthState {
   accessToken: string;
+  isAuth: boolean;
   avatar: string;
   nickname: string;
   loading: boolean;
@@ -20,6 +21,7 @@ interface AuthState {
 
 const initialState: AuthState = {
   accessToken: null,
+  isAuth: false,
   avatar: '',
   nickname: null,
   loading: false,
@@ -58,6 +60,7 @@ const authSlice = createSlice({
       state.avatar = avatar ?? '';
       state.nickname = nickname;
       state.accessToken = accessToken;
+      state.isAuth = true;
     });
     builder.addCase(userSignin.rejected, (state) => {
       state.loading = false;
@@ -69,6 +72,7 @@ const authSlice = createSlice({
     builder.addCase(userSignout.fulfilled, (state) => {
       state.loading = false;
       state.accessToken = null;
+      state.isAuth = false;
     });
     builder.addCase(userSignout.rejected, (state) => {
       state.loading = false;
@@ -103,6 +107,7 @@ const authSlice = createSlice({
       state.avatar = avatar;
       state.nickname = nickname;
       state.accessToken = accessToken;
+      state.isAuth = true;
     });
     builder.addCase(changePassword.rejected, (state) => {
       state.loading = false;
@@ -116,9 +121,11 @@ const authSlice = createSlice({
       state.avatar = avatar;
       state.nickname = nickname;
       state.appLoader = false;
+      state.isAuth = true;
     });
     builder.addCase(authTokens.rejected, (state) => {
       state.appLoader = false;
+      state.isAuth = false;
     });
   },
 });

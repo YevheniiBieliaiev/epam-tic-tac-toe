@@ -8,6 +8,7 @@ module.exports = {
       '@primitives': resolvePath('./src/components/primitives'),
       '@components': resolvePath('./src/components'),
       '@providers': resolvePath('./src/providers'),
+      '@socket': resolvePath('./src/socket'),
       '@theme': resolvePath('./src/theme'),
       '@helpers': resolvePath('./src/helpers'),
       '@validation': resolvePath('./src/validation'),

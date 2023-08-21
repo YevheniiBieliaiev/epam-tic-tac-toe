@@ -7,6 +7,8 @@ import type {
   IUserSignIn,
   ISigned,
   IUpdateTokens,
+  IAuthID,
+  ISocketUserData,
 } from '@interfaces';
 import { type EmailSubjects, ErrorMessages } from '@enums';
 import type { TTemplates } from '@types';
@@ -73,6 +75,18 @@ export class AuthServices {
     return this._authRepository.createUser({
       userData: { email, nickname, passwordHash, salt, tokenEmail },
     });
+  }
+
+  public async findUserById({ userId }: { userId: string }): Promise<IAuthID> {
+    return await this._authRepository.findUserById({ userId });
+  }
+
+  public async findSocketUser({
+    userId,
+  }: {
+    userId: string;
+  }): Promise<ISocketUserData> {
+    return await this._authRepository.findSocketUser({ userId });
   }
 
   public async sendEmail(
@@ -312,5 +326,15 @@ export class AuthServices {
       accessToken,
       refreshToken,
     };
+  }
+
+  public async updateOnlineStatus({
+    userId,
+    status,
+  }: {
+    userId: string;
+    status: boolean;
+  }): Promise<void> {
+    await this._authRepository.updateOnlineStatus({ userId, status });
   }
 }

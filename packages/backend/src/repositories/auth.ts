@@ -9,6 +9,7 @@ import type {
   ISessions,
 } from '@interfaces';
 import { Order } from '@tic-tac-toe/shared';
+import type { ISocketUserData } from '@interfaces';
 
 export class AuthRepository {
   private _dbClient: PrismaClient;
@@ -60,6 +61,30 @@ export class AuthRepository {
       },
       select: {
         nickname: true,
+      },
+    });
+  }
+
+  public async findSocketUser({
+    userId,
+  }: {
+    userId: string;
+  }): Promise<ISocketUserData> {
+    return await this._dbClient.user.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        id: true,
+        nickname: true,
+        avatar: true,
+        gameUserStat: {
+          select: {
+            won: true,
+            lose: true,
+            draw: true,
+          },
+        },
       },
     });
   }
@@ -208,6 +233,23 @@ export class AuthRepository {
         passwordHash,
         salt,
         passwordUpdatedAt,
+      },
+    });
+  }
+
+  public async updateOnlineStatus({
+    userId,
+    status,
+  }: {
+    userId: string;
+    status: boolean;
+  }): Promise<void> {
+    await this._dbClient.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        isOnline: status,
       },
     });
   }

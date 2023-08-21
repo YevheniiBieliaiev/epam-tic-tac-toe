@@ -1,3 +1,5 @@
+import type { User, GameUserStat } from '@prisma/client';
+
 export interface IUserCreating {
   nickname: string;
   email: string;
@@ -64,4 +66,9 @@ export interface ISessions {
 export interface IUpdateTokens {
   accessToken: string;
   refreshToken: string;
+}
+
+export interface ISocketUserData
+  extends Pick<User, 'id' | 'avatar' | 'nickname'> {
+  gameUserStat: Pick<GameUserStat, 'won' | 'draw' | 'lose'>;
 }
