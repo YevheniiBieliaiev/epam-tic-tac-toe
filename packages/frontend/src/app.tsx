@@ -13,13 +13,19 @@ export const App = () => {
   useAuth();
 
   useEffect(() => {
-    if (isAuth) {
-      socketEvents.connect();
-    } else {
-      socketEvents.disconnect();
+    switch (isAuth) {
+      case true:
+        socketEvents.connect();
+        break;
+
+      case false:
+        socketEvents.disconnect();
+        break;
     }
 
-    socketEvents.connectError();
+    socketEvents.onConnectError();
+
+    socketEvents.onGetOpponentData('listening');
 
     return () => {
       socketEvents.disconnect();

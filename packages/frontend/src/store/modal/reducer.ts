@@ -8,6 +8,7 @@ const initialState: IModalState = {
   emailPasswordModal: false,
   verifyNewEmailModal: false,
   saveScoreModal: false,
+  signToPlayModal: false,
 };
 
 const modalSlice = createSlice({

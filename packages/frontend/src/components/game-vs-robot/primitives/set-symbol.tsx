@@ -1,9 +1,9 @@
+import type { OpponentSymbol } from '@tic-tac-toe/shared';
 import { InputRadio } from '@primitives';
 import { enLocal } from '@locals';
 import { useAppSelector, useAppDispatch } from '@hooks';
 import { setSymbol } from '@store';
 import { setOptions, userSymbol } from '@selectors';
-import type { ChosenSymbol } from '@types';
 import * as styles from './styles';
 
 export const SetSymbol = () => {
@@ -12,7 +12,7 @@ export const SetSymbol = () => {
   const disabled = useAppSelector(setOptions);
 
   const onSetSymbolHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const symbol = event.currentTarget.value as ChosenSymbol;
+    const symbol = event.currentTarget.value as OpponentSymbol;
     dispatch(setSymbol(symbol));
   };
 

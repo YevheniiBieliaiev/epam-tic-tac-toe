@@ -29,6 +29,13 @@ export class AuthRepository {
         avatar: true,
         nickname: true,
         role: true,
+        gameUserStat: {
+          select: {
+            won: true,
+            lose: true,
+            draw: true,
+          },
+        },
       },
     });
   }
@@ -46,6 +53,13 @@ export class AuthRepository {
         nickname: true,
         role: true,
         isActivated: true,
+        gameUserStat: {
+          select: {
+            won: true,
+            lose: true,
+            draw: true,
+          },
+        },
       },
     });
   }

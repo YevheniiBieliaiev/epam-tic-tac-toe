@@ -1,5 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Levels, ChosenSymbol, GameResult } from '@types';
+import type { OpponentSymbol } from '@tic-tac-toe/shared';
+import type { Levels, GameResult } from '@types';
 import type { BotGameState } from '@interfaces';
 import { botTurn } from './actions';
 
@@ -23,7 +24,7 @@ const botGameSlice = createSlice({
     setLevel(state, action: PayloadAction<Levels>) {
       state.level = action.payload;
     },
-    setSymbol(state, action: PayloadAction<ChosenSymbol>) {
+    setSymbol(state, action: PayloadAction<OpponentSymbol>) {
       state.userSymbol = action.payload;
       action.payload === 'O' ? (state.turn = false) : (state.turn = true);
     },

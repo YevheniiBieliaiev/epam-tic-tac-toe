@@ -1,6 +1,7 @@
 import type { Socket } from 'socket.io-client';
+import { EventsName } from '@tic-tac-toe/shared';
 import { socket } from './initial';
-import { connectError } from './listeners';
+import { connectError, getOpponentData } from './listeners';
 
 type MountType = 'listening' | 'unmounted';
 
@@ -19,22 +20,22 @@ class SocketEvents {
     this.socket.disconnect();
   }
 
-  public connectError(): void {
-    this.socket.on('connect_error', connectError);
+  public onConnectError(): void {
+    this.socket.on(EventsName.CONNECT_ERROR, connectError);
   }
 
-  public opponentTurn(mountType: MountType): void {
+  public emitRandomOpponent(): void {
+    this.socket.emit(EventsName.RANDOM_OPPONENT);
+  }
+
+  public onGetOpponentData(mountType: MountType): void {
     switch (mountType) {
       case 'listening':
-        this.socket.on('opponent_turn', () => {
-          console.log('turn');
-        });
+        this.socket.on(EventsName.OPPONENT_JOINED, getOpponentData);
         break;
 
       case 'unmounted':
-        this.socket.off('opponent_turn', () => {
-          console.log('turn');
-        });
+        this.socket.off(EventsName.OPPONENT_JOINED, getOpponentData);
         break;
     }
   }

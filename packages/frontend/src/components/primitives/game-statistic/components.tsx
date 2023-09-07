@@ -41,30 +41,43 @@ export const UserGameStatistic = ({
   won,
   draw,
   lose,
-}: UserGameStatisticProps) => (
-  <div css={styles.statistic}>
-    <div css={styles.statisticInner}>
-      <div css={styles.row}>
-        <SVGIcon icon="trophy" />
-        <div>
-          <span>{enLocal.playBoard.users.userStatistic.won}</span>
-          <span>{won}</span>
+  type,
+}: UserGameStatisticProps) => {
+  const isOwn = type === 'own';
+
+  return (
+    <div css={styles.statistic}>
+      <div css={styles.statisticInner} data-opponent>
+        <div css={styles.row} data-opponent>
+          <SVGIcon icon="trophy" />
+          <div>
+            <span>
+              {isOwn
+                ? enLocal.playBoard.users.userStatistic.won
+                : enLocal.playBoard.users.userStatistic.rivalWon}
+            </span>
+            <span>{won}</span>
+          </div>
         </div>
-      </div>
-      <div css={styles.row}>
-        <SVGIcon icon="handshake" />
-        <div>
-          <span>{enLocal.playBoard.users.userStatistic.draw}</span>
-          <span>{draw}</span>
+        <div css={styles.row} data-opponent>
+          <SVGIcon icon="handshake" />
+          <div>
+            <span>{enLocal.playBoard.users.userStatistic.draw}</span>
+            <span>{draw}</span>
+          </div>
         </div>
-      </div>
-      <div css={styles.row}>
-        <SVGIcon icon="trophy" />
-        <div>
-          <span>{enLocal.playBoard.users.userStatistic.lose}</span>
-          <span>{lose}</span>
+        <div css={styles.row} data-opponent>
+          <SVGIcon icon="trophy" />
+          <div>
+            <span>
+              {isOwn
+                ? enLocal.playBoard.users.userStatistic.lose
+                : enLocal.playBoard.users.userStatistic.rivalLose}
+            </span>
+            <span>{lose}</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};

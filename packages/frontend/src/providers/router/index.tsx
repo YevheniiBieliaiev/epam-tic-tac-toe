@@ -14,6 +14,7 @@ import {
   EmailInstructionPage,
   ResetPasswordPage,
   PlayRobotPage,
+  PlayUserPage,
   SignInPage,
   SignUpPage,
   ResetPasswordEmailPage,
@@ -69,6 +70,7 @@ const privateRoutes: RouteObject[] = [
       { path: ClientRoutes.PASSWORD_RESET, element: <ResetPasswordPage /> },
       { path: ClientRoutes.EMAIL_INFO, element: <EmailInstructionPage /> },
       { path: ClientRoutes.BOT_GAME, element: <PlayRobotPage /> },
+      { path: ClientRoutes.USERS_GAME, element: <PlayUserPage /> },
     ],
   },
 

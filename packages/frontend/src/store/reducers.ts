@@ -6,6 +6,7 @@ import { modalReducer } from './modal';
 import { profileReducer } from './profile';
 import { botGameReducer } from './bot-game';
 import { gameStatReducer } from './game-stat';
+import { userGameReducer } from './user-game';
 
 const combinedReducers = combineReducers({
   auth: authReducer,
@@ -14,6 +15,7 @@ const combinedReducers = combineReducers({
   modal: modalReducer,
   botGame: botGameReducer,
   gameStat: gameStatReducer,
+  userGame: userGameReducer,
 });
 
 export type RootState = ReturnType<typeof combinedReducers>;

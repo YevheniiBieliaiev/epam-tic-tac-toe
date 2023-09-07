@@ -132,7 +132,7 @@ export class AuthServices {
       });
     }
 
-    const { avatar, nickname } = user;
+    const { avatar, nickname, gameUserStat } = user;
 
     const payload = this._jwtService.createPayload({ user });
     const { accessToken, refreshToken } = this._jwtService.generateAccessTokens(
@@ -146,6 +146,7 @@ export class AuthServices {
     return {
       avatar,
       nickname,
+      gameUserStat,
       accessToken,
       refreshToken,
     };
@@ -252,7 +253,7 @@ export class AuthServices {
       passwordUpdatedAt,
     });
 
-    const { id, avatar, nickname, role } = isUserExist;
+    const { id, avatar, nickname, role, gameUserStat } = isUserExist;
 
     const payload = this._jwtService.createPayload({
       user: { id, nickname, role },
@@ -271,6 +272,7 @@ export class AuthServices {
     return {
       avatar,
       nickname,
+      gameUserStat,
       accessToken,
       refreshToken,
     };
@@ -325,6 +327,7 @@ export class AuthServices {
       nickname: user.nickname,
       accessToken,
       refreshToken,
+      gameUserStat: user.gameUserStat,
     };
   }
 

@@ -91,7 +91,8 @@ const widths = {
   logoXs: '33px',
   logoSm: '40px',
   smAvatar: '27px',
-  mdAvatar: '50px',
+  mdAvatar: '40px',
+  lgAvatar: '50px',
   boardCell: '96px',
   bkgFrameXl: '20%',
   bkgFrameLg: '12%',
@@ -131,6 +132,10 @@ const widths = {
     md: '350px',
   },
   tooltip: '200px',
+  opponetInfo: {
+    sm: '145px',
+    md: '175px',
+  },
 };
 
 const heights = {
@@ -144,7 +149,8 @@ const heights = {
   logoSm: '20px',
   logoXs: '17px',
   smAvatar: '27px',
-  mdAvatar: '50px',
+  mdAvatar: '40px',
+  lgAvatar: '50px',
   tipMark: '4px',
   markCircle: '6px',
   checkbox: '12px',

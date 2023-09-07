@@ -28,17 +28,25 @@
       "draw": "Draw"
     },
     "tooltip": {
-      "sign": {
+      "signResult": {
         "header": "Save your score",
         "tip": "You can save your results and participate in the ranking"
+      },
+      "signGame": {
+        "tip": "For playing with other people please Sign In or Sign Up"
       }
     }
   },
   "users": {
+    "info": {
+      "isOwnNick": "(you)"
+    },
     "userStatistic": {
       "won": "You won: ",
       "draw": "Draw: ",
-      "lose": "You lose: "
+      "lose": "You lose: ",
+      "rivalWon": "Rival won: ",
+      "rivalLose": "Rival lose: "
     }
   }
 }

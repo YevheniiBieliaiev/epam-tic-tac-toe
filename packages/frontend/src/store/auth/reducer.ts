@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import type { GameUserStat } from '@tic-tac-toe/shared';
 import {
   userSignup,
   userSignin,
@@ -17,6 +18,7 @@ interface AuthState {
   loading: boolean;
   appLoader: boolean;
   error: string;
+  gameUserStat: GameUserStat;
 }
 
 const initialState: AuthState = {
@@ -27,6 +29,7 @@ const initialState: AuthState = {
   loading: false,
   appLoader: false,
   error: null,
+  gameUserStat: null,
 };
 
 const authSlice = createSlice({
@@ -56,10 +59,11 @@ const authSlice = createSlice({
     });
     builder.addCase(userSignin.fulfilled, (state, action) => {
       state.loading = false;
-      const { avatar, nickname, accessToken } = action.payload;
+      const { avatar, nickname, accessToken, gameUserStat } = action.payload;
       state.avatar = avatar ?? '';
       state.nickname = nickname;
       state.accessToken = accessToken;
+      state.gameUserStat = gameUserStat;
       state.isAuth = true;
     });
     builder.addCase(userSignin.rejected, (state) => {
@@ -103,10 +107,11 @@ const authSlice = createSlice({
     });
     builder.addCase(changePassword.fulfilled, (state, action) => {
       state.loading = false;
-      const { avatar, nickname, accessToken } = action.payload;
+      const { avatar, nickname, accessToken, gameUserStat } = action.payload;
       state.avatar = avatar;
       state.nickname = nickname;
       state.accessToken = accessToken;
+      state.gameUserStat = gameUserStat;
       state.isAuth = true;
     });
     builder.addCase(changePassword.rejected, (state) => {
@@ -117,10 +122,11 @@ const authSlice = createSlice({
       state.appLoader = true;
     });
     builder.addCase(authTokens.fulfilled, (state, action) => {
-      const { avatar, nickname } = action.payload;
+      const { avatar, nickname, gameUserStat } = action.payload;
       state.avatar = avatar;
       state.nickname = nickname;
       state.appLoader = false;
+      state.gameUserStat = gameUserStat;
       state.isAuth = true;
     });
     builder.addCase(authTokens.rejected, (state) => {

@@ -11,3 +11,8 @@ export interface ModalConfirmProps {
   linkPath?: string;
   linkLabel?: string;
 }
+
+export interface SignTooltipProps {
+  header?: string;
+  tip: string;
+}

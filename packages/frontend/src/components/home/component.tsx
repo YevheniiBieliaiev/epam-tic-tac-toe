@@ -1,24 +1,35 @@
-// import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { BoardLayout } from '@components/layout';
-// import { socket } from '@socket';
 import { PageTitle, ButtonInternal, Button } from '@primitives';
 import { enLocal } from '@locals';
 import { ClientRoutes } from '@enums';
-import { useAppSelector } from '@hooks';
+import { closeModal, openModal } from '@store';
+import { useAppDispatch, useAppSelector } from '@hooks';
 import { userAuth } from '@selectors';
+import { socketEvents } from '@socket';
 import { Square } from './primitives';
 import * as styles from './styles';
 
 export const HomeContent = () => {
-  // const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const isAuth = useAppSelector(userAuth);
 
-  const onHandlePlayVsRandom = () => {
-    console.log('PlayVsRandom');
-  };
+  useEffect(() => () => {
+    dispatch(closeModal('signToPlayModal'));
+  });
 
-  const onHandlePlayVsFriend = () => {
-    console.log('PlayVsFriend');
+  const onHandlePlayVsUser = () => {
+    switch (isAuth) {
+      case true:
+        socketEvents.emitRandomOpponent();
+        navigate(ClientRoutes.USERS_GAME);
+        break;
+      case false:
+        dispatch(openModal('signToPlayModal'));
+        break;
+    }
   };
 
   return (
@@ -48,21 +59,13 @@ export const HomeContent = () => {
               </div>
 
               <div>
-                <Button
-                  contrast="light"
-                  onClick={onHandlePlayVsRandom}
-                  disabled={!isAuth}
-                >
+                <Button contrast="light" onClick={onHandlePlayVsUser}>
                   {enLocal.home.buttonGroup.randomPlayer}
                 </Button>
               </div>
 
               <div>
-                <Button
-                  contrast="light"
-                  onClick={onHandlePlayVsFriend}
-                  disabled={!isAuth}
-                >
+                <Button contrast="light" onClick={onHandlePlayVsUser}>
                   {enLocal.home.buttonGroup.friendPlay}
                 </Button>
               </div>

@@ -19,6 +19,7 @@ export interface IAuthID {
   avatar?: string;
   nickname?: string;
   role?: string;
+  gameUserStat?: Pick<GameUserStat, 'won' | 'draw' | 'lose'>;
 }
 
 export interface IUserNickname {
@@ -33,6 +34,7 @@ export interface IUser {
   nickname: string;
   role: string;
   isActivated: boolean;
+  gameUserStat: Pick<GameUserStat, 'won' | 'draw' | 'lose'>;
 }
 
 export interface IUserSignIn {
@@ -45,6 +47,7 @@ export interface ISigned {
   nickname: string;
   accessToken: string;
   refreshToken: string;
+  gameUserStat: Pick<GameUserStat, 'won' | 'draw' | 'lose'>;
 }
 
 export interface IUserHashes {

@@ -3,4 +3,5 @@ export interface IModalState {
   emailPasswordModal: boolean;
   verifyNewEmailModal: boolean;
   saveScoreModal: boolean;
+  signToPlayModal: boolean;
 }

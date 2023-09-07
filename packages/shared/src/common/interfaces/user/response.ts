@@ -1,7 +1,14 @@
+export interface GameUserStat {
+  won: number;
+  draw: number;
+  lose: number;
+}
+
 export interface IResponseLogin {
   accessToken: string;
   avatar: string;
   nickname: string;
+  gameUserStat: GameUserStat;
 }
 
 export interface IResponseUpdateTokens {

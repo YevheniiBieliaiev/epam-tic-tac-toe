@@ -31,6 +31,13 @@ export const defaultAvatar = ({
     font-size: ${fontSizes.headingLg};
     line-height: ${lineHeights.headingSm};
   }
+
+  &[data-size='lg'] {
+    width: ${widths.lgAvatar};
+    height: ${heights.lgAvatar};
+    font-size: ${fontSizes.headingLg};
+    line-height: ${lineHeights.headingSm};
+  }
 `;
 
 export const avatar = ({ widths, heights, radiuses }: Theme) => css`
@@ -44,6 +51,11 @@ export const avatar = ({ widths, heights, radiuses }: Theme) => css`
 
   &[data-size='md'] {
     width: ${widths.mdAvatar};
+    height: ${heights.mdAvatar};
+  }
+
+  &[data-size='lg'] {
+    width: ${widths.lgAvatar};
     height: ${heights.mdAvatar};
   }
 `;

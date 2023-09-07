@@ -1,9 +1,10 @@
-import type { Levels, ChosenSymbol } from '@types';
+import type { Levels } from '@types';
 import type { ModeResult } from '@interfaces';
+import type { OpponentSymbol, BoardSymbols } from '@tic-tac-toe/shared';
 
 export interface ModeProps {
-  buttons: ChosenSymbol[];
-  botSymbol: 'X' | 'O';
+  buttons: BoardSymbols[];
+  botSymbol: OpponentSymbol;
 }
 
 export interface CombineModes {
@@ -14,6 +15,6 @@ export interface CombineModes {
 
 export interface TurnProps {
   level: Levels;
-  botSymbol: 'X' | 'O';
-  buttons: ChosenSymbol[];
+  botSymbol: OpponentSymbol;
+  buttons: BoardSymbols[];
 }

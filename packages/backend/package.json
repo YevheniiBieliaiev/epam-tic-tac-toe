@@ -27,8 +27,6 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.209.0",
     "@prisma/client": "^5.1.1",
-    "@types/jsonwebtoken": "^8.5.9",
-    "@types/pug": "^2.0.6",
     "cookie": "^0.5.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -41,6 +39,7 @@
     "pug": "^3.0.2",
     "sib-api-v3-typescript": "^2.2.2",
     "socket.io": "^4.7.2",
+    "uuid": "^9.0.0",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
   },
@@ -50,8 +49,11 @@
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/multer": "^1.4.7",
     "@types/node": "^18.8.2",
+    "@types/pug": "^2.0.6",
+    "@types/uuid": "^9.0.2",
     "prettier": "^2.7.1",
     "prisma": "^5.1.1",
     "prisma-erd-generator": "^1.2.1",

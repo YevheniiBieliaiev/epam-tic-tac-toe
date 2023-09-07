@@ -1,6 +1,6 @@
-import type { ChosenSymbol } from '@types';
+import type { BoardSymbols } from '@tic-tac-toe/shared';
 
 export interface GameCellsProps {
-  buttons: ChosenSymbol[];
+  buttons: BoardSymbols[];
   onClick(event: React.MouseEvent<HTMLButtonElement>): void;
 }

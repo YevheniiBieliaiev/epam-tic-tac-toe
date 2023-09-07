@@ -2,6 +2,7 @@ export enum ClientRoutes {
   HOME = '/',
   GAME_ROOM = '/game-room',
   BOT_GAME = '/bot-game',
+  USERS_GAME = '/game',
   LEADER_BOARD = '/leader-board',
   PROFILE = '/profile',
   TERMS = '/terms',
@@ -17,6 +18,7 @@ export enum ClientRoutes {
 
 export enum PageTitles {
   BOT_GAME = 'Game vs Bot',
+  USERS_GAME = 'Game',
   PROFILE = 'Profile',
   CONFIRM_EMAIL = 'Confirm Email',
   EMAIL_INSTRUCTION = 'Email Instruction',

@@ -22,13 +22,27 @@ export const statistic = ({
   }
 `;
 
-export const statisticInner = ({ spaces, minMq }: Theme) => css`
+export const statisticInner = ({
+  spaces,
+  minMq,
+  fontSizes,
+  lineHeights,
+}: Theme) => css`
   display: flex;
   flex-direction: row;
   padding: ${spaces.xs};
 
   ${minMq('md')} {
     flex-direction: column;
+  }
+
+  &[data-opponent] {
+    flex-direction: column;
+    font-size: ${fontSizes.body2};
+    line-height: ${lineHeights.body1};
+
+    ${minMq('md')} {
+    }
   }
 `;
 
@@ -38,6 +52,10 @@ export const row = ({ minMq, spaces }: Theme) => css`
   margin-right: ${spaces.md};
 
   ${minMq('md')} {
+    flex-direction: row;
+  }
+
+  &[data-opponent] {
     flex-direction: row;
   }
 `;

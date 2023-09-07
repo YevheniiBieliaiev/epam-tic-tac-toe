@@ -49,7 +49,7 @@ export const initAuthRouter = (
     requestWrapper(async (req, res): Promise<IResponseLogin> => {
       const { email, password } = <ISignIn>req.body;
 
-      const { accessToken, avatar, nickname, refreshToken } =
+      const { accessToken, avatar, nickname, refreshToken, gameUserStat } =
         await authService.signIn({ email, password });
 
       res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
@@ -60,6 +60,7 @@ export const initAuthRouter = (
         accessToken,
         avatar,
         nickname,
+        gameUserStat,
       };
     }),
   );
@@ -81,7 +82,7 @@ export const initAuthRouter = (
     requestWrapper(async (req, res): Promise<IResponseLogin> => {
       const { refTokETTT } = <TCookiesKeys>req.cookies;
 
-      const { accessToken, refreshToken, avatar, nickname } =
+      const { accessToken, refreshToken, avatar, nickname, gameUserStat } =
         await authService.updateTokens({
           token: refTokETTT,
         });
@@ -94,6 +95,7 @@ export const initAuthRouter = (
         accessToken,
         avatar,
         nickname,
+        gameUserStat,
       };
     }),
   );
@@ -133,7 +135,7 @@ export const initAuthRouter = (
       const { token } = req.params;
       const { password, passwordUpdatedAt } = <IResetPassword>req.body;
 
-      const { avatar, nickname, accessToken, refreshToken } =
+      const { avatar, nickname, accessToken, refreshToken, gameUserStat } =
         await authService.resetPassword({ token, password, passwordUpdatedAt });
 
       res.cookie(getEnv('JWT_REFRESH_TOKEN_KEY'), refreshToken, {
@@ -144,6 +146,7 @@ export const initAuthRouter = (
         accessToken,
         avatar,
         nickname,
+        gameUserStat,
       };
     }),
   );

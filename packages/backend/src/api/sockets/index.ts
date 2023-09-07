@@ -4,6 +4,9 @@ import type { ISocketUser } from '@interfaces';
 import { authSockets } from './auth';
 import { gameSockets } from './game';
 
+/**
+ * key - socket id
+ */
 export const users = new Map<string, ISocketUser>();
 
 export const socketsHandler = ({
@@ -24,12 +27,11 @@ export const socketsHandler = ({
 
     const userDTO: ISocketUser = {
       ...user,
-      inGame: false,
     };
 
     users.set(socketId, userDTO);
 
     authSockets({ socket, services });
-    gameSockets();
+    gameSockets({ io, socket, services });
   });
 };

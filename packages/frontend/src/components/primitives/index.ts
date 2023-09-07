@@ -21,3 +21,4 @@ export * from './game-statistic';
 export * from './square';
 export * from './game-cells';
 export * from './page-title';
+export * from './opponent';
